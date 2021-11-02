@@ -1,4 +1,5 @@
-﻿using Microsoft.CodeAnalysis;
+﻿using System.Text;
+using Microsoft.CodeAnalysis;
 
 namespace Quark
 {
@@ -12,13 +13,27 @@ namespace Quark
 
 		public void Execute(GeneratorExecutionContext context)
 		{
-			context.AddSource("helloworld.cs", @"
+			var sb = new StringBuilder(@"
 using System;
-namespace Quark.Generated {
-	public static class Test {
-		public static string Main() => ""Hello, World!"";
-	} 
+namespace Quark.Generated
+{
+	public static class SyntaxTreeLister
+	{
+		public static string List()
+		{
+			var working = string.Empty;");
+
+			foreach (var syntaxTree in context.Compilation.SyntaxTrees)
+			{
+				sb.Append($"working += \"{syntaxTree.FilePath}\";");
+			}
+
+			sb.Append(@"
+			return working;
+		}
+	}
 }");
+			context.AddSource("SyntaxTreeLister.cs", sb.ToString());
 		}
 	}
 }

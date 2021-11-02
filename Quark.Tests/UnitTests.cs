@@ -10,7 +10,7 @@ namespace Quark.Tests
 		[Test]
 		public void DemoTest()
 		{
-			Assert.AreEqual("Hello, World!", Quark.Generated.Test.Main());
+			Assert.Pass(Generated.SyntaxTreeLister.List());
 		}
 	}
 }
