@@ -29,7 +29,7 @@ namespace Quark.LINQ
 					sb.Append(expr.GetText() + "\n");
 
 			sb.Append(@"
-			""
+			"";
 	}
 }");
 			
