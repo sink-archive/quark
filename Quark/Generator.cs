@@ -8,31 +8,31 @@ namespace Quark
 	{
 		public void Initialize(GeneratorInitializationContext context)
 		{
-			// we don't need to initialise anything for this generator :)
+			context.RegisterForSyntaxNotifications(() => new LinqSyntaxReceiver());
 		}
 
 		public void Execute(GeneratorExecutionContext context)
 		{
 			var sb = new StringBuilder(@"
 using System;
-namespace Quark.Generated
+namespace Quark.LINQ
 {
-	public static class SyntaxTreeLister
+	public static class Queries
 	{
-		public static string List()
-		{
-			var working = string.Empty;");
+		public static T[] Select<T>(this T[] input) => input;
+		public static string ToArray<T>(this T[] input)
+		// actually just lists the queries we found
+		=> @""");
 
-			foreach (var syntaxTree in context.Compilation.SyntaxTrees)
-			{
-				sb.Append($"working += \"{syntaxTree.FilePath}\";");
-			}
+			if (context.SyntaxReceiver is LinqSyntaxReceiver receiver)
+				foreach (var expr in receiver.Expressions)
+					sb.Append(expr.GetText() + "\n");
 
 			sb.Append(@"
-			return working;
-		}
+			""
 	}
 }");
+			
 			context.AddSource("SyntaxTreeLister.cs", sb.ToString());
 		}
 	}

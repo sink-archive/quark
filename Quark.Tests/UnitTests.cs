@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using Quark.LINQ;
 
 namespace Quark.Tests
 {
@@ -8,9 +9,11 @@ namespace Quark.Tests
 		public void Setup() { }
 
 		[Test]
-		public void DemoTest()
+		public void BasicTest()
 		{
-			Assert.Pass(Generated.SyntaxTreeLister.List());
+			var dataset = new[] { 5, 6, 3, 9 };
+
+			Assert.Pass(dataset.Select(a => a + 1).ToArray());
 		}
 	}
 }
