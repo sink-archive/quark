@@ -33,16 +33,25 @@ namespace Quark
 		}
 
 		// ReSharper disable once SuggestBaseTypeForParameter
+		private static string? GetInvocationMethodName(InvocationExpressionSyntax invSyntax)
+		{
+			return invSyntax.Expression switch
+			{
+				// normal methods
+				IdentifierNameSyntax idn => idn.Identifier.ToFullString(),
+				// generic methods
+				GenericNameSyntax gn     => gn.Identifier.ToFullString(),
+				// extension methods
+				MemberAccessExpressionSyntax mae => mae.Name.ToFullString(),
+				// invalid type, or i messed up
+				_ => throw new ArgumentOutOfRangeException()
+			};
+		}
+		
 		private static bool IsUsefulInvocation(InvocationExpressionSyntax invSyntax)
 		{
-			var identName = invSyntax.ChildNodes()
-									 .FirstOrDefault(t => t is MemberAccessExpressionSyntax)
-									?.ChildNodes()
-									 .FirstOrDefault(t => t is IdentifierNameSyntax);
-			
-			if (identName == null) return false;
-			var name = ((IdentifierNameSyntax) identName).Identifier.ToFullString();
-			return UsefulInvocations.Contains(name);
+			var methodName = GetInvocationMethodName(invSyntax);
+			return methodName != null && UsefulInvocations.Contains(methodName);
 		}
 
 		// oh boy
