@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Linq;
+using System.Text;
 using Microsoft.CodeAnalysis;
 
 namespace Quark
@@ -15,7 +16,7 @@ namespace Quark
 		{
 			var sb = new StringBuilder(@"
 using System;
-namespace Quark.LINQ
+namespace Quark.Linq
 {
 	public static class Queries
 	{
@@ -26,15 +27,9 @@ namespace Quark.LINQ
 
 
 			if (context.SyntaxReceiver is not QueryFinder receiver) return;
-			var invocations = receiver.Invocations;
-			
-			foreach (var p in invocations)
-				foreach (var inv in p.Value)
-				{
-					/*var symbol = context.Compilation.GetSemanticModel(p.Key).GetSymbolInfo(inv).Symbol;
-					if (symbol == null) continue;*/
-					sb.Append(inv.ToString().Replace("\"", "\"\"") + "\n");
-				}
+
+			foreach (var query in receiver.Queries)
+				sb.Append(query.Aggregate("", (current, next) => current + next) + '\n');
 
 			sb.Length--;
 			
@@ -42,7 +37,7 @@ namespace Quark.LINQ
 	}
 }");
 			
-			context.AddSource("SyntaxTreeLister.cs", sb.ToString());
+			context.AddSource("Queries.cs", sb.ToString());
 		}
 	}
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -18,44 +19,60 @@ namespace Quark
 			"FirstOrDefault", "Last", "LastOrDefault", "LongCount", "Max", "Min", "SequenceEqual", "Single",
 			"SingleOrDefault", "Sum", "ToArray", "ToDictionary", "ToHashSet", "ToList", "ToLookup", "ToEnumerable"
 		});
-		
-		public Dictionary<SyntaxTree, List<InvocationExpressionSyntax>> Invocations { get; } = new();
 
+		public IImmutableDictionary<SyntaxTree, List<InvocationExpressionSyntax>> Invocations
+			=> _invocations.ToImmutableDictionary();
+
+		private readonly Dictionary<SyntaxTree, List<InvocationExpressionSyntax>> _invocations = new();
+
+		public IReadOnlyList<LinkedList<QueryStep>> Queries
+			=> _invocations.Values.SelectMany(l => l.Select(ParseInvocation)).ToImmutableList();
 
 		public void OnVisitSyntaxNode(SyntaxNode syntaxNode)
 		{
 			if (syntaxNode is not InvocationExpressionSyntax invSyntax) return;
 			
-			if (!Invocations.ContainsKey(invSyntax.SyntaxTree))
-				Invocations[invSyntax.SyntaxTree] = new();
+			if (!_invocations.ContainsKey(invSyntax.SyntaxTree))
+				_invocations[invSyntax.SyntaxTree] = new List<InvocationExpressionSyntax>();
+			
 			if (IsUsefulInvocation(invSyntax))
-				Invocations[invSyntax.SyntaxTree].Add(invSyntax);
+				_invocations[invSyntax.SyntaxTree].Add(invSyntax);
 		}
 
 		// ReSharper disable once SuggestBaseTypeForParameter
-		private static string? GetInvocationMethodName(InvocationExpressionSyntax invSyntax)
+		private static string GetMethodName(InvocationExpressionSyntax invSyntax) => invSyntax.Expression switch
 		{
-			return invSyntax.Expression switch
-			{
-				// normal methods
-				IdentifierNameSyntax idn => idn.Identifier.ToFullString(),
-				// generic methods
-				GenericNameSyntax gn     => gn.Identifier.ToFullString(),
-				// extension methods
-				MemberAccessExpressionSyntax mae => mae.Name.ToFullString(),
-				// invalid type, or i messed up
-				_ => throw new ArgumentOutOfRangeException()
-			};
-		}
-		
+			MemberAccessExpressionSyntax mae => mae.Name.ToFullString(),
+			// invalid type, or i messed up
+			_ => throw new ArgumentOutOfRangeException()
+		};
+
 		private static bool IsUsefulInvocation(InvocationExpressionSyntax invSyntax)
-		{
-			var methodName = GetInvocationMethodName(invSyntax);
-			return methodName != null && UsefulInvocations.Contains(methodName);
-		}
+			=> UsefulInvocations.Contains(GetMethodName(invSyntax));
 
 		// oh boy
 		public static LinkedList<QueryStep> ParseInvocation(InvocationExpressionSyntax invocation)
-			=> throw new NotImplementedException();
+		{
+			var args = invocation.ArgumentList.Arguments;
+			var name = GetMethodName(invocation);
+
+			var queryStepType = Utils.ParseQueryStepType(name);
+
+			var thisQueryStep = new QueryStep(queryStepType);
+			
+			// recursion base case
+			if (invocation.Expression is MemberAccessExpressionSyntax { Expression: not InvocationExpressionSyntax })
+				return new LinkedList<QueryStep>(new[] { thisQueryStep });
+
+			if (invocation.Expression is not InvocationExpressionSyntax subInvocation)
+				throw new ArgumentException($"sub-invocation was of type {invocation.Expression.GetType().FullName}",
+											nameof(invocation));
+			
+			// recurse
+			var subParsed = ParseInvocation(subInvocation);
+			subParsed.AddFirst(thisQueryStep);
+
+			return subParsed;
+		}
 	}
 }

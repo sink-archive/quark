@@ -3,6 +3,7 @@ namespace Quark
 	internal class QueryStep
 	{
 		public QueryStepType Type;
+		public QueryStep(QueryStepType type) => Type = type;
 	}
 
 	internal enum QueryStepType

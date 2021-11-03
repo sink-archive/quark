@@ -1,5 +1,5 @@
 using NUnit.Framework;
-using Quark.LINQ;
+using Quark.Linq;
 
 namespace Quark.Tests
 {
@@ -13,7 +13,7 @@ namespace Quark.Tests
 		{
 			var dataset = new[] { 5, 6, 3, 9 };
 
-			Assert.Pass(dataset.Select<int, int>(a => a + 1).ToArray());
+			Assert.Pass(dataset.Select(a => a + 1).ToArray());
 		}
 	}
 }
