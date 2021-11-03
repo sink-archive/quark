@@ -26,7 +26,7 @@ namespace Quark.LINQ
 
 			if (context.SyntaxReceiver is LinqSyntaxReceiver receiver)
 				foreach (var expr in receiver.Expressions)
-					sb.Append(expr.GetText() + "\n");
+					sb.Append(expr.GetText().ToString().Replace("\"", "\\\"") + "\n");
 
 			sb.Append(@"
 			"";
