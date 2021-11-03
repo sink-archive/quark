@@ -19,17 +19,27 @@ namespace Quark.LINQ
 {
 	public static class Queries
 	{
-		public static T[] Select<T>(this T[] input) => input;
+		public static Tout[] Select<Tin, Tout>(this Tin[] input, Func<Tin, Tout> func) => new Tout[0];
 		public static string ToArray<T>(this T[] input)
 		// actually just lists the queries we found
 		=> @""");
 
-			if (context.SyntaxReceiver is LinqSyntaxReceiver receiver)
-				foreach (var expr in receiver.Expressions)
-					sb.Append(expr.GetText().ToString().Replace("\"", "\\\"") + "\n");
 
+			if (context.SyntaxReceiver is not LinqSyntaxReceiver receiver) return;
+			var invocations = receiver.Invocations;
+			
+			foreach (var p in invocations)
+				foreach (var inv in p.Value)
+				{
+					/*var symbol = context.Compilation.GetSemanticModel(p.Key).GetSymbolInfo(inv).Symbol;
+					if (symbol == null) continue;*/
+					sb.Append(inv.ToString().Replace("\"", "\"\"") + "\n");
+				}
+
+			sb.Length--;
+			
 			sb.Append(@"
-			"";
+"";
 	}
 }");
 			
