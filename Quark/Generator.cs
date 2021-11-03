@@ -8,7 +8,7 @@ namespace Quark
 	{
 		public void Initialize(GeneratorInitializationContext context)
 		{
-			context.RegisterForSyntaxNotifications(() => new LinqSyntaxReceiver());
+			context.RegisterForSyntaxNotifications(() => new QueryFinder());
 		}
 
 		public void Execute(GeneratorExecutionContext context)
@@ -22,10 +22,10 @@ namespace Quark.LINQ
 		public static Tout[] Select<Tin, Tout>(this Tin[] input, Func<Tin, Tout> func) => new Tout[0];
 		public static string ToArray<T>(this T[] input)
 		// actually just lists the queries we found
-		=> @""");
+			=> @""");
 
 
-			if (context.SyntaxReceiver is not LinqSyntaxReceiver receiver) return;
+			if (context.SyntaxReceiver is not QueryFinder receiver) return;
 			var invocations = receiver.Invocations;
 			
 			foreach (var p in invocations)
@@ -38,8 +38,7 @@ namespace Quark.LINQ
 
 			sb.Length--;
 			
-			sb.Append(@"
-"";
+			sb.Append(@""";
 	}
 }");
 			

@@ -1,5 +1,5 @@
+using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -7,7 +7,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 namespace Quark
 {
 
-	internal class LinqSyntaxReceiver : ISyntaxReceiver
+	internal class QueryFinder : ISyntaxReceiver
 	{
 		/// <summary>
 		/// The names of LINQ functions we care about: Functions that return a value other than an IEnumerable, plus the custom ToEnumerable
@@ -15,8 +15,8 @@ namespace Quark
 		private static readonly HashSet<string> UsefulInvocations = new(new[]
 		{
 			"Aggregate", "All", "Any", "Average", "Contains", "Count", "ElementAt", "ElementAtOrDefault", "First",
-			"FirstOrDefault", "Last", "LastOrDefault", "LongCount", "Max", "Min", "Single", "SingleOrDefault", "Sum",
-			"ToArray", "ToDictionary", "ToHashSet", "ToList", "ToLookup", "ToEnumerable"
+			"FirstOrDefault", "Last", "LastOrDefault", "LongCount", "Max", "Min", "SequenceEqual", "Single",
+			"SingleOrDefault", "Sum", "ToArray", "ToDictionary", "ToHashSet", "ToList", "ToLookup", "ToEnumerable"
 		});
 		
 		public Dictionary<SyntaxTree, List<InvocationExpressionSyntax>> Invocations { get; } = new();
@@ -44,5 +44,9 @@ namespace Quark
 			var name = ((IdentifierNameSyntax) identName).Identifier.ToFullString();
 			return UsefulInvocations.Contains(name);
 		}
+
+		// oh boy
+		public static LinkedList<QueryStep> ParseInvocation(InvocationExpressionSyntax invocation)
+			=> throw new NotImplementedException();
 	}
 }
