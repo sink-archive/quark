@@ -70,6 +70,11 @@ namespace Quark
 			_ => throw new ArgumentOutOfRangeException(nameof(name), $"{name} is not a valid query end type")
 		};
 
+		/// <summary>
+		/// Gets a unique string for the content of the delegate method.
+		/// The same string is returned for the same CIL code.
+		/// </summary>
+		// this same function is implemented in generated code identically.
 		// ReSharper disable once InconsistentNaming
 		public static string GetILStr(this Delegate @delegate)
 			=> Encoding.UTF8.GetString(@delegate.Method.GetMethodBody()?.GetILAsByteArray() ?? Array.Empty<byte>());

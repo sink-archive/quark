@@ -25,6 +25,7 @@ namespace Quark.Linq
 		/// Gets a unique string for the content of the delegate method.
 		/// The same string is returned for the same CIL code.
 		/// </summary>
+		// to those looking thru Generator.cs: see Utils.cs for the equivalent of this method used in the generator 
 		internal static string GetILStr(this Delegate @delegate)
 			=> Encoding.UTF8.GetString(@delegate.Method.GetMethodBody()?.GetILAsByteArray() ?? Array.Empty<byte>());
 	}
