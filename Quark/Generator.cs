@@ -29,7 +29,7 @@ namespace Quark.Linq
 			if (context.SyntaxReceiver is not QueryFinder receiver) return;
 
 			foreach (var query in receiver.Queries)
-				sb.Append(query.Aggregate("", (current, next) => current + next) + '\n');
+				sb.Append(query.Type + query.ReversedSteps.Aggregate("", (current, next) => current + ", " + next.Type) + '\n');
 
 			sb.Length--;
 			

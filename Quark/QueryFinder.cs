@@ -25,7 +25,7 @@ namespace Quark
 
 		private readonly Dictionary<SyntaxTree, List<InvocationExpressionSyntax>> _invocations = new();
 
-		public IReadOnlyList<LinkedList<QueryStep>> Queries
+		public ImmutableList<QueryEnd> Queries
 			=> _invocations.Values.SelectMany(l => l.Select(ParseInvocation)).ToImmutableList();
 
 		public void OnVisitSyntaxNode(SyntaxNode syntaxNode)
@@ -50,8 +50,23 @@ namespace Quark
 		private static bool IsUsefulInvocation(InvocationExpressionSyntax invSyntax)
 			=> UsefulInvocations.Contains(GetMethodName(invSyntax));
 
+		private static QueryEnd ParseInvocation(InvocationExpressionSyntax invocation)
+		{
+			var args = invocation.ArgumentList.Arguments;
+			var name = GetMethodName(invocation);
+
+			if (invocation.Expression is not MemberAccessExpressionSyntax
+				{
+					Expression: InvocationExpressionSyntax subInvocation
+				})
+				throw new ArgumentException($"sub-invocation was of type {invocation.Expression.GetType().FullName}",
+											nameof(invocation));
+
+			return new QueryEnd(Utils.ParseQueryEndType(name), ParseInvocationStep(subInvocation));
+		}
+		
 		// oh boy
-		public static LinkedList<QueryStep> ParseInvocation(InvocationExpressionSyntax invocation)
+		private static LinkedList<QueryStep> ParseInvocationStep(InvocationExpressionSyntax invocation)
 		{
 			var args = invocation.ArgumentList.Arguments;
 			var name = GetMethodName(invocation);
@@ -59,17 +74,16 @@ namespace Quark
 			var queryStepType = Utils.ParseQueryStepType(name);
 
 			var thisQueryStep = new QueryStep(queryStepType);
-			
-			// recursion base case
-			if (invocation.Expression is MemberAccessExpressionSyntax { Expression: not InvocationExpressionSyntax })
-				return new LinkedList<QueryStep>(new[] { thisQueryStep });
 
-			if (invocation.Expression is not InvocationExpressionSyntax subInvocation)
+			if (invocation.Expression is not MemberAccessExpressionSyntax mae)
 				throw new ArgumentException($"sub-invocation was of type {invocation.Expression.GetType().FullName}",
 											nameof(invocation));
 			
+			if (mae.Expression is not InvocationExpressionSyntax subInvocation)
+				return new LinkedList<QueryStep>(new[] { thisQueryStep });
+				
 			// recurse
-			var subParsed = ParseInvocation(subInvocation);
+			var subParsed = ParseInvocationStep(subInvocation);
 			subParsed.AddFirst(thisQueryStep);
 
 			return subParsed;
