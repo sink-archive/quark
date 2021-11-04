@@ -1,4 +1,6 @@
 using System;
+using System.Linq;
+using System.Text;
 
 namespace Quark
 {
@@ -67,5 +69,9 @@ namespace Quark
 			"ToEnumerable" => QueryEndType.ToEnumerable,
 			_ => throw new ArgumentOutOfRangeException(nameof(name), $"{name} is not a valid query end type")
 		};
+
+		// ReSharper disable once InconsistentNaming
+		public static string GetILStr(this Delegate @delegate)
+			=> Encoding.UTF8.GetString(@delegate.Method.GetMethodBody()?.GetILAsByteArray() ?? Array.Empty<byte>());
 	}
 }
