@@ -14,7 +14,7 @@
     </ItemGroup>
     
     <ItemGroup>
-        <ProjectReference Include="..\Quark\Quark.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+        <ProjectReference Include="..\Quark\Quark.csproj" />
     </ItemGroup>
 
 </Project>
