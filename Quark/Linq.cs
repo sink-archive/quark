@@ -232,6 +232,24 @@ namespace Quark
 			return tmp;
 		}
 
+		public static int[] Range(int start, int count)
+		{
+			var working = new int[count];
+			for (var i = 0; i < count; i++)
+				working[i] = i + start;
+			
+			return working;
+		}
+
+		public static T[] Repeat<T>(T element, int count)
+		{
+			var working = new T[count];
+			for (var i = 0; i < count; i++) 
+				working[i] = element;
+
+			return working;
+		}
+
 		public static List<T> Reverse<T>(this IList<T> source)
 		{
 			var tmp = new List<T>(source);
@@ -491,5 +509,16 @@ namespace Quark
 		public static Lookup<TKey, TElem> ToLookup<TIn, TKey, TElem>(this IList<TIn>  source, Func<TIn, TKey> keySel,
 																	 Func<TIn, TElem> elemSel)
 			=> Lookup<TKey, TElem>.Create(source, keySel, elemSel);
+
+		//TODO: finish!
+		/*public static IList<T> Union<T>(this IList<T> source, IList<T> second)
+		{
+			var arr = Repeat<T?>(null, source.Count + second.Count);
+			var hs  = new HashSet<T>(source);
+			for (var i = 0; i < second.Count; i++)
+				hs.Add(second[i]);
+			
+			
+		}*/
 	}
 }
