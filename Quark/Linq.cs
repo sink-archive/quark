@@ -40,7 +40,7 @@ namespace Quark
 			return false;
 		}
 
-		public static IList<T> Append<T>(this IList<T> source, T element) => new List<T>(source) { element };
+		public static List<T> Append<T>(this IList<T> source, T element) => new List<T>(source) { element };
 
 		// this seems ultra useless at first glance
 		// see https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.asenumerable
@@ -48,14 +48,14 @@ namespace Quark
 
 		// TODO: Average()
 
-		public static IList<T> Cast<T>(this IList source)
+		public static List<T> Cast<T>(this IList source)
 		{
 			var working = new List<T>();
 			foreach (T item in source) working.Add(item);
 			return working;
 		}
 
-		public static IList<T> Concat<T>(this IList<T> source, IList<T> second)
+		public static List<T> Concat<T>(this IList<T> source, IList<T> second)
 		{
 			var tmp = new List<T>(source.Count + second.Count);
 			
@@ -98,7 +98,7 @@ namespace Quark
 		public static IList<T> DefaultIfEmpty<T>(this IList<T> source, T defaultValue)
 			=> source.Count == 0 ? new List<T> { defaultValue } : source;
 
-		public static IList<T> Distinct<T>(this IEnumerable<T> source)
+		public static T[] Distinct<T>(this IEnumerable<T> source)
 		{
 			var tmp = Array.Empty<T>();
 			new HashSet<T>(source).CopyTo(tmp);
@@ -185,7 +185,7 @@ namespace Quark
 		// TODO: Max()
 		// TODO: Min()
 
-		public static IList<T> OfType<T>(this IList source)
+		public static List<T> OfType<T>(this IList source)
 		{
 			var working = new List<T>(source.Count);
 			for (var i = 0; i < source.Count; i++)
@@ -194,5 +194,302 @@ namespace Quark
 
 			return working;
 		}
+
+		public static TElem[] OrderBy<TElem, TKey>(this IList<TElem> source, Func<TElem, TKey> selector)
+			=> source.OrderBy(selector, Comparer<TKey>.Default);
+		
+		public static TElem[] OrderBy<TElem, TKey>(this IList<TElem> source, Func<TElem, TKey> selector, IComparer<TKey> comparer)
+		{
+			var arr = new TElem[source.Count];
+			for (var i = 0; i < source.Count; i++) 
+				arr[i] = source[i];
+			
+			QuickSort<TElem, TKey>.SortInPlace(ref arr, selector, comparer);
+			
+			return arr;
+		}
+		
+		public static TElem[] OrderByDescending<TElem, TKey>(this IList<TElem> source, Func<TElem, TKey> selector)
+			=> source.OrderByDescending(selector, Comparer<TKey>.Default);
+
+		public static TElem[] OrderByDescending<TElem, TKey>(this IList<TElem> source, Func<TElem, TKey> selector, IComparer<TKey> comparer)
+		{
+			var arr = new TElem[source.Count];
+			for (var i = 0; i < source.Count; i++) 
+				arr[i] = source[i];
+			
+			QuickSort<TElem, TKey>.SortInPlace(ref arr, selector, comparer, true);
+			
+			return arr;
+		}
+
+		public static List<T> Prepend<T>(this IList<T> source, T elem)
+		{
+			var tmp = new List<T>(source.Count + 1) { [0] = elem };
+			for (var i = 0; i < source.Count; i++)
+				tmp[i + 1] = source[i];
+			
+			return tmp;
+		}
+
+		public static List<T> Reverse<T>(this IList<T> source)
+		{
+			var tmp = new List<T>(source);
+			for (var i = 0; i < tmp.Count / 2; i++)
+				(tmp[i], tmp[tmp.Count - i]) = (tmp[tmp.Count - i], tmp[i]);
+
+			return tmp;
+		}
+
+		public static List<TOut> Select<TIn, TOut>(this IList<TIn> source, Func<TIn, TOut> func)
+			=> source.Select((a, _) => func(a));
+		
+		public static List<TOut> Select<TIn, TOut>(this IList<TIn> source, Func<TIn, int, TOut> func)
+		{
+			var working = new List<TOut>(source.Count);
+			for (var i = 0; i < source.Count; i++) 
+				working[i] = func(source[i], i);
+
+			return working;
+		}
+
+		public static List<T> SelectMany<T>(this IList<IList<T>> source)
+			// discard the index parameter here even tho its not necessary to reduce nesting of delegates
+			=> source.SelectMany((a, _) => a);
+		
+		public static List<TOut> SelectMany<TIn, TOut>(this IList<TIn> source, Func<TIn, IList<TOut>> func)
+			=> source.SelectMany((a, _) => func(a));
+
+		public static List<TOut> SelectMany<TIn, TOut>(this IList<TIn> source, Func<TIn, int, IList<TOut>> func)
+		{
+			// the final size will almost certainly exceed the count, but its a good baseline
+			var working = new List<TOut>(source.Count);
+			for (var i = 0; i < source.Count; i++)
+			{
+				var sublist = func(source[i], i);
+				for (var j = 0; j < sublist.Count; j++)
+					working.Add(sublist[j]);
+			}
+
+			return working;
+		}
+
+		public static bool SequenceEqual<T1, T2>(this IList<T1> source, IList<T2> second)
+		{
+			if (source.Count != second.Count) return false;
+			if (second is not IList<T1> secondTyped) return false;
+
+			for (var i = 0; i < source.Count; i++)
+			{
+				if (source[i]?.Equals(secondTyped[i]) ?? false)
+					return false;
+			}
+
+			return true;
+		}
+
+		public static T Single<T>(this IList<T> source)
+			=> source.Count switch
+			{
+				0 => throw new InvalidOperationException($"{nameof(source)} has no elements"),
+				1 => source[0],
+				_ => throw new InvalidOperationException($"{nameof(source)} has more than one element")
+			};
+
+		public static T Single<T>(this IList<T> source, Predicate<T> predicate)
+		{
+			if (source.Count == 0) throw new InvalidOperationException($"{nameof(source)} has no elements");
+
+			int? match = null;
+			for (var i = 0; i < source.Count; i++)
+			{
+				if (!predicate(source[i])) continue;
+				
+				if (match.HasValue)
+					throw new
+						InvalidOperationException($"{nameof(source)} has multiple matches against {nameof(predicate)}");
+				match = i;
+			}
+
+			if (match.HasValue)
+				return source[match.Value];
+			
+			throw new InvalidOperationException($"{nameof(source)} has no matches against {nameof(predicate)}");
+		}
+
+		public static T? SingleOrDefault<T>(this IList<T> source) => source.Count == 1 ? source[0] : default;
+
+		public static T? SingleOrDefault<T>(this IList<T> source, Predicate<T> predicate)
+		{
+			if (source.Count == 0) return default;
+
+			int? match = null;
+			for (var i = 0; i < source.Count; i++)
+			{
+				if (!predicate(source[i])) continue;
+
+				if (match.HasValue) return default;
+				
+				match = i;
+			}
+
+			return match.HasValue ? source[match.Value] : default;
+		}
+
+		public static List<T> Skip<T>(this IList<T> source, int count)
+		{
+			var working = new List<T>(source.Count - count);
+			for (var i = 0; i < source.Count - count; i++)
+				working[i] = source[i + count];
+
+			return working;
+		}
+		
+		public static List<T> SkipLast<T>(this IList<T> source, int count)
+		{
+			var working = new List<T>(source.Count - count);
+			for (var i = 0; i < source.Count - count; i++)
+				working[i] = source[i];
+
+			return working;
+		}
+
+		public static List<T> SkipWhile<T>(this IList<T> source, Predicate<T> predicate)
+		{
+			var working = new List<T>();
+			for (var i = 0; i < source.Count; i++)
+			
+				if (!predicate(source[i]))
+					working.Add(source[i]);
+
+			return working;
+		}
+		
+		// TODO: Sum()
+
+		public static List<T> Take<T>(this IList<T> source, int count)
+		{
+			var working = new List<T>(count);
+			for (var i = 0; i < count; i++)
+				working[i] = source[i];
+
+			return working;
+		}
+
+		public static List<T> TakeLast<T>(this IList<T> source, int count)
+		{
+			var working = new List<T>(count);
+			for (var i = 0; i < count; i++)
+				working[i] = source[i + (source.Count - count)];
+
+			return working;
+		}
+		
+		public static List<T> TakeWhile<T>(this IList<T> source, Predicate<T> predicate)
+		{
+			var working = new List<T>();
+			for (var i = 0; i < source.Count; i++)
+			
+				if (predicate(source[i]))
+					working.Add(source[i]);
+
+			return working;
+		}
+
+		public static TElem[] ThenBy<TElem, TKey>(this IList<TElem> source, Func<TElem, TKey> selector)
+			=> source.ThenBy(selector, Comparer<TKey>.Default);
+
+
+		private static TElem[] ThenBy<TElem, TKey>(this IList<TElem> source, Func<TElem, TKey> selector,
+												   IComparer<TKey>   comparer)
+			=> source.ThenBy(selector, comparer, false);
+		
+		public static TElem[] ThenByDescending<TElem, TKey>(this IList<TElem> source, Func<TElem, TKey> selector)
+			=> source.ThenByDescending(selector, Comparer<TKey>.Default);
+
+		public static TElem[] ThenByDescending<TElem, TKey>(this IList<TElem> source, Func<TElem, TKey> selector,
+															IComparer<TKey>   comparer)
+			=> source.ThenBy(selector, comparer, true);
+
+		private static TElem[] ThenBy<TElem, TKey>(this IList<TElem> source,   Func<TElem, TKey> selector,
+												   IComparer<TKey>   comparer, bool              reverse)
+		{
+			var arr = new TElem[source.Count];
+			for (var i = 0; i < source.Count; i++)
+				arr[i] = source[i];
+
+			var lo = 0;
+			var hi = 0;
+			for (var i = 1; i < source.Count; i++)
+			{
+				if (source[i]?.Equals(source[lo]) ?? false)
+					hi = i;
+				else
+				{
+					QuickSort<TElem, TKey>.SortInPlace(ref arr, selector, comparer, reverse, lo, hi);
+					lo = i;
+				}
+			}
+
+			return arr;
+		}
+
+		public static T[] ToArray<T>(this IList<T> source)
+		{
+			switch (source)
+			{
+				case T[] arr:
+					return arr;
+				default:
+					var working = new T[source.Count];
+					for (var i = 0; i < source.Count; i++) 
+						working[i] = source[i];
+
+					return working;
+			}
+		}
+
+		public static Dictionary<TKey, TElem> ToDictionary<TElem, TKey>(
+			this IList<TElem> source, Func<TElem, TKey> keySel)
+			=> source.ToDictionary(keySel, a => a);
+
+		public static Dictionary<TKey, TElem> ToDictionary<TIn, TKey, TElem>(
+			this IList<TIn> source, Func<TIn, TKey> keySel, Func<TIn, TElem> elemSel)
+		{
+			var working = new Dictionary<TKey, TElem>();
+			for (var i = 0; i < source.Count; i++)
+				working.Add(keySel(source[i]), elemSel(source[i]));
+
+			return working;
+		}
+
+		public static HashSet<T> ToHashSet<T>(this IList<T> source) => new(source);
+
+		public static List<T> ToList<T>(this IEnumerable<T> source)
+		{
+			switch (source)
+			{
+				case List<T> list:
+					return list;
+				case IReadOnlyList<T> irol:
+					var workingl = new List<T>(irol.Count);
+					for (var i = 0; i < irol.Count; i++)
+						workingl[i] = irol[i];
+
+					return workingl;
+				default:
+				{
+					var       workinge   = new List<T>();
+					using var enumerator = source.GetEnumerator();
+					while (enumerator.MoveNext())
+						workinge.Add(enumerator.Current);
+					return workinge;
+				}
+			}
+		}
+
+		public static Lookup<TKey, TElem> ToLookup<TIn, TKey, TElem>(this IList<TIn>  source, Func<TIn, TKey> keySel,
+																	 Func<TIn, TElem> elemSel)
+			=> Lookup<TKey, TElem>.Create(source, keySel, elemSel);
 	}
 }
