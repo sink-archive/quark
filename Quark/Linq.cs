@@ -100,8 +100,9 @@ namespace Quark
 
 		public static T[] Distinct<T>(this IEnumerable<T> source)
 		{
-			var tmp = Array.Empty<T>();
-			new HashSet<T>(source).CopyTo(tmp);
+			var hs  = new HashSet<T>(source);
+			var tmp = new T[hs.Count];
+			hs.CopyTo(tmp);
 			return tmp;
 		}
 
@@ -509,16 +510,39 @@ namespace Quark
 		public static Lookup<TKey, TElem> ToLookup<TIn, TKey, TElem>(this IList<TIn>  source, Func<TIn, TKey> keySel,
 																	 Func<TIn, TElem> elemSel)
 			=> Lookup<TKey, TElem>.Create(source, keySel, elemSel);
-
-		//TODO: finish!
-		/*public static IList<T> Union<T>(this IList<T> source, IList<T> second)
+		
+		public static T[] Union<T>(this IList<T> source, IList<T> second)
 		{
-			var arr = Repeat<T?>(null, source.Count + second.Count);
 			var hs  = new HashSet<T>(source);
-			for (var i = 0; i < second.Count; i++)
-				hs.Add(second[i]);
-			
-			
-		}*/
+			hs.UnionWith(second);
+			var arr = new T[hs.Count];
+			hs.CopyTo(arr);
+			return arr;
+		}
+
+		public static List<T> Where<T>(this IList<T> source, Predicate<T> predicate)
+			=> source.Where((a, _) => predicate(a));
+
+		public static List<T> Where<T>(this IList<T> source, Func<T, int, bool> predicate)
+		{
+			var working = new List<T>();
+			for (var i = 0; i < source.Count; i++)
+				if (predicate(source[i], i))
+					working.Add(source[i]);
+
+			return working;
+		}
+
+		public static (T1, T2)[] Zip<T1, T2, TRes>(this IList<T1> source, IList<T2> second)
+			=> source.Zip(second, (a, b) => (a, b));
+		
+		public static TRes[] Zip<T1, T2, TRes>(this IList<T1> source, IList<T2> second, Func<T1, T2, TRes> resSel)
+		{
+			var working = new TRes[Math.Min(source.Count, second.Count)];
+			for (var i = 0; i < working.Length; i++)
+				working[i] = resSel(source[i], second[i]);
+
+			return working;
+		}
 	}
 }
