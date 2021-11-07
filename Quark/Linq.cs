@@ -662,6 +662,7 @@ namespace Quark
 		public static TOut[] Select<TIn, TOut>(this IList<TIn> source, Func<TIn, TOut> func)
 			=> source.Select((a, _) => func(a));
 		
+		/// <summary>
 		/// Passes each element of a list through a function and returns it
 		/// </summary>
 		/// <param name="source">The list to start with</param>
@@ -1030,7 +1031,8 @@ namespace Quark
 		/// <param name="source">The list to convert</param>
 		/// <param name="keySel">A function to get the keys</param>
 		/// <param name="elemSel">A function to map the values through</param>
-		/// <typeparam name="TElem">The type of elements in the list</typeparam>
+		/// <typeparam name="TIn">The type of elements in the list</typeparam>
+		/// <typeparam name="TElem">The type of list values</typeparam>
 		/// <typeparam name="TKey">The type of the keys</typeparam>
 		/// <returns>The list contents as a dictionary</returns>
 		public static Dictionary<TKey, TElem> ToDictionary<TIn, TKey, TElem>(
