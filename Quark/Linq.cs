@@ -792,7 +792,13 @@ namespace Quark
 		/// <returns>The only element in the list, or default</returns>
 		public static T? SingleOrDefault<T>(this IList<T> source) => source.Count == 1 ? source[0] : default;
 
-		//TODO: keep documenting from here
+		/// <summary>
+		/// If only one element in the list that matched the predicate, returns it, or return default
+		/// </summary>
+		/// <param name="source">The list to check</param>
+		/// <param name="predicate">The predicate to check against</param>
+		/// <typeparam name="T">The type of the list elements</typeparam>
+		/// <returns>The only element that matched the predicate or default</returns>
 		public static T? SingleOrDefault<T>(this IList<T> source, Predicate<T> predicate)
 		{
 			if (source.Count == 0) return default;
@@ -810,6 +816,13 @@ namespace Quark
 			return match.HasValue ? source[match.Value] : default;
 		}
 
+		/// <summary>
+		/// Returns the list, minus the first (count) elements
+		/// </summary>
+		/// <param name="source">The list to remove from</param>
+		/// <param name="count">The amount of items to remove</param>
+		/// <typeparam name="T">The type of elements in the list</typeparam>
+		/// <returns>The trimmed list</returns>
 		public static List<T> Skip<T>(this IList<T> source, int count)
 		{
 			var working = new List<T>(source.Count - count);
@@ -819,6 +832,13 @@ namespace Quark
 			return working;
 		}
 		
+		/// <summary>
+		/// Returns the list, minus the last (count) elements
+		/// </summary>
+		/// <param name="source">The list to remove from</param>
+		/// <param name="count">The amount of items to remove</param>
+		/// <typeparam name="T">The type of elements in the list</typeparam>
+		/// <returns>The trimmed list</returns>
 		public static List<T> SkipLast<T>(this IList<T> source, int count)
 		{
 			var working = new List<T>(source.Count - count);
@@ -828,26 +848,46 @@ namespace Quark
 			return working;
 		}
 
+		/// <summary>
+		/// Returns elements in the list after the predicate returns true (including the matched element)
+		/// </summary>
+		/// <param name="source">The list to run through</param>
+		/// <param name="predicate">The predicate to test against</param>
+		/// <typeparam name="T">The type of elements in the list</typeparam>
+		/// <returns>The element that matches, and all after it</returns>
 		public static List<T> SkipWhile<T>(this IList<T> source, Predicate<T> predicate)
 		{
 			var working = new List<T>();
 			for (var i = 0; i < source.Count; i++)
-			
-				if (!predicate(source[i]))
+				if (working.Count != 0 || !predicate(source[i]))
 					working.Add(source[i]);
 
 			return working;
 		}
 
-		public static List<T> Take<T>(this IList<T> source, int count)
+		/// <summary>
+		/// Returns the first (count) items from the list
+		/// </summary>
+		/// <param name="source">The list to take from</param>
+		/// <param name="count">The amount of items to take</param>
+		/// <typeparam name="T">The type of elements in the list</typeparam>
+		/// <returns>The starting elements of the list</returns>
+		public static T[] Take<T>(this IList<T> source, int count)
 		{
-			var working = new List<T>(count);
+			var working = new T[count];
 			for (var i = 0; i < count; i++)
 				working[i] = source[i];
 
 			return working;
 		}
 
+		/// <summary>
+		/// Returns the last (count) items from the list
+		/// </summary>
+		/// <param name="source">The list to take from</param>
+		/// <param name="count">The amount of items to take</param>
+		/// <typeparam name="T">The type of elements in the list</typeparam>
+		/// <returns>The ending elements of the list</returns>
 		public static List<T> TakeLast<T>(this IList<T> source, int count)
 		{
 			var working = new List<T>(count);
@@ -856,34 +896,79 @@ namespace Quark
 
 			return working;
 		}
-		
+
+		/// <summary>
+		/// Takes elements from the list, returning as soon as the predicate matches false
+		/// </summary>
+		/// <param name="source">The list to match against</param>
+		/// <param name="predicate">The predicate to test against</param>
+		/// <typeparam name="T">The type of elements in the list</typeparam>
+		/// <returns>The elements before the predicate matched false</returns>
 		public static List<T> TakeWhile<T>(this IList<T> source, Predicate<T> predicate)
 		{
 			var working = new List<T>();
 			for (var i = 0; i < source.Count; i++)
-			
-				if (predicate(source[i]))
-					working.Add(source[i]);
+			{
+				if (!predicate(source[i])) 
+					return working;
+				
+				working.Add(source[i]);
+			}
+
 
 			return working;
 		}
 
+		/// <summary>
+		/// Further sorts an already sorted list with a new key
+		/// </summary>
+		/// <param name="source">The sorted list to sort further</param>
+		/// <param name="selector">The selector for the new key</param>
+		/// <typeparam name="TElem">The type of the elements to sort</typeparam>
+		/// <typeparam name="TKey">The type of the keys</typeparam>
+		/// <returns>The further sorted list</returns>
 		public static TElem[] ThenBy<TElem, TKey>(this IList<TElem> source, Func<TElem, TKey> selector)
 			=> source.ThenBy(selector, Comparer<TKey>.Default);
 
 
+		/// <summary>
+		/// Further sorts an already sorted list with a new key
+		/// </summary>
+		/// <param name="source">The sorted list to sort further</param>
+		/// <param name="selector">The selector for the new key</param>
+		/// <param name="comparer">The comparer to use to compare keys</param>
+		/// <typeparam name="TElem">The type of the elements to sort</typeparam>
+		/// <typeparam name="TKey">The type of the keys</typeparam>
+		/// <returns>The further sorted list</returns>
 		private static TElem[] ThenBy<TElem, TKey>(this IList<TElem> source, Func<TElem, TKey> selector,
 												   IComparer<TKey>   comparer)
-			=> source.ThenBy(selector, comparer, false);
+			=> source._thenBy(selector, comparer, false);
 		
+		/// <summary>
+		/// Further reverse sorts an already sorted list with a new key
+		/// </summary>
+		/// <param name="source">The sorted list to sort further</param>
+		/// <param name="selector">The selector for the new key</param>
+		/// <typeparam name="TElem">The type of the elements to sort</typeparam>
+		/// <typeparam name="TKey">The type of the keys</typeparam>
+		/// <returns>The further sorted list</returns>
 		public static TElem[] ThenByDescending<TElem, TKey>(this IList<TElem> source, Func<TElem, TKey> selector)
 			=> source.ThenByDescending(selector, Comparer<TKey>.Default);
 
+		/// <summary>
+		/// Further reverse sorts an already sorted list with a new key
+		/// </summary>
+		/// <param name="source">The sorted list to sort further</param>
+		/// <param name="selector">The selector for the new key</param>
+		/// <param name="comparer">The comparer to use to compare keys</param>
+		/// <typeparam name="TElem">The type of the elements to sort</typeparam>
+		/// <typeparam name="TKey">The type of the keys</typeparam>
+		/// <returns>The further sorted list</returns>
 		public static TElem[] ThenByDescending<TElem, TKey>(this IList<TElem> source, Func<TElem, TKey> selector,
 															IComparer<TKey>   comparer)
-			=> source.ThenBy(selector, comparer, true);
+			=> source._thenBy(selector, comparer, true);
 
-		private static TElem[] ThenBy<TElem, TKey>(this IList<TElem> source,   Func<TElem, TKey> selector,
+		private static TElem[] _thenBy<TElem, TKey>(this IList<TElem> source,   Func<TElem, TKey> selector,
 												   IComparer<TKey>   comparer, bool              reverse)
 		{
 			var arr = new TElem[source.Count];
@@ -906,6 +991,12 @@ namespace Quark
 			return arr;
 		}
 
+		/// <summary>
+		/// Converts the list to an array as efficiently as possible
+		/// </summary>
+		/// <param name="source">The list to convert</param>
+		/// <typeparam name="T">The type of elements in the list</typeparam>
+		/// <returns>The list contents as an array</returns>
 		public static T[] ToArray<T>(this IList<T> source)
 		{
 			switch (source)
@@ -921,10 +1012,27 @@ namespace Quark
 			}
 		}
 
+		/// <summary>
+		/// Converts the list into a Dictionary using the key selector
+		/// </summary>
+		/// <param name="source">The list to convert</param>
+		/// <param name="keySel">A function to get the keys</param>
+		/// <typeparam name="TElem">The type of elements in the list</typeparam>
+		/// <typeparam name="TKey">The type of the keys</typeparam>
+		/// <returns>The list contents as a dictionary</returns>
 		public static Dictionary<TKey, TElem> ToDictionary<TElem, TKey>(
 			this IList<TElem> source, Func<TElem, TKey> keySel)
 			=> source.ToDictionary(keySel, a => a);
 
+		/// <summary>
+		/// Converts the list into a Dictionary using the key and element selectors
+		/// </summary>
+		/// <param name="source">The list to convert</param>
+		/// <param name="keySel">A function to get the keys</param>
+		/// <param name="elemSel">A function to map the values through</param>
+		/// <typeparam name="TElem">The type of elements in the list</typeparam>
+		/// <typeparam name="TKey">The type of the keys</typeparam>
+		/// <returns>The list contents as a dictionary</returns>
 		public static Dictionary<TKey, TElem> ToDictionary<TIn, TKey, TElem>(
 			this IList<TIn> source, Func<TIn, TKey> keySel, Func<TIn, TElem> elemSel)
 		{
@@ -935,8 +1043,20 @@ namespace Quark
 			return working;
 		}
 
-		public static HashSet<T> ToHashSet<T>(this IList<T> source) => new(source);
+		/// <summary>
+		/// Converts the enumerable to a hash set
+		/// </summary>
+		/// <param name="source">The enumerable to convert</param>
+		/// <typeparam name="T">The type of elements in the enumerable</typeparam>
+		/// <returns>The enumerable contents as a hash set</returns>
+		public static HashSet<T> ToHashSet<T>(this IEnumerable<T> source) => new(source);
 
+		/// <summary>
+		/// Converts the IList to a List as efficiently as possible
+		/// </summary>
+		/// <param name="source">The IList to convert</param>
+		/// <typeparam name="T">The type of elements in the list</typeparam>
+		/// <returns>The IList contents as a List</returns>
 		public static List<T> ToList<T>(this IEnumerable<T> source)
 		{
 			switch (source)
@@ -960,10 +1080,27 @@ namespace Quark
 			}
 		}
 
+		/// <summary>
+		/// Converts the list to a lookup
+		/// </summary>
+		/// <param name="source">The list to convert</param>
+		/// <param name="keySel">A function to get the keys</param>
+		/// <param name="elemSel">A function to map all values through</param>
+		/// <typeparam name="TIn">The type of elements in the list</typeparam>
+		/// <typeparam name="TKey">The type of the keys</typeparam>
+		/// <typeparam name="TElem">The type of the lookup values</typeparam>
+		/// <returns>The list contents as a lookup</returns>
 		public static Lookup<TKey, TElem> ToLookup<TIn, TKey, TElem>(this IList<TIn>  source, Func<TIn, TKey> keySel,
 																	 Func<TIn, TElem> elemSel)
 			=> Lookup<TKey, TElem>.Create(source, keySel, elemSel);
 		
+		/// <summary>
+		/// Performs the set union on source and second
+		/// </summary>
+		/// <param name="source">The list to start with</param>
+		/// <param name="second">The list to union source with</param>
+		/// <typeparam name="T">The type of the elements in the lists</typeparam>
+		/// <returns>An array of the union results</returns>
 		public static T[] Union<T>(this IList<T> source, IList<T> second)
 		{
 			var hs  = new HashSet<T>(source);
@@ -973,9 +1110,23 @@ namespace Quark
 			return arr;
 		}
 
+		/// <summary>
+		/// Returns elements of the list matching the predicate
+		/// </summary>
+		/// <param name="source">The list to check through</param>
+		/// <param name="predicate">The predicate to check against</param>
+		/// <typeparam name="T">The type of elements in the list</typeparam>
+		/// <returns>The elements that matched the predicate</returns>
 		public static List<T> Where<T>(this IList<T> source, Predicate<T> predicate)
 			=> source.Where((a, _) => predicate(a));
 
+		/// <summary>
+		/// Returns elements of the list matching the predicate
+		/// </summary>
+		/// <param name="source">The list to check through</param>
+		/// <param name="predicate">The predicate to check against</param>
+		/// <typeparam name="T">The type of elements in the list</typeparam>
+		/// <returns>The elements that matched the predicate</returns>
 		public static List<T> Where<T>(this IList<T> source, Func<T, int, bool> predicate)
 		{
 			var working = new List<T>();
@@ -986,9 +1137,27 @@ namespace Quark
 			return working;
 		}
 
-		public static (T1, T2)[] Zip<T1, T2, TRes>(this IList<T1> source, IList<T2> second)
+		/// <summary>
+		/// Groups pairs from each list into tuples
+		/// </summary>
+		/// <param name="source">The first list</param>
+		/// <param name="second">The second list</param>
+		/// <typeparam name="T1">The type of source elements</typeparam>
+		/// <typeparam name="T2">The type of second elements</typeparam>
+		/// <returns>The tuple pairs as an array</returns>
+		public static (T1, T2)[] Zip<T1, T2>(this IList<T1> source, IList<T2> second)
 			=> source.Zip(second, (a, b) => (a, b));
 		
+		/// <summary>
+		/// Groups pairs from each list together via a result selector
+		/// </summary>
+		/// <param name="source">The first list</param>
+		/// <param name="second">The second list</param>
+		/// <param name="resSel">A function to map each pair through</param>
+		/// <typeparam name="T1">The type of source elements</typeparam>
+		/// <typeparam name="T2">The type of second elements</typeparam>
+		/// <typeparam name="TRes">The type of return elements</typeparam>
+		/// <returns>The pairs via resSel as an array</returns>
 		public static TRes[] Zip<T1, T2, TRes>(this IList<T1> source, IList<T2> second, Func<T1, T2, TRes> resSel)
 		{
 			var working = new TRes[Math.Min(source.Count, second.Count)];
