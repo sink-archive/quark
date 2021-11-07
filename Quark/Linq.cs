@@ -483,20 +483,26 @@ namespace Quark
 
 			return default;
 		}
-
-		// TODO: keep writing docs from here!
 		
-		public static long LongCount<T>(this IList<T> source)
-			=> throw new NotImplementedException($"Quark does not implement {nameof(LongCount)}");
+		// LongCount() is undefined 
 
-		public static long LongCount<T>(this IList<T> source, Predicate<T> predicate)
-			=> throw new NotImplementedException($"Quark does not implement {nameof(LongCount)}");
-
+		/// <summary>
+		/// Returns the source typed as a nongeneric IList
+		/// </summary>
+		/// <param name="source">The generic list to cast</param>
+		/// <typeparam name="T">The type of the generic list</typeparam>
+		/// <returns>A nongeneric IList</returns>
 		public static IList NonGeneric<T>(this IList<T> source) => (IList) source;
 		
+		/// <summary>
+		/// Gets elements of the input nongeneric list that match the given type
+		/// </summary>
+		/// <param name="source">The untyped nongeneric list to filter</param>
+		/// <typeparam name="T">The type to find instances of</typeparam>
+		/// <returns>A typed List of T containing the relevant items</returns>
 		public static List<T> OfType<T>(this IList source)
 		{
-			var working = new List<T>(source.Count);
+			var working = new List<T>();
 			for (var i = 0; i < source.Count; i++)
 				if (source[i] is T typed)
 					working.Add(typed);
@@ -504,9 +510,34 @@ namespace Quark
 			return working;
 		}
 
+		/// <summary>
+		/// Performs a quick sort on the list
+		/// </summary>
+		/// <param name="source">The list to sort</param>
+		/// <typeparam name="T">The type of the list elements</typeparam>
+		/// <returns>The sorted list in an array</returns>
+		public static T[] OrderBy<T>(this IList<T> source) => source.OrderBy(a => a);
+		
+		/// <summary>
+		/// Performs a quick sort on the list by key
+		/// </summary>
+		/// <param name="source">The list to sort</param>
+		/// <param name="selector">A function to get the key</param>
+		/// <typeparam name="TElem">The type of the source elements</typeparam>
+		/// <typeparam name="TKey">The type of the keys to sort by</typeparam>
+		/// <returns>The list sorted by key in an array</returns>
 		public static TElem[] OrderBy<TElem, TKey>(this IList<TElem> source, Func<TElem, TKey> selector)
 			=> source.OrderBy(selector, Comparer<TKey>.Default);
 		
+		/// <summary>
+		/// Performs a quick sort on the list by key
+		/// </summary>
+		/// <param name="source">The list to sort</param>
+		/// <param name="selector">A function to get the key</param>
+		/// <param name="comparer">A comparer to use to compare keys</param>
+		/// <typeparam name="TElem">The type of the source elements</typeparam>
+		/// <typeparam name="TKey">The type of the keys to sort by</typeparam>
+		/// <returns>The list sorted by key in an array</returns>
 		public static TElem[] OrderBy<TElem, TKey>(this IList<TElem> source, Func<TElem, TKey> selector, IComparer<TKey> comparer)
 		{
 			var arr = new TElem[source.Count];
@@ -517,10 +548,36 @@ namespace Quark
 			
 			return arr;
 		}
+
+
+		/// <summary>
+		/// Performs a reverse quick sort on the list
+		/// </summary>
+		/// <param name="source">The list to sort</param>
+		/// <typeparam name="T">The type of the list elements</typeparam>
+		/// <returns>The sorted list in an array</returns>
+		public static T[] OrderByDescending<T>(this IList<T> source) => source.OrderBy(a => a);
 		
+		/// <summary>
+		/// Performs a reverse quick sort on the list by key
+		/// </summary>
+		/// <param name="source">The list to sort</param>
+		/// <param name="selector">A function to get the key</param>
+		/// <typeparam name="TElem">The type of the source elements</typeparam>
+		/// <typeparam name="TKey">The type of the keys to sort by</typeparam>
+		/// <returns>The list sorted by key in an array</returns>
 		public static TElem[] OrderByDescending<TElem, TKey>(this IList<TElem> source, Func<TElem, TKey> selector)
 			=> source.OrderByDescending(selector, Comparer<TKey>.Default);
 
+		/// <summary>
+		/// Performs a reverse quick sort on the list by key
+		/// </summary>
+		/// <param name="source">The list to sort</param>
+		/// <param name="selector">A function to get the key</param>
+		/// <param name="comparer">A comparer to use to compare keys</param>
+		/// <typeparam name="TElem">The type of the source elements</typeparam>
+		/// <typeparam name="TKey">The type of the keys to sort by</typeparam>
+		/// <returns>The list sorted by key in an array</returns>
 		public static TElem[] OrderByDescending<TElem, TKey>(this IList<TElem> source, Func<TElem, TKey> selector, IComparer<TKey> comparer)
 		{
 			var arr = new TElem[source.Count];
@@ -532,6 +589,13 @@ namespace Quark
 			return arr;
 		}
 
+		/// <summary>
+		/// Inserts an element at the start of the list and returns it
+		/// </summary>
+		/// <param name="source">The list to start with</param>
+		/// <param name="elem">The element to insert</param>
+		/// <typeparam name="T">The type of the list elements</typeparam>
+		/// <returns>The list with elem inserted before source</returns>
 		public static List<T> Prepend<T>(this IList<T> source, T elem)
 		{
 			var tmp = new List<T>(source.Count + 1) { [0] = elem };
@@ -541,6 +605,12 @@ namespace Quark
 			return tmp;
 		}
 
+		/// <summary>
+		/// Generates an ascending sequence of integers
+		/// </summary>
+		/// <param name="start">The first number in the sequence</param>
+		/// <param name="count">How many integers to generate</param>
+		/// <returns>An array of integers ascending</returns>
 		public static int[] Range(int start, int count)
 		{
 			var working = new int[count];
@@ -550,6 +620,13 @@ namespace Quark
 			return working;
 		}
 
+		/// <summary>
+		/// Repeats the same element multiple times in an array
+		/// </summary>
+		/// <param name="element">The element to repeat</param>
+		/// <param name="count">The amount of times to repeat it</param>
+		/// <typeparam name="T">The type of the element to repeat</typeparam>
+		/// <returns>An array with element copied count times</returns>
 		public static T[] Repeat<T>(T element, int count)
 		{
 			var working = new T[count];
@@ -558,19 +635,40 @@ namespace Quark
 
 			return working;
 		}
-
-		public static List<T> Reverse<T>(this IList<T> source)
+		
+		/// <summary>
+		/// Reverses a list
+		/// </summary>
+		/// <param name="source">The list to reverse</param>
+		/// <typeparam name="T">The type of the elements in the list</typeparam>
+		/// <returns>An array with the list content in reverse</returns>
+		public static T[] Reverse<T>(this IList<T> source)
 		{
-			var tmp = new List<T>(source);
-			for (var i = 0; i < tmp.Count / 2; i++)
-				(tmp[i], tmp[tmp.Count - i]) = (tmp[tmp.Count - i], tmp[i]);
+			var tmp = new T[source.Count];
+			for (var i = 0; i < source.Count; i++)
+				tmp[tmp.Length - (i + 1)] = source[i];
 
 			return tmp;
 		}
 
+		/// <summary>
+		/// Passes each element of a list through a function and returns it
+		/// </summary>
+		/// <param name="source">The list to start with</param>
+		/// <param name="func">A function to pass each element through</param>
+		/// <typeparam name="TIn">The type of the source elements</typeparam>
+		/// <typeparam name="TOut">The type of the result elements</typeparam>
+		/// <returns>An array with the source elements passed through func</returns>
 		public static TOut[] Select<TIn, TOut>(this IList<TIn> source, Func<TIn, TOut> func)
 			=> source.Select((a, _) => func(a));
 		
+		/// Passes each element of a list through a function and returns it
+		/// </summary>
+		/// <param name="source">The list to start with</param>
+		/// <param name="func">A function to pass each element through</param>
+		/// <typeparam name="TIn">The type of the source elements</typeparam>
+		/// <typeparam name="TOut">The type of the result elements</typeparam>
+		/// <returns>An array with the source elements passed through func</returns>
 		public static TOut[] Select<TIn, TOut>(this IList<TIn> source, Func<TIn, int, TOut> func)
 		{
 			var working = new TOut[source.Count];
@@ -580,17 +678,38 @@ namespace Quark
 			return working;
 		}
 
+		/// <summary>
+		/// Flattens a list of lists into a list
+		/// </summary>
+		/// <param name="source">The list of lists to flatten</param>
+		/// <typeparam name="T">The type of the elements in the lists in the list</typeparam>
+		/// <returns>The flattened list</returns>
 		public static List<T> SelectMany<T>(this IList<IList<T>> source)
 			// discard the index parameter here even tho its not necessary to reduce nesting of delegates
 			=> source.SelectMany((a, _) => a);
 		
+		/// <summary>
+		/// Passes each element through a function, then flattens the returned lists
+		/// </summary>
+		/// <param name="source">A list to pass through func</param>
+		/// <param name="func">A function taking each element and returning a list of results</param>
+		/// <typeparam name="TIn">The type of source elements</typeparam>
+		/// <typeparam name="TOut">The type of result elements</typeparam>
+		/// <returns>The flattened results of the select</returns>
 		public static List<TOut> SelectMany<TIn, TOut>(this IList<TIn> source, Func<TIn, IList<TOut>> func)
 			=> source.SelectMany((a, _) => func(a));
-
+		
+		/// <summary>
+		/// Passes each element through a function, then flattens the returned lists
+		/// </summary>
+		/// <param name="source">A list to pass through func</param>
+		/// <param name="func">A function taking each element and returning a list of results</param>
+		/// <typeparam name="TIn">The type of source elements</typeparam>
+		/// <typeparam name="TOut">The type of result elements</typeparam>
+		/// <returns>The flattened results of the select</returns>
 		public static List<TOut> SelectMany<TIn, TOut>(this IList<TIn> source, Func<TIn, int, IList<TOut>> func)
 		{
-			// the final size will almost certainly exceed the count, but its a good baseline
-			var working = new List<TOut>(source.Count);
+			var working = new List<TOut>();
 			for (var i = 0; i < source.Count; i++)
 			{
 				var sublist = func(source[i], i);
@@ -601,6 +720,14 @@ namespace Quark
 			return working;
 		}
 
+		/// <summary>
+		/// Checks if two lists are equal to each other
+		/// </summary>
+		/// <param name="source">The first list to check</param>
+		/// <param name="second">The second list to check</param>
+		/// <typeparam name="T1">The type of elements in the first list</typeparam>
+		/// <typeparam name="T2">The type of elements in the second list</typeparam>
+		/// <returns>If the two lists have equivalent content or not</returns>
 		public static bool SequenceEqual<T1, T2>(this IList<T1> source, IList<T2> second)
 		{
 			if (source.Count != second.Count) return false;
@@ -613,6 +740,13 @@ namespace Quark
 			return true;
 		}
 
+		/// <summary>
+		/// If the list has one item, returns it, else throws
+		/// </summary>
+		/// <param name="source">The list to get from</param>
+		/// <typeparam name="T">The type of the element</typeparam>
+		/// <returns>The only element in the list</returns>
+		/// <exception cref="InvalidOperationException">The list had no elements or more than one element</exception>
 		public static T Single<T>(this IList<T> source)
 			=> source.Count switch
 			{
@@ -621,6 +755,14 @@ namespace Quark
 				_ => throw new InvalidOperationException($"{nameof(source)} has more than one element")
 			};
 
+		/// <summary>
+		/// If only one element in the list that matched the predicate, returns it, or throws
+		/// </summary>
+		/// <param name="source">The list to check</param>
+		/// <param name="predicate">The predicate to check against</param>
+		/// <typeparam name="T">The type of the list elements</typeparam>
+		/// <returns>The only element that matched the predicate</returns>
+		/// <exception cref="InvalidOperationException">The list was empty or there were no or multiple matches</exception>
 		public static T Single<T>(this IList<T> source, Predicate<T> predicate)
 		{
 			if (source.Count == 0) throw new InvalidOperationException($"{nameof(source)} has no elements");
@@ -642,8 +784,15 @@ namespace Quark
 			throw new InvalidOperationException($"{nameof(source)} has no matches against {nameof(predicate)}");
 		}
 
+		/// <summary>
+		/// Returns the only element in the list, or default if no / multiple elements
+		/// </summary>
+		/// <param name="source">The list to get from</param>
+		/// <typeparam name="T">The type of the elements</typeparam>
+		/// <returns>The only element in the list, or default</returns>
 		public static T? SingleOrDefault<T>(this IList<T> source) => source.Count == 1 ? source[0] : default;
 
+		//TODO: keep documenting from here
 		public static T? SingleOrDefault<T>(this IList<T> source, Predicate<T> predicate)
 		{
 			if (source.Count == 0) return default;
