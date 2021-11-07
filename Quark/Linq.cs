@@ -111,10 +111,14 @@ namespace Quark
 		public static T? ElementAtOrDefault<T>(this IList<T> source, int index)
 			=> index < source.Count ? source[index] : default;
 
-		public static T? ElementAtOrDefault<T>(this T[] source, int index)
-			=> index < source.Length ? source[index] : default;
-
-		// TODO: Except()
+		public static T[] Except<T>(this IList<T> source, IList<T> second)
+		{
+			var hs = new HashSet<T>(source);
+			hs.ExceptWith(second);
+			var arr = new T[hs.Count];
+			hs.CopyTo(arr);
+			return arr;
+		}
 
 		public static T First<T>(this IList<T> source)
 			=> source.Count == 0 ? throw new InvalidOperationException($"{nameof(source)} has no elements") : source[0];
@@ -143,10 +147,73 @@ namespace Quark
 			return default;
 		}
 
-		// TODO: GroupBy()
+
+		public static Grouping<TKey, TIn>[] GroupBy<TIn, TKey>(this IList<TIn> source, Func<TIn, TKey> keySel)
+			=> source.GroupBy(keySel, a => a);
+
+		public static TRes[] GroupBy<TIn, TKey, TRes>(this IList<TIn>             source, Func<TIn, TKey> keySel,
+													  Func<TKey, List<TIn>, TRes> resSel)
+			=> source.GroupBy(keySel, a => a, resSel);
+		
+		public static Grouping<TKey, TElem>[] GroupBy<TIn, TKey, TElem>(this IList<TIn>  source, Func<TIn, TKey> keySel,
+																		Func<TIn, TElem> elemSel)
+			=> source.GroupBy(keySel, elemSel, (k, el) => new Grouping<TKey, TElem>(k, el));
+
+		public static TRes[] GroupBy<TIn, TKey, TElem, TRes>(this IList<TIn> source, Func<TIn, TKey> keySel,
+															 Func<TIn, TElem> elemSel,
+															 Func<TKey, List<TElem>, TRes> resSel)
+		{
+			var workingTable = new Dictionary<TKey, List<TElem>>();
+			for (var i = 0; i < source.Count; i++)
+			{
+				var key = keySel(source[i]);
+				if (!workingTable.ContainsKey(key))
+					workingTable[key] = new List<TElem> { elemSel(source[i]) };
+				else
+				{
+					var list = workingTable[key];
+					list.Add(elemSel(source[i]));
+					workingTable[key] = list;
+				}
+			}
+
+			var working = new TRes[workingTable.Count];
+			var j       = 0;
+			foreach (var key in workingTable.Keys)
+			{
+				working[j] = resSel(key, workingTable[key]);
+				j++;
+			}
+
+			return working;
+		}
+
 		// TODO: GroupJoin()
-		// TODO: Intersect()
-		// TODO: Join()
+
+		public static T[] Intersect<T>(this IList<T> source, IList<T> second)
+		{
+			var hs = new HashSet<T>(source);
+			hs.IntersectWith(second);
+			var arr = new T[hs.Count];
+			hs.CopyTo(arr);
+			return arr;
+		}
+
+		public static List<TR> Join<T1, T2, TK, TR>(this IList<T1> source, IList<T2> second, Func<T1, TK> sourceKeySel,
+													Func<T2, TK>   secondKeySel, Func<T1, T2, TR> resSel)
+		{
+			var lookupTable = second.ToDictionary(secondKeySel);
+			var working    = new List<TR>();
+			
+			for (var i = 0; i < source.Count; i++)
+			{
+				var key = sourceKeySel(source[i]);
+				if (lookupTable.ContainsKey(key))
+					working.Add(resSel(source[i], lookupTable[key]));
+			}
+
+			return working;
+		}
 
 		public static T Last<T>(this IList<T> source)
 			=> source.Count == 0
