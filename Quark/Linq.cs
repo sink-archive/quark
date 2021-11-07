@@ -11,7 +11,7 @@ namespace Quark
     [SuppressMessage("ReSharper", "LoopCanBeConvertedToQuery")]
 	[SuppressMessage("ReSharper", "InlineTemporaryVariable")]
 	[SuppressMessage("ReSharper", "ForCanBeConvertedToForeach")]
-	public static class Linq
+	public static partial class Linq
 	{
 		public static TOut Aggregate<TIn, TOut>(this IList<TIn> source, TOut seed, Func<TOut, TIn, TOut> func)
 		{
@@ -46,8 +46,8 @@ namespace Quark
 		// see https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.asenumerable
 		public static IEnumerable<T> AsEnumerable<T>(this IEnumerable<T> source) => source;
 
-		// TODO: Average()
-
+		public static List<TOut> Cast<TIn, TOut>(this IList<TIn> source) => source.NonGeneric().Cast<TOut>();
+		
 		public static List<T> Cast<T>(this IList source)
 		{
 			var working = new List<T>();
@@ -250,9 +250,8 @@ namespace Quark
 		public static long LongCount<T>(this IList<T> source, Predicate<T> predicate)
 			=> throw new NotImplementedException($"Quark does not implement {nameof(LongCount)}");
 
-		// TODO: Max()
-		// TODO: Min()
-
+		public static IList NonGeneric<T>(this IList<T> source) => (IList) source;
+		
 		public static List<T> OfType<T>(this IList source)
 		{
 			var working = new List<T>(source.Count);
@@ -448,8 +447,6 @@ namespace Quark
 
 			return working;
 		}
-		
-		// TODO: Sum()
 
 		public static List<T> Take<T>(this IList<T> source, int count)
 		{
