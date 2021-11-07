@@ -40,7 +40,7 @@ namespace Quark
 			return false;
 		}
 
-		public static List<T> Append<T>(this IList<T> source, T element) => new List<T>(source) { element };
+		public static List<T> Append<T>(this IList<T> source, T element) => new(source) { element };
 
 		// this seems ultra useless at first glance
 		// see https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.asenumerable
@@ -366,10 +366,8 @@ namespace Quark
 			if (second is not IList<T1> secondTyped) return false;
 
 			for (var i = 0; i < source.Count; i++)
-			{
-				if (source[i]?.Equals(secondTyped[i]) ?? false)
+				if (!(source[i]?.Equals(secondTyped[i]) ?? false))
 					return false;
-			}
 
 			return true;
 		}
