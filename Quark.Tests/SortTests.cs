@@ -4,11 +4,9 @@ using NUnit.Framework;
 
 namespace Quark.Tests
 {
+	[TestFixture]
 	public class SortTests
 	{
-		[SetUp]
-		public void Setup() { }
-
 		[Test]
 		public void SortFullListTest()
 		{
