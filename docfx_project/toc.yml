@@ -1,4 +1,4 @@
-- name: Articles
+- name: Docs Articles
   href: articles/
-- name: Api Documentation
+- name: API Reference
   href: api/

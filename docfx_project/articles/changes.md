@@ -1,5 +1,8 @@
 # Changes against LINQ in Quark
 
+## `LongCount`
+`LongCount` is not implemented.
+
 ## `IList<T>`
 Quark uses `IList<T>` over `IEnumerable<T>` where possible to optimise for performance.
 Some operations may work equally efficiently with more fundamental base types, and in those cases they will be preferred over list.

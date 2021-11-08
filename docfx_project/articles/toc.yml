@@ -4,3 +4,5 @@
   href: benchmarks.md
 - name: Optimisations
   href: optimisations.md
+- name: Weirdness explained
+  href: clarifications.md
