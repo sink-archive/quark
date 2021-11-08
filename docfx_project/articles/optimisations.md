@@ -54,5 +54,5 @@ Quark in-place sorts on an array, which is very fast, whereas
 does so much weirdness I couldn't actually figure out much of what theyre doing, but it appears to be sorting some sort of a map of indexes,
 then returning enumerable results using that.
 
-Whatever its doing, Quark's plain simple quick sort beats it. We currently use the Lomuto partition scheme,
+Whatever its doing, Quark's plain simple quick sort beats it. We currently use the Hoare partition scheme,
 and while recursion mitigation optimisations are not made as of writing this, it may be done in the future.
