@@ -1,2 +1,6 @@
 - name: Changes
   href: changes.md
+- name: Benchmarks
+  href: benchmarks.md
+- name: Optimisations
+  href: optimisations.md
