@@ -83,5 +83,155 @@ namespace Quark.Tests
 			var expected = Enumerable.AsEnumerable(list);
 			AssertSeqEqual(expected, actual);
 		});
+
+		[Test]
+		public void CastTyped() => Dataset.AssertDoesNotMutateList(list =>
+		{
+			var actual   = Linq.Cast<int, object>(list);
+			var expected = Enumerable.Cast<object>(list);
+			AssertSeqEqual(expected, actual);
+		});
+		
+		[Test]
+		public void CastUntyped() => Dataset.AssertDoesNotMutateList(list =>
+		{
+			var actual   = Linq.Cast<object>(list.NonGeneric());
+			var expected = Enumerable.Cast<object>(list);
+			AssertSeqEqual(expected, actual);
+		});
+
+		[Test]
+		public void Concat() => Dataset.AssertDoesNotMutateList(list =>
+		{
+			new[] { 5, 6, 7 }.AssertDoesNotMutateList(list2 =>
+			{
+				var actual   = Linq.Concat(list, list2);
+				var expected = Enumerable.Concat(list, list2);
+				AssertSeqEqual(expected, actual);
+			});
+		});
+
+		[Test]
+		public void ContainsTrue() => new[] { 5, 7, -4, 7, 4 }.AssertDoesNotMutateList(list =>
+		{
+			Assert.IsTrue(Linq.Contains(list, -4));
+		});
+		
+		[Test]
+		public void ContainsFalse() => new[] { 5, 7, -4, 7, 4 }.AssertDoesNotMutateList(list =>
+		{
+			Assert.IsFalse(Linq.Contains(list, 9));
+		});
+
+		[Test]
+		public void CountSimple() => Dataset.AssertDoesNotMutateList(list => Assert.AreEqual(100, Linq.Count(list)));
+		
+		[Test]
+		public void CountPredicate() => Dataset.AssertDoesNotMutateList(list =>
+		{
+			var actual   = Linq.Count(list, a => a       % 3 == 1);
+			var expected = Enumerable.Count(list, a => a % 3 == 1);
+			Assert.AreEqual(expected, actual);
+		});
+
+		[Test]
+		public void DefaultIfEmptyElements() => Dataset.AssertDoesNotMutateList(list =>
+		{
+			AssertSeqEqual(list, Linq.DefaultIfEmpty(list, 5));
+		});
+
+		[Test]
+		public void DefaultIfEmptyEmpty()
+			=> Array.Empty<int>()
+					.AssertDoesNotMutateList(list =>
+					 {
+						 AssertSeqEqual(new[] { 5 }, Linq.DefaultIfEmpty(list, 5));
+					 });
+
+		[Test]
+		public void Distinct() => Dataset.AssertDoesNotMutateList(list =>
+		{
+			var actual   = Linq.Distinct(list);
+			var expected = Enumerable.Distinct(list);
+			AssertSeqEqual(expected, actual);
+		});
+
+		[Test]
+		public void ElementAt() => Dataset.AssertDoesNotMutateList(list =>
+		{
+			Assert.AreEqual(list[5], Linq.ElementAt(list, 5));
+		});
+		
+		[Test]
+		public void ElementAtOrDefaultInRange() => Dataset.AssertDoesNotMutateList(list =>
+		{
+			Assert.AreEqual(list[90], Linq.ElementAtOrDefault(list, 90));
+		});
+
+		[Test]
+		public void ElementAtOrDefaultAboveRangeDefault() => Dataset.AssertDoesNotMutateList(list =>
+		{
+			Assert.AreEqual(0, Linq.ElementAtOrDefault(list, 900));
+		});
+
+		[Test]
+		public void ElementAtOrDefaultAboveRangeNull() => new[] { "hello", "world" }.AssertDoesNotMutateList(list =>
+		{
+			Assert.AreEqual(null, Linq.ElementAtOrDefault(list, 50));
+		});
+
+		[Test]
+		public void Except() => Dataset.AssertDoesNotMutateList(list =>
+		{
+			new Random().GenArr(100).AssertDoesNotMutateList(list2 =>
+			{
+				var actual   = Linq.Except(list, list2);
+				var expected = Enumerable.Except(list, list2);
+				
+				AssertSeqEqual(expected, actual);
+			});
+		});
+
+		[Test]
+		public void FirstSimple() => Dataset.AssertDoesNotMutateList(list =>
+		{
+			Assert.AreEqual(list[0], Linq.First(list));
+		});
+		
+		[Test]
+		public void FirstPredicate() => new [] {5, 4, 2, 7, 8}.AssertDoesNotMutateList(list =>
+		{
+			Assert.AreEqual(7, Linq.First(list, a => a % 3 == 1));
+		});
+		
+		[Test]
+		public void FirstOrDefaultSimple() => Dataset.AssertDoesNotMutateList(list =>
+		{
+			Assert.AreEqual(list[0], Linq.FirstOrDefault(list));
+		});
+
+		[Test]
+		public void FirstOrDefaultSimpleEmpty()
+			=> Array.Empty<int>()
+					.AssertDoesNotMutateList(list =>
+					 {
+						 Assert.AreEqual(0, Linq.FirstOrDefault(list));
+					 });
+		
+		[Test]
+		public void FirstOrDefaultPredicate() => new [] {5, 7, 2, 9}.AssertDoesNotMutateList(list =>
+		{
+			Assert.AreEqual(2, Linq.FirstOrDefault(list, a => a % 2 == 0));
+		});
+
+		[Test]
+		public void FirstOrDefaultPredicateEmpty()
+			=> Array.Empty<int>()
+					.AssertDoesNotMutateList(list =>
+					 {
+						 Assert.AreEqual(0, Linq.FirstOrDefault(list, a => a % 2 == 0));
+					 });
+
+
 	}
 }

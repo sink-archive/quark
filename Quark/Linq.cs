@@ -119,9 +119,9 @@ namespace Quark
 		/// <param name="second">The list to concatenate onto the end</param>
 		/// <typeparam name="T">The type of elements in the lists</typeparam>
 		/// <returns>The two lists concatenated</returns>
-		public static List<T> Concat<T>(this IList<T> source, IList<T> second)
+		public static T[] Concat<T>(this IList<T> source, IList<T> second)
 		{
-			var tmp = new List<T>(source.Count + second.Count);
+			var tmp = new T[source.Count + second.Count];
 			
 			for (var i = 0; i < source.Count; i++) tmp[i]                = source[i];
 			for (var i = 0; i < second.Count; i++) tmp[i + source.Count] = second[i];
@@ -236,7 +236,7 @@ namespace Quark
 		/// <param name="second">The list to except with source</param>
 		/// <typeparam name="T">The type of elements in the lists</typeparam>
 		/// <returns>The set except of source and second as an array</returns>
-		public static T[] Except<T>(this IList<T> source, IList<T> second)
+		public static T[] Except<T>(this IEnumerable<T> source, IEnumerable<T> second)
 		{
 			var hs = new HashSet<T>(source);
 			hs.ExceptWith(second);
@@ -824,9 +824,9 @@ namespace Quark
 		/// <param name="count">The amount of items to remove</param>
 		/// <typeparam name="T">The type of elements in the list</typeparam>
 		/// <returns>The trimmed list</returns>
-		public static List<T> Skip<T>(this IList<T> source, int count)
+		public static T[] Skip<T>(this IList<T> source, int count)
 		{
-			var working = new List<T>(source.Count - count);
+			var working = new T[source.Count - count];
 			for (var i = 0; i < source.Count - count; i++)
 				working[i] = source[i + count];
 
