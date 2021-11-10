@@ -22,7 +22,7 @@ namespace Quark
 		/// <typeparam name="TIn">The type of the source elements</typeparam>
 		/// <typeparam name="TOut">The type of the seed and output</typeparam>
 		/// <returns>The fully aggregated seed</returns>
-		public static TOut Aggregate<TIn, TOut>(this IList<TIn> source, TOut seed, Func<TOut, TIn, TOut> func)
+		public static TOut Aggregate<TIn, TOut>(this IReadOnlyList<TIn> source, TOut seed, Func<TOut, TIn, TOut> func)
 		{
 			for (var i = 0; i < source.Count; i++)
 				seed = func(seed, source[i]);
@@ -36,7 +36,7 @@ namespace Quark
 		/// <param name="predicate">The predicate to check against</param>
 		/// <typeparam name="T">The type of elements in the list</typeparam>
 		/// <returns>If all elements match the predicate or not</returns>
-		public static bool All<T>(this IList<T> source, Predicate<T> predicate)
+		public static bool All<T>(this IReadOnlyList<T> source, Predicate<T> predicate)
 		{
 			for (var i = 0; i < source.Count; i++)
 				if (!predicate(source[i]))
@@ -51,7 +51,7 @@ namespace Quark
 		/// <param name="source">The list to check</param>
 		/// <typeparam name="T">The type of elements in the list</typeparam>
 		/// <returns>If there are any elements in the list</returns>
-		public static bool Any<T>(this IList<T> source) => source.Count != 0;
+		public static bool Any<T>(this IReadOnlyList<T> source) => source.Count != 0;
 
 		/// <summary>
 		/// If the list contains any elements that match a predicate
@@ -60,7 +60,7 @@ namespace Quark
 		/// <param name="predicate">The predicate to check against</param>
 		/// <typeparam name="T">The type of elements in the list</typeparam>
 		/// <returns>If there are any elements in the list matching the predicate</returns>
-		public static bool Any<T>(this IList<T> source, Predicate<T> predicate)
+		public static bool Any<T>(this IReadOnlyList<T> source, Predicate<T> predicate)
 		{
 			for (var i = 0; i < source.Count; i++)
 				if (predicate(source[i]))
@@ -76,7 +76,15 @@ namespace Quark
 		/// <param name="element">The element to add</param>
 		/// <typeparam name="T">The type of elements in the list</typeparam>
 		/// <returns>A new list with the element appended</returns>
-		public static List<T> Append<T>(this IEnumerable<T> source, T element) => new(source) { element };
+		public static T[] Append<T>(this IReadOnlyList<T> source, T element)
+		{
+			var working = new T[source.Count + 1];
+			for (var i = 0; i < source.Count; i++)
+				working[i] = source[i];
+				
+			working[source.Count] = element;
+			return working;
+		}
 
 		// this seems ultra useless at first glance but it isnt - check docs link
 		/// <summary>
@@ -95,7 +103,7 @@ namespace Quark
 		/// <typeparam name="TIn">The type of elements in the source</typeparam>
 		/// <typeparam name="TOut">The required output type</typeparam>
 		/// <returns>A casted list</returns>
-		public static List<TOut> Cast<TIn, TOut>(this IList<TIn> source) => source.NonGeneric().Cast<TOut>();
+		public static TOut[] Cast<TIn, TOut>(this IList<TIn> source) => source.NonGeneric().Cast<TOut>();
 		
 		/// <summary>
 		/// Casts an untyped list of elements to TOut
@@ -103,11 +111,11 @@ namespace Quark
 		/// <param name="source">An untyped list of elements</param>
 		/// <typeparam name="T">The target type</typeparam>
 		/// <returns>A casted list</returns>
-		public static List<T> Cast<T>(this IList source)
+		public static T[] Cast<T>(this IList source)
 		{
-			var working = new List<T>();
+			var working = new T[source.Count];
 			for (var i = 0; i < source.Count; i++)
-				working.Add((T) source[i]);
+				working[i] = (T) source[i];
 
 			return working;
 		}
@@ -119,7 +127,7 @@ namespace Quark
 		/// <param name="second">The list to concatenate onto the end</param>
 		/// <typeparam name="T">The type of elements in the lists</typeparam>
 		/// <returns>The two lists concatenated</returns>
-		public static T[] Concat<T>(this IList<T> source, IList<T> second)
+		public static T[] Concat<T>(this IReadOnlyList<T> source, IReadOnlyList<T> second)
 		{
 			var tmp = new T[source.Count + second.Count];
 			
@@ -136,10 +144,10 @@ namespace Quark
 		/// <param name="element">The element to look for</param>
 		/// <typeparam name="T">The type of the elements</typeparam>
 		/// <returns>If the list contains the element</returns>
-		public static bool Contains<T>(this IList<T> source, T element)
+		public static bool Contains<T>(this IReadOnlyList<T> source, T element)
 		{
 			for (var i = 0; i < source.Count; i++)
-				if (source[i]?.Equals(element) ?? false)
+				if (Equals(source[i], element))
 					return true;
 
 			return false;
@@ -151,7 +159,7 @@ namespace Quark
 		/// <param name="source">The list to check</param>
 		/// <typeparam name="T">The type of the elements in the list</typeparam>
 		/// <returns>The length of the list</returns>
-		public static int Count<T>(this IList<T> source) => source.Count;
+		public static int Count<T>(this IReadOnlyList<T> source) => source.Count;
 
 		/// <summary>
 		/// Counts how many list elements match the predicate
@@ -160,7 +168,7 @@ namespace Quark
 		/// <param name="predicate">The predicate to check against</param>
 		/// <typeparam name="T">The type of elements in the list</typeparam>
 		/// <returns>How many elements matched the predicate</returns>
-		public static int Count<T>(this IList<T> source, Predicate<T> predicate)
+		public static int Count<T>(this IReadOnlyList<T> source, Predicate<T> predicate)
 		{
 			switch (source.Count)
 			{
@@ -184,7 +192,8 @@ namespace Quark
 		/// <param name="source">The list to check against</param>
 		/// <typeparam name="T">The type of the list elements</typeparam>
 		/// <returns>The list, or if empty, a list with the default value of T once</returns>
-		public static IList<T?> DefaultIfEmpty<T>(this IList<T> source) => source!.DefaultIfEmpty(default);
+		public static IReadOnlyList<T?> DefaultIfEmpty<T>(this IReadOnlyList<T> source)
+			=> source.DefaultIfEmpty(default);
 		
 		/// <summary>
 		/// If the list is empty, return a list containing defaultValue once
@@ -193,7 +202,7 @@ namespace Quark
 		/// <param name="defaultValue">The value to fall back on</param>
 		/// <typeparam name="T">The type of the list elements</typeparam>
 		/// <returns>The list, or if emtpy, a list with the defaultValue</returns>
-		public static IList<T> DefaultIfEmpty<T>(this IList<T> source, T defaultValue)
+		public static IReadOnlyList<T> DefaultIfEmpty<T>(this IReadOnlyList<T> source, T defaultValue)
 			=> source.Count == 0 ? new List<T> { defaultValue } : source;
 
 		/// <summary>
@@ -252,7 +261,7 @@ namespace Quark
 		/// <typeparam name="T">The type of items in the list</typeparam>
 		/// <returns>The first item in the list</returns>
 		/// <exception cref="InvalidOperationException">The list had no elements</exception>
-		public static T First<T>(this IList<T> source)
+		public static T First<T>(this IReadOnlyList<T> source)
 			=> source.Count == 0 ? throw new InvalidOperationException($"{nameof(source)} has no elements") : source[0];
 
 		/// <summary>
@@ -263,7 +272,7 @@ namespace Quark
 		/// <typeparam name="T">The type of elements in the list</typeparam>
 		/// <returns>The first element in the list matching the predicate</returns>
 		/// <exception cref="InvalidOperationException">The list was empty, or no matches were found</exception>
-		public static T First<T>(this IList<T> source, Predicate<T> predicate)
+		public static T First<T>(this IReadOnlyList<T> source, Predicate<T> predicate)
 		{
 			if (source.Count == 0)
 				throw new InvalidOperationException($"{nameof(source)} has no elements");
@@ -281,7 +290,7 @@ namespace Quark
 		/// <param name="source">The list to get from</param>
 		/// <typeparam name="T">The type of the list elements</typeparam>
 		/// <returns>The first item of the list or default</returns>
-		public static T? FirstOrDefault<T>(this IList<T> source)
+		public static T? FirstOrDefault<T>(this IReadOnlyList<T> source)
 			=> source.Count == 0 ? default : source[0];
 		
 		/// <summary>
@@ -291,7 +300,7 @@ namespace Quark
 		/// <param name="predicate">The predicate to check against</param>
 		/// <typeparam name="T">The type of the list elements</typeparam>
 		/// <returns>The first item that matches the predicate or default</returns>
-		public static T? FirstOrDefault<T>(this IList<T> source, Predicate<T> predicate)
+		public static T? FirstOrDefault<T>(this IReadOnlyList<T> source, Predicate<T> predicate)
 		{
 			for (var i = 0; i < source.Count; i++)
 				if (predicate(source[i]))
@@ -308,7 +317,7 @@ namespace Quark
 		/// <typeparam name="TIn">The type of the list elements</typeparam>
 		/// <typeparam name="TKey">They type of the keys</typeparam>
 		/// <returns>An array of groupings of elements by key</returns>
-		public static Grouping<TKey, TIn>[] GroupBy<TIn, TKey>(this IList<TIn> source, Func<TIn, TKey> keySel)
+		public static Grouping<TKey, TIn>[] GroupBy<TIn, TKey>(this IReadOnlyList<TIn> source, Func<TIn, TKey> keySel)
 			=> source.GroupBy(keySel, a => a);
 
 		/// <summary>
@@ -321,10 +330,10 @@ namespace Quark
 		/// <typeparam name="TKey">The type of the keys</typeparam>
 		/// <typeparam name="TRes">The type of the result elements</typeparam>
 		/// <returns>An array of results</returns>
-		public static TRes[] GroupBy<TIn, TKey, TRes>(this IList<TIn>             source, Func<TIn, TKey> keySel,
+		public static TRes[] GroupBy<TIn, TKey, TRes>(this IReadOnlyList<TIn>     source, Func<TIn, TKey> keySel,
 													  Func<TKey, List<TIn>, TRes> resSel)
 			=> source.GroupBy(keySel, a => a, resSel);
-		
+
 		/// <summary>
 		/// Groups elements together based on keys given by the key selector, mapping the elements through elemSel
 		/// </summary>
@@ -335,8 +344,9 @@ namespace Quark
 		/// <typeparam name="TKey">The type of the keys</typeparam>
 		/// <typeparam name="TElem">The type of the result grouping elements</typeparam>
 		/// <returns>A list of groupings of element by key</returns>
-		public static Grouping<TKey, TElem>[] GroupBy<TIn, TKey, TElem>(this IList<TIn>  source, Func<TIn, TKey> keySel,
-																		Func<TIn, TElem> elemSel)
+		public static Grouping<TKey, TElem>[] GroupBy<TIn, TKey, TElem>(this IReadOnlyList<TIn> source,
+																		Func<TIn, TKey>         keySel,
+																		Func<TIn, TElem>        elemSel)
 			=> source.GroupBy(keySel, elemSel, (k, el) => new Grouping<TKey, TElem>(k, el));
 
 		/// <summary>
@@ -351,7 +361,7 @@ namespace Quark
 		/// <typeparam name="TElem">The type of the grouping elements</typeparam>
 		/// <typeparam name="TRes">The type of the result elements</typeparam>
 		/// <returns>An array of results</returns>
-		public static TRes[] GroupBy<TIn, TKey, TElem, TRes>(this IList<TIn> source, Func<TIn, TKey> keySel,
+		public static TRes[] GroupBy<TIn, TKey, TElem, TRes>(this IReadOnlyList<TIn> source, Func<TIn, TKey> keySel,
 															 Func<TIn, TElem> elemSel,
 															 Func<TKey, List<TElem>, TRes> resSel)
 		{
@@ -389,7 +399,7 @@ namespace Quark
 		/// <param name="second">The list to intersect source with</param>
 		/// <typeparam name="T">The type of the elements in the lists</typeparam>
 		/// <returns>An array of the intersect results</returns>
-		public static T[] Intersect<T>(this IList<T> source, IList<T> second)
+		public static T[] Intersect<T>(this IEnumerable<T> source, IEnumerable<T> second)
 		{
 			var hs = new HashSet<T>(source);
 			hs.IntersectWith(second);
@@ -411,12 +421,13 @@ namespace Quark
 		/// <typeparam name="TK">The type of the keys</typeparam>
 		/// <typeparam name="TR">The type of the result elements</typeparam>
 		/// <returns>The results of matching pairs</returns>
-		public static List<TR> Join<T1, T2, TK, TR>(this IList<T1> source, IList<T2> second, Func<T1, TK> sourceKeySel,
-													Func<T2, TK>   secondKeySel, Func<T1, T2, TR> resSel)
+		public static List<TR> Join<T1, T2, TK, TR>(this IReadOnlyList<T1> source,       IReadOnlyList<T2> second,
+													Func<T1, TK>           sourceKeySel, Func<T2, TK>      secondKeySel,
+													Func<T1, T2, TR>       resSel)
 		{
 			var lookupTable = second.ToDictionary(secondKeySel);
-			var working    = new List<TR>();
-			
+			var working     = new List<TR>();
+
 			for (var i = 0; i < source.Count; i++)
 			{
 				var key = sourceKeySel(source[i]);
@@ -434,7 +445,7 @@ namespace Quark
 		/// <typeparam name="T">The type of the elements of the list</typeparam>
 		/// <returns>The last element of the list</returns>
 		/// <exception cref="InvalidOperationException">The list was empty</exception>
-		public static T Last<T>(this IList<T> source)
+		public static T Last<T>(this IReadOnlyList<T> source)
 			=> source.Count == 0
 				   ? throw new InvalidOperationException($"{nameof(source)} has no elements")
 				   : source[source.Count - 1];
@@ -447,7 +458,7 @@ namespace Quark
 		/// <typeparam name="T">The type of elements in the list</typeparam>
 		/// <returns>The last element of the list matching the predicate</returns>
 		/// <exception cref="InvalidOperationException">The list was empty, or no matches were found</exception>
-		public static T Last<T>(this IList<T> source, Predicate<T> predicate)
+		public static T Last<T>(this IReadOnlyList<T> source, Predicate<T> predicate)
 		{
 			if (source.Count == 0)
 				throw new InvalidOperationException($"{nameof(source)} has no elements");
@@ -465,7 +476,7 @@ namespace Quark
 		/// <param name="source">The list to get from</param>
 		/// <typeparam name="T">The type of the list elements</typeparam>
 		/// <returns>The last element of the list or default</returns>
-		public static T? LastOrDefault<T>(this IList<T> source)
+		public static T? LastOrDefault<T>(this IReadOnlyList<T> source)
 			=> source.Count == 0 ? default : source[source.Count - 1];
 		
 		/// <summary>
@@ -475,7 +486,7 @@ namespace Quark
 		/// <param name="predicate">The predicate to check against</param>
 		/// <typeparam name="T">The type of elements in the list</typeparam>
 		/// <returns>The last element matching the predicate or default</returns>
-		public static T? LastOrDefault<T>(this IList<T> source, Predicate<T> predicate)
+		public static T? LastOrDefault<T>(this IReadOnlyList<T> source, Predicate<T> predicate)
 		{
 			for (var i = source.Count - 1; i >= 0; i--)
 				if (predicate(source[i]))
@@ -484,7 +495,7 @@ namespace Quark
 			return default;
 		}
 		
-		// LongCount() is undefined 
+		// LongCount() is unimplemented
 
 		/// <summary>
 		/// Returns the source typed as a nongeneric IList
@@ -516,7 +527,7 @@ namespace Quark
 		/// <param name="source">The list to sort</param>
 		/// <typeparam name="T">The type of the list elements</typeparam>
 		/// <returns>The sorted list in an array</returns>
-		public static T[] OrderBy<T>(this IList<T> source) => source.OrderBy(a => a);
+		public static T[] OrderBy<T>(this IReadOnlyList<T> source) => source.OrderBy(a => a);
 		
 		/// <summary>
 		/// Performs a quick sort on the list by key
@@ -526,7 +537,7 @@ namespace Quark
 		/// <typeparam name="TElem">The type of the source elements</typeparam>
 		/// <typeparam name="TKey">The type of the keys to sort by</typeparam>
 		/// <returns>The list sorted by key in an array</returns>
-		public static TElem[] OrderBy<TElem, TKey>(this IList<TElem> source, Func<TElem, TKey> selector)
+		public static TElem[] OrderBy<TElem, TKey>(this IReadOnlyList<TElem> source, Func<TElem, TKey> selector)
 			=> source.OrderBy(selector, Comparer<TKey>.Default);
 		
 		/// <summary>
@@ -538,7 +549,7 @@ namespace Quark
 		/// <typeparam name="TElem">The type of the source elements</typeparam>
 		/// <typeparam name="TKey">The type of the keys to sort by</typeparam>
 		/// <returns>The list sorted by key in an array</returns>
-		public static TElem[] OrderBy<TElem, TKey>(this IList<TElem> source, Func<TElem, TKey> selector, IComparer<TKey> comparer)
+		public static TElem[] OrderBy<TElem, TKey>(this IReadOnlyList<TElem> source, Func<TElem, TKey> selector, IComparer<TKey> comparer)
 		{
 			var arr = new TElem[source.Count];
 			for (var i = 0; i < source.Count; i++) 
@@ -556,7 +567,7 @@ namespace Quark
 		/// <param name="source">The list to sort</param>
 		/// <typeparam name="T">The type of the list elements</typeparam>
 		/// <returns>The sorted list in an array</returns>
-		public static T[] OrderByDescending<T>(this IList<T> source) => source.OrderBy(a => a);
+		public static T[] OrderByDescending<T>(this IReadOnlyList<T> source) => source.OrderBy(a => a);
 		
 		/// <summary>
 		/// Performs a reverse quick sort on the list by key
@@ -566,7 +577,7 @@ namespace Quark
 		/// <typeparam name="TElem">The type of the source elements</typeparam>
 		/// <typeparam name="TKey">The type of the keys to sort by</typeparam>
 		/// <returns>The list sorted by key in an array</returns>
-		public static TElem[] OrderByDescending<TElem, TKey>(this IList<TElem> source, Func<TElem, TKey> selector)
+		public static TElem[] OrderByDescending<TElem, TKey>(this IReadOnlyList<TElem> source, Func<TElem, TKey> selector)
 			=> source.OrderByDescending(selector, Comparer<TKey>.Default);
 
 		/// <summary>
@@ -578,7 +589,7 @@ namespace Quark
 		/// <typeparam name="TElem">The type of the source elements</typeparam>
 		/// <typeparam name="TKey">The type of the keys to sort by</typeparam>
 		/// <returns>The list sorted by key in an array</returns>
-		public static TElem[] OrderByDescending<TElem, TKey>(this IList<TElem> source, Func<TElem, TKey> selector, IComparer<TKey> comparer)
+		public static TElem[] OrderByDescending<TElem, TKey>(this IReadOnlyList<TElem> source, Func<TElem, TKey> selector, IComparer<TKey> comparer)
 		{
 			var arr = new TElem[source.Count];
 			for (var i = 0; i < source.Count; i++) 
@@ -596,9 +607,10 @@ namespace Quark
 		/// <param name="elem">The element to insert</param>
 		/// <typeparam name="T">The type of the list elements</typeparam>
 		/// <returns>The list with elem inserted before source</returns>
-		public static List<T> Prepend<T>(this IList<T> source, T elem)
+		public static T[] Prepend<T>(this IReadOnlyList<T> source, T elem)
 		{
-			var tmp = new List<T>(source.Count + 1) { [0] = elem };
+			var tmp = new T[source.Count + 1];
+			tmp[0] = elem;
 			for (var i = 0; i < source.Count; i++)
 				tmp[i + 1] = source[i];
 			
@@ -642,7 +654,7 @@ namespace Quark
 		/// <param name="source">The list to reverse</param>
 		/// <typeparam name="T">The type of the elements in the list</typeparam>
 		/// <returns>An array with the list content in reverse</returns>
-		public static T[] Reverse<T>(this IList<T> source)
+		public static T[] Reverse<T>(this IReadOnlyList<T> source)
 		{
 			var tmp = new T[source.Count];
 			for (var i = 0; i < source.Count; i++)
@@ -659,7 +671,7 @@ namespace Quark
 		/// <typeparam name="TIn">The type of the source elements</typeparam>
 		/// <typeparam name="TOut">The type of the result elements</typeparam>
 		/// <returns>An array with the source elements passed through func</returns>
-		public static TOut[] Select<TIn, TOut>(this IList<TIn> source, Func<TIn, TOut> func)
+		public static TOut[] Select<TIn, TOut>(this IReadOnlyList<TIn> source, Func<TIn, TOut> func)
 			=> source.Select((a, _) => func(a));
 		
 		/// <summary>
@@ -670,7 +682,7 @@ namespace Quark
 		/// <typeparam name="TIn">The type of the source elements</typeparam>
 		/// <typeparam name="TOut">The type of the result elements</typeparam>
 		/// <returns>An array with the source elements passed through func</returns>
-		public static TOut[] Select<TIn, TOut>(this IList<TIn> source, Func<TIn, int, TOut> func)
+		public static TOut[] Select<TIn, TOut>(this IReadOnlyList<TIn> source, Func<TIn, int, TOut> func)
 		{
 			var working = new TOut[source.Count];
 			for (var i = 0; i < source.Count; i++) 
@@ -685,7 +697,7 @@ namespace Quark
 		/// <param name="source">The list of lists to flatten</param>
 		/// <typeparam name="T">The type of the elements in the lists in the list</typeparam>
 		/// <returns>The flattened list</returns>
-		public static List<T> SelectMany<T>(this IList<IList<T>> source)
+		public static List<T> SelectMany<T>(this IReadOnlyList<IReadOnlyList<T>> source)
 			// discard the index parameter here even tho its not necessary to reduce nesting of delegates
 			=> source.SelectMany((a, _) => a);
 		
@@ -697,7 +709,7 @@ namespace Quark
 		/// <typeparam name="TIn">The type of source elements</typeparam>
 		/// <typeparam name="TOut">The type of result elements</typeparam>
 		/// <returns>The flattened results of the select</returns>
-		public static List<TOut> SelectMany<TIn, TOut>(this IList<TIn> source, Func<TIn, IList<TOut>> func)
+		public static List<TOut> SelectMany<TIn, TOut>(this IReadOnlyList<TIn> source, Func<TIn, IReadOnlyList<TOut>> func)
 			=> source.SelectMany((a, _) => func(a));
 		
 		/// <summary>
@@ -708,7 +720,7 @@ namespace Quark
 		/// <typeparam name="TIn">The type of source elements</typeparam>
 		/// <typeparam name="TOut">The type of result elements</typeparam>
 		/// <returns>The flattened results of the select</returns>
-		public static List<TOut> SelectMany<TIn, TOut>(this IList<TIn> source, Func<TIn, int, IList<TOut>> func)
+		public static List<TOut> SelectMany<TIn, TOut>(this IReadOnlyList<TIn> source, Func<TIn, int, IReadOnlyList<TOut>> func)
 		{
 			var working = new List<TOut>();
 			for (var i = 0; i < source.Count; i++)
@@ -729,13 +741,13 @@ namespace Quark
 		/// <typeparam name="T1">The type of elements in the first list</typeparam>
 		/// <typeparam name="T2">The type of elements in the second list</typeparam>
 		/// <returns>If the two lists have equivalent content or not</returns>
-		public static bool SequenceEqual<T1, T2>(this IList<T1> source, IList<T2> second)
+		public static bool SequenceEqual<T1, T2>(this IReadOnlyList<T1> source, IReadOnlyList<T2> second)
 		{
 			if (source.Count != second.Count) return false;
 			if (second is not IList<T1> secondTyped) return false;
 
 			for (var i = 0; i < source.Count; i++)
-				if (!(source[i]?.Equals(secondTyped[i]) ?? false))
+				if (Equals(source[i], secondTyped[i]))
 					return false;
 
 			return true;
@@ -748,7 +760,7 @@ namespace Quark
 		/// <typeparam name="T">The type of the element</typeparam>
 		/// <returns>The only element in the list</returns>
 		/// <exception cref="InvalidOperationException">The list had no elements or more than one element</exception>
-		public static T Single<T>(this IList<T> source)
+		public static T Single<T>(this IReadOnlyList<T> source)
 			=> source.Count switch
 			{
 				0 => throw new InvalidOperationException($"{nameof(source)} has no elements"),
@@ -764,7 +776,7 @@ namespace Quark
 		/// <typeparam name="T">The type of the list elements</typeparam>
 		/// <returns>The only element that matched the predicate</returns>
 		/// <exception cref="InvalidOperationException">The list was empty or there were no or multiple matches</exception>
-		public static T Single<T>(this IList<T> source, Predicate<T> predicate)
+		public static T Single<T>(this IReadOnlyList<T> source, Predicate<T> predicate)
 		{
 			if (source.Count == 0) throw new InvalidOperationException($"{nameof(source)} has no elements");
 
@@ -791,7 +803,7 @@ namespace Quark
 		/// <param name="source">The list to get from</param>
 		/// <typeparam name="T">The type of the elements</typeparam>
 		/// <returns>The only element in the list, or default</returns>
-		public static T? SingleOrDefault<T>(this IList<T> source) => source.Count == 1 ? source[0] : default;
+		public static T? SingleOrDefault<T>(this IReadOnlyList<T> source) => source.Count == 1 ? source[0] : default;
 
 		/// <summary>
 		/// If only one element in the list that matched the predicate, returns it, or return default
@@ -800,7 +812,7 @@ namespace Quark
 		/// <param name="predicate">The predicate to check against</param>
 		/// <typeparam name="T">The type of the list elements</typeparam>
 		/// <returns>The only element that matched the predicate or default</returns>
-		public static T? SingleOrDefault<T>(this IList<T> source, Predicate<T> predicate)
+		public static T? SingleOrDefault<T>(this IReadOnlyList<T> source, Predicate<T> predicate)
 		{
 			if (source.Count == 0) return default;
 
@@ -824,7 +836,7 @@ namespace Quark
 		/// <param name="count">The amount of items to remove</param>
 		/// <typeparam name="T">The type of elements in the list</typeparam>
 		/// <returns>The trimmed list</returns>
-		public static T[] Skip<T>(this IList<T> source, int count)
+		public static T[] Skip<T>(this IReadOnlyList<T> source, int count)
 		{
 			var working = new T[source.Count - count];
 			for (var i = 0; i < source.Count - count; i++)
@@ -840,7 +852,7 @@ namespace Quark
 		/// <param name="count">The amount of items to remove</param>
 		/// <typeparam name="T">The type of elements in the list</typeparam>
 		/// <returns>The trimmed list</returns>
-		public static List<T> SkipLast<T>(this IList<T> source, int count)
+		public static List<T> SkipLast<T>(this IReadOnlyList<T> source, int count)
 		{
 			var working = new List<T>(source.Count - count);
 			for (var i = 0; i < source.Count - count; i++)
@@ -856,7 +868,7 @@ namespace Quark
 		/// <param name="predicate">The predicate to test against</param>
 		/// <typeparam name="T">The type of elements in the list</typeparam>
 		/// <returns>The element that matches, and all after it</returns>
-		public static List<T> SkipWhile<T>(this IList<T> source, Predicate<T> predicate)
+		public static List<T> SkipWhile<T>(this IReadOnlyList<T> source, Predicate<T> predicate)
 		{
 			var working = new List<T>();
 			for (var i = 0; i < source.Count; i++)
@@ -873,7 +885,7 @@ namespace Quark
 		/// <param name="count">The amount of items to take</param>
 		/// <typeparam name="T">The type of elements in the list</typeparam>
 		/// <returns>The starting elements of the list</returns>
-		public static T[] Take<T>(this IList<T> source, int count)
+		public static T[] Take<T>(this IReadOnlyList<T> source, int count)
 		{
 			var working = new T[count];
 			for (var i = 0; i < count; i++)
@@ -889,7 +901,7 @@ namespace Quark
 		/// <param name="count">The amount of items to take</param>
 		/// <typeparam name="T">The type of elements in the list</typeparam>
 		/// <returns>The ending elements of the list</returns>
-		public static List<T> TakeLast<T>(this IList<T> source, int count)
+		public static List<T> TakeLast<T>(this IReadOnlyList<T> source, int count)
 		{
 			var working = new List<T>(count);
 			for (var i = 0; i < count; i++)
@@ -905,7 +917,7 @@ namespace Quark
 		/// <param name="predicate">The predicate to test against</param>
 		/// <typeparam name="T">The type of elements in the list</typeparam>
 		/// <returns>The elements before the predicate matched false</returns>
-		public static List<T> TakeWhile<T>(this IList<T> source, Predicate<T> predicate)
+		public static List<T> TakeWhile<T>(this IReadOnlyList<T> source, Predicate<T> predicate)
 		{
 			var working = new List<T>();
 			for (var i = 0; i < source.Count; i++)
@@ -928,7 +940,7 @@ namespace Quark
 		/// <typeparam name="TElem">The type of the elements to sort</typeparam>
 		/// <typeparam name="TKey">The type of the keys</typeparam>
 		/// <returns>The further sorted list</returns>
-		public static TElem[] ThenBy<TElem, TKey>(this IList<TElem> source, Func<TElem, TKey> selector)
+		public static TElem[] ThenBy<TElem, TKey>(this IReadOnlyList<TElem> source, Func<TElem, TKey> selector)
 			=> source.ThenBy(selector, Comparer<TKey>.Default);
 
 
@@ -941,7 +953,7 @@ namespace Quark
 		/// <typeparam name="TElem">The type of the elements to sort</typeparam>
 		/// <typeparam name="TKey">The type of the keys</typeparam>
 		/// <returns>The further sorted list</returns>
-		private static TElem[] ThenBy<TElem, TKey>(this IList<TElem> source, Func<TElem, TKey> selector,
+		private static TElem[] ThenBy<TElem, TKey>(this IReadOnlyList<TElem> source, Func<TElem, TKey> selector,
 												   IComparer<TKey>   comparer)
 			=> source._thenBy(selector, comparer, false);
 		
@@ -953,7 +965,7 @@ namespace Quark
 		/// <typeparam name="TElem">The type of the elements to sort</typeparam>
 		/// <typeparam name="TKey">The type of the keys</typeparam>
 		/// <returns>The further sorted list</returns>
-		public static TElem[] ThenByDescending<TElem, TKey>(this IList<TElem> source, Func<TElem, TKey> selector)
+		public static TElem[] ThenByDescending<TElem, TKey>(this IReadOnlyList<TElem> source, Func<TElem, TKey> selector)
 			=> source.ThenByDescending(selector, Comparer<TKey>.Default);
 
 		/// <summary>
@@ -965,11 +977,11 @@ namespace Quark
 		/// <typeparam name="TElem">The type of the elements to sort</typeparam>
 		/// <typeparam name="TKey">The type of the keys</typeparam>
 		/// <returns>The further sorted list</returns>
-		public static TElem[] ThenByDescending<TElem, TKey>(this IList<TElem> source, Func<TElem, TKey> selector,
+		public static TElem[] ThenByDescending<TElem, TKey>(this IReadOnlyList<TElem> source, Func<TElem, TKey> selector,
 															IComparer<TKey>   comparer)
 			=> source._thenBy(selector, comparer, true);
 
-		private static TElem[] _thenBy<TElem, TKey>(this IList<TElem> source,   Func<TElem, TKey> selector,
+		private static TElem[] _thenBy<TElem, TKey>(this IReadOnlyList<TElem> source,   Func<TElem, TKey> selector,
 												   IComparer<TKey>   comparer, bool              reverse)
 		{
 			var arr = new TElem[source.Count];
@@ -998,18 +1010,21 @@ namespace Quark
 		/// <param name="source">The list to convert</param>
 		/// <typeparam name="T">The type of elements in the list</typeparam>
 		/// <returns>The list contents as an array</returns>
-		public static T[] ToArray<T>(this IList<T> source)
+		public static T[] ToArray<T>(this IEnumerable<T> source)
 		{
 			switch (source)
 			{
 				case T[] arr:
 					return arr;
-				default:
-					var working = new T[source.Count];
-					for (var i = 0; i < source.Count; i++) 
-						working[i] = source[i];
+				case IReadOnlyList<T> list:
+					var working = new T[list.Count];
+					for (var i = 0; i < list.Count; i++) 
+						working[i] = list[i];
 
 					return working;
+				default:
+					// ReSharper disable once RemoveToList.1
+					return source.ToList().ToArray();
 			}
 		}
 
@@ -1021,8 +1036,8 @@ namespace Quark
 		/// <typeparam name="TElem">The type of elements in the list</typeparam>
 		/// <typeparam name="TKey">The type of the keys</typeparam>
 		/// <returns>The list contents as a dictionary</returns>
-		public static Dictionary<TKey, TElem> ToDictionary<TElem, TKey>(
-			this IList<TElem> source, Func<TElem, TKey> keySel)
+		public static Dictionary<TKey, TElem> ToDictionary<TElem, TKey>(this IReadOnlyList<TElem> source,
+																		Func<TElem, TKey>         keySel)
 			=> source.ToDictionary(keySel, a => a);
 
 		/// <summary>
@@ -1036,7 +1051,7 @@ namespace Quark
 		/// <typeparam name="TKey">The type of the keys</typeparam>
 		/// <returns>The list contents as a dictionary</returns>
 		public static Dictionary<TKey, TElem> ToDictionary<TIn, TKey, TElem>(
-			this IList<TIn> source, Func<TIn, TKey> keySel, Func<TIn, TElem> elemSel)
+			this IReadOnlyList<TIn> source, Func<TIn, TKey> keySel, Func<TIn, TElem> elemSel)
 		{
 			var working = new Dictionary<TKey, TElem>();
 			for (var i = 0; i < source.Count; i++)
@@ -1092,7 +1107,7 @@ namespace Quark
 		/// <typeparam name="TKey">The type of the keys</typeparam>
 		/// <typeparam name="TElem">The type of the lookup values</typeparam>
 		/// <returns>The list contents as a lookup</returns>
-		public static Lookup<TKey, TElem> ToLookup<TIn, TKey, TElem>(this IList<TIn>  source, Func<TIn, TKey> keySel,
+		public static Lookup<TKey, TElem> ToLookup<TIn, TKey, TElem>(this IReadOnlyList<TIn>  source, Func<TIn, TKey> keySel,
 																	 Func<TIn, TElem> elemSel)
 			=> Lookup<TKey, TElem>.Create(source, keySel, elemSel);
 		
@@ -1103,7 +1118,7 @@ namespace Quark
 		/// <param name="second">The list to union source with</param>
 		/// <typeparam name="T">The type of the elements in the lists</typeparam>
 		/// <returns>An array of the union results</returns>
-		public static T[] Union<T>(this IList<T> source, IList<T> second)
+		public static T[] Union<T>(this IEnumerable<T> source, IEnumerable<T> second)
 		{
 			var hs  = new HashSet<T>(source);
 			hs.UnionWith(second);
@@ -1119,7 +1134,7 @@ namespace Quark
 		/// <param name="predicate">The predicate to check against</param>
 		/// <typeparam name="T">The type of elements in the list</typeparam>
 		/// <returns>The elements that matched the predicate</returns>
-		public static List<T> Where<T>(this IList<T> source, Predicate<T> predicate)
+		public static List<T> Where<T>(this IReadOnlyList<T> source, Predicate<T> predicate)
 			=> source.Where((a, _) => predicate(a));
 
 		/// <summary>
@@ -1129,7 +1144,7 @@ namespace Quark
 		/// <param name="predicate">The predicate to check against</param>
 		/// <typeparam name="T">The type of elements in the list</typeparam>
 		/// <returns>The elements that matched the predicate</returns>
-		public static List<T> Where<T>(this IList<T> source, Func<T, int, bool> predicate)
+		public static List<T> Where<T>(this IReadOnlyList<T> source, Func<T, int, bool> predicate)
 		{
 			var working = new List<T>();
 			for (var i = 0; i < source.Count; i++)
@@ -1147,9 +1162,9 @@ namespace Quark
 		/// <typeparam name="T1">The type of source elements</typeparam>
 		/// <typeparam name="T2">The type of second elements</typeparam>
 		/// <returns>The tuple pairs as an array</returns>
-		public static (T1, T2)[] Zip<T1, T2>(this IList<T1> source, IList<T2> second)
+		public static (T1, T2)[] Zip<T1, T2>(this IReadOnlyList<T1> source, IReadOnlyList<T2> second)
 			=> source.Zip(second, (a, b) => (a, b));
-		
+
 		/// <summary>
 		/// Groups pairs from each list together via a result selector
 		/// </summary>
@@ -1160,7 +1175,8 @@ namespace Quark
 		/// <typeparam name="T2">The type of second elements</typeparam>
 		/// <typeparam name="TRes">The type of return elements</typeparam>
 		/// <returns>The pairs via resSel as an array</returns>
-		public static TRes[] Zip<T1, T2, TRes>(this IList<T1> source, IList<T2> second, Func<T1, T2, TRes> resSel)
+		public static TRes[] Zip<T1, T2, TRes>(this IReadOnlyList<T1> source, IReadOnlyList<T2> second,
+											   Func<T1, T2, TRes>     resSel)
 		{
 			var working = new TRes[Math.Min(source.Count, second.Count)];
 			for (var i = 0; i < working.Length; i++)
