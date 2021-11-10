@@ -29,7 +29,7 @@ namespace Quark
 		
 		public Lookup(IReadOnlyDictionary<TK, IList<TE>> elems) => _elems = elems;
 
-		public static Lookup<TK, TE> Create<TIn>(IReadOnlyList<TIn> list, Func<TIn, TK> keySel, Func<TIn, TE> elemSel)
+		public static Lookup<TK, TE> Create<TIn>(IList<TIn> list, Func<TIn, TK> keySel, Func<TIn, TE> elemSel)
 		{
 			var working = new Dictionary<TK, IList<TE>>();
 			for (var i = 0; i < list.Count; i++)
