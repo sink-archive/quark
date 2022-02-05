@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
@@ -23,13 +24,13 @@ namespace Quark.Tests
 				Assert.Fail("Sequences were not recursively equal");
 		}
 
-		private static bool SeqEqualRec<T1, T2>(IEnumerable<T1> first, IEnumerable<T2> second)
+		private static bool SeqEqualRec(IEnumerable first, IEnumerable second)
 		{
 			// both must be of the same type
-			if (second is not IEnumerable<T1> secondT)
-				return false;
+			/*if (second is not IEnumerable<T1> secondT)
+				return false;*/
 				
-			var (e1, e2) = (first.GetEnumerator(), secondT.GetEnumerator());
+			var (e1, e2) = (first.GetEnumerator(), /*secondT*/second.GetEnumerator());
 			while (true)
 			{
 				var (m1, m2) = (e1.MoveNext(), e2.MoveNext());
@@ -41,7 +42,7 @@ namespace Quark.Tests
 				
 				var (n1, n2) = (e1.Current, e2.Current);
 				// if both are enumerables then recursively test
-				if (n1 is IEnumerable<T1> n1E && n2 is IEnumerable<T1> n2E)
+				if (n1 is IEnumerable n1E && n2 is IEnumerable n2E)
 				{
 					if (!SeqEqualRec(n1E, n2E))
 						return false;
