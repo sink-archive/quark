@@ -19,6 +19,15 @@ public class SortMark : BenchmarkBase
 	public void IterationCleanup() => ReinitDatasets();
 
 	[Benchmark]
+	public nint[] QuarkSortTiny() => QuarkSort(MainDataTiny);
+
+	[Benchmark]
+	public nint[] LinqSortTiny() => LinqSort(MainDataTiny);
+
+	[Benchmark]
+	public nint[] SortInPlaceTiny() => SortInPlace(MainDataTiny);
+	
+	[Benchmark]
 	public nint[] QuarkSortSmall() => QuarkSort(MainDataSmall);
 
 	[Benchmark]

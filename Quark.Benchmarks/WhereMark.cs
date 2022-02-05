@@ -9,6 +9,12 @@ public class WhereMark : BenchmarkBase
 	private static nint[] LinqWhere(IEnumerable<nint> data) => data.Where((n, i) => n % i == 0).ToArray();
 
 	[Benchmark]
+	public List<nint> QuarkWhereTiny() => QuarkWhere(MainDataTiny);
+	
+	[Benchmark]
+	public nint[] LinqWhereTiny() => LinqWhere(MainDataTiny);
+
+	[Benchmark]
 	public List<nint> QuarkWhereSmall() => QuarkWhere(MainDataSmall);
 
 	[Benchmark]

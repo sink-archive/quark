@@ -9,6 +9,12 @@ public class SelectMark : BenchmarkBase
 	private static nint[] LinqSelect(IEnumerable<nint> data) => data.Select(n => 2 * n / 3).ToArray();
 
 	[Benchmark]
+	public nint[] QuarkSelectTiny() => QuarkSelect(MainDataTiny);
+	
+	[Benchmark]
+	public nint[] LinqSelectTiny() => LinqSelect(MainDataTiny);
+	
+	[Benchmark]
 	public nint[] QuarkSelectSmall() => QuarkSelect(MainDataSmall);
 
 	[Benchmark]

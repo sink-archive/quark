@@ -4,25 +4,31 @@ namespace Quark.Benchmarks;
 
 public class DistinctMark : BenchmarkBase
 {
-	private static nint[] QuarkToHashSet(IEnumerable<nint> data) => data.Distinct();
+	private static nint[] QuarkDistinct(IEnumerable<nint> data) => data.Distinct();
 
-	private static nint[] LinqToHashSet(IEnumerable<nint> data) => Enumerable.Distinct(data).ToArray();
-
-	[Benchmark]
-	public nint[] QuarkSelectSmall() => QuarkToHashSet(MainDataSmall);
+	private static nint[] LinqDistinct(IEnumerable<nint> data) => Enumerable.Distinct(data).ToArray();
 
 	[Benchmark]
-	public nint[] LinqSelectSmall() => LinqToHashSet(MainDataSmall);
+	public nint[] QuarkDistinctTiny() => QuarkDistinct(MainDataTiny);
+	
+	[Benchmark]
+	public nint[] LinqDistinctTiny() => LinqDistinct(MainDataTiny);
 
 	[Benchmark]
-	public nint[] QuarkSelectMedium() => QuarkToHashSet(MainDataMedium);
+	public nint[] QuarkDistinctSmall() => QuarkDistinct(MainDataSmall);
 
 	[Benchmark]
-	public nint[] LinqSelectMedium() => LinqToHashSet(MainDataMedium);
+	public nint[] LinqDistinctSmall() => LinqDistinct(MainDataSmall);
 
 	[Benchmark]
-	public nint[] QuarkSelectLarge() => QuarkToHashSet(MainDataLarge);
+	public nint[] QuarkDistinctMedium() => QuarkDistinct(MainDataMedium);
 
 	[Benchmark]
-	public nint[] LinqSelectLarge() => LinqToHashSet(MainDataLarge);
+	public nint[] LinqDistinctMedium() => LinqDistinct(MainDataMedium);
+
+	[Benchmark]
+	public nint[] QuarkDistinctLarge() => QuarkDistinct(MainDataLarge);
+
+	[Benchmark]
+	public nint[] LinqDistinctLarge() => LinqDistinct(MainDataLarge);
 }
