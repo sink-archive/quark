@@ -15,7 +15,7 @@ while retaining plenty of performance.
 For technical reasons, an `IList<T>` cannot be implicitly converted to an `IList` the same way an `IEnumerable<T>` can be converted to an `IEnumerable`.
 To counter this, we have added a new method to LINQ: [`NonGeneric<T>()`](xref:Quark.Linq.NonGeneric``1(IList{``0})).
 
-This method takes a generic `IList<T>` and returns the equivalent nongeneric `List<T>`.
+This method takes a generic `IList<T>` and returns the equivalent nongeneric `IList`.
 
 In addition, we added a version of [`Cast`](xref:Quark.Linq.Cast``2(IList{``0})) capable of taking a generic list,
 with the drawback that you must re-specify the type of the list.
