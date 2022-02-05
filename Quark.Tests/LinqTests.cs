@@ -83,6 +83,15 @@ namespace Quark.Tests
 			var expected = Enumerable.AsEnumerable(list);
 			AssertSeqEqual(expected, actual);
 		});
+		
+		[Test]
+		public void AsListGeneric() => Dataset.AssertDoesNotMutateList(list => AssertSeqEqual(list, Linq.AsList(list)));
+
+		[Test]
+		public void AsList()
+			=> Dataset.AssertDoesNotMutateList(list => AssertSeqEqual(list,
+																	  (IEnumerable<int>)
+																	  Linq.AsList(list.NonGeneric())));
 
 		[Test]
 		public void CastTyped() => Dataset.AssertDoesNotMutateList(list =>

@@ -89,6 +89,23 @@ namespace Quark
 		public static IEnumerable<T> AsEnumerable<T>(this IEnumerable<T> source) => source;
 
 		/// <summary>
+		/// Downcasts a generic IList implementing class to an IList
+		/// For more info see https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.asenumerable
+		/// </summary>
+		/// <param name="source">The list to downcast</param>
+		/// <typeparam name="T">The type of the list elements</typeparam>
+		/// <returns>A downcasted list</returns>
+		public static IList<T> AsList<T>(this IList<T> source) => source;
+		
+		/// <summary>
+		/// Downcasts an IList implementing class to an IList
+		/// For more info see https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.asenumerable
+		/// </summary>
+		/// <param name="source">The list to downcast</param>
+		/// <returns>A downcasted list</returns>
+		public static IList AsList(this IList source) => source;
+
+		/// <summary>
 		/// Casts a list of elements from TIn to TOut
 		/// </summary>
 		/// <param name="source">The uncasted list</param>
