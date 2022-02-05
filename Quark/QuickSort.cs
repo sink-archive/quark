@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Quark.Tests")]
+[assembly: InternalsVisibleTo("Quark.Benchmarks")]
 
 namespace Quark
 {

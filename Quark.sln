@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quark", "Quark\Quark.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quark.Tests", "Quark.Tests\Quark.Tests.csproj", "{5ACE2FDB-66BF-48D3-A92D-0C15076F20B7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quark.Benchmarks", "Quark.Benchmarks\Quark.Benchmarks.csproj", "{0DC43619-BB8A-4926-B30F-E608E6254DE3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{5ACE2FDB-66BF-48D3-A92D-0C15076F20B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5ACE2FDB-66BF-48D3-A92D-0C15076F20B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5ACE2FDB-66BF-48D3-A92D-0C15076F20B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DC43619-BB8A-4926-B30F-E608E6254DE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DC43619-BB8A-4926-B30F-E608E6254DE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DC43619-BB8A-4926-B30F-E608E6254DE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DC43619-BB8A-4926-B30F-E608E6254DE3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
