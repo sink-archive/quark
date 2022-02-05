@@ -596,9 +596,10 @@ namespace Quark
 		/// <param name="elem">The element to insert</param>
 		/// <typeparam name="T">The type of the list elements</typeparam>
 		/// <returns>The list with elem inserted before source</returns>
-		public static List<T> Prepend<T>(this IList<T> source, T elem)
+		public static T[] Prepend<T>(this IList<T> source, T elem)
 		{
-			var tmp = new List<T>(source.Count + 1) { [0] = elem };
+			var tmp = new T[source.Count + 1];
+			tmp[0] = elem;
 			for (var i = 0; i < source.Count; i++)
 				tmp[i + 1] = source[i];
 			

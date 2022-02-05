@@ -267,7 +267,7 @@ namespace Quark.Tests
 		[Test]
 		public void LastSimple() => Dataset.AssertDoesNotMutateList(list =>
 		{
-			Assert.AreEqual(list[0], Linq.Last(list));
+			Assert.AreEqual(list[^1], Linq.Last(list));
 		});
 
 		[Test]
@@ -279,7 +279,7 @@ namespace Quark.Tests
 		[Test]
 		public void LastOrDefaultSimple() => Dataset.AssertDoesNotMutateList(list =>
 		{
-			Assert.AreEqual(list[0],
+			Assert.AreEqual(list[^1],
 							Linq.LastOrDefault(list));
 		});
 
