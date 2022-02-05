@@ -841,10 +841,10 @@ namespace Quark
 		/// <param name="count">The amount of items to remove</param>
 		/// <typeparam name="T">The type of elements in the list</typeparam>
 		/// <returns>The trimmed list</returns>
-		public static List<T> SkipLast<T>(this IList<T> source, int count)
+		public static T[] SkipLast<T>(this IList<T> source, int count)
 		{
-			var working = new List<T>(source.Count - count);
-			for (var i = 0; i < source.Count - count; i++)
+			var working = new T[source.Count - count];
+			for (var i = 0; i < working.Length; i++)
 				working[i] = source[i];
 
 			return working;
@@ -890,9 +890,9 @@ namespace Quark
 		/// <param name="count">The amount of items to take</param>
 		/// <typeparam name="T">The type of elements in the list</typeparam>
 		/// <returns>The ending elements of the list</returns>
-		public static List<T> TakeLast<T>(this IList<T> source, int count)
+		public static T[] TakeLast<T>(this IList<T> source, int count)
 		{
-			var working = new List<T>(count);
+			var working = new T[count];
 			for (var i = 0; i < count; i++)
 				working[i] = source[i + (source.Count - count)];
 
@@ -911,8 +911,7 @@ namespace Quark
 			var working = new List<T>();
 			for (var i = 0; i < source.Count; i++)
 			{
-				if (!predicate(source[i])) 
-					return working;
+				if (!predicate(source[i])) break;
 				
 				working.Add(source[i]);
 			}
@@ -921,6 +920,7 @@ namespace Quark
 			return working;
 		}
 
+		/*
 		/// <summary>
 		/// Further sorts an already sorted list with a new key
 		/// </summary>
@@ -992,6 +992,7 @@ namespace Quark
 
 			return arr;
 		}
+		*/
 
 		/// <summary>
 		/// Converts the list to an array as efficiently as possible
@@ -1069,15 +1070,13 @@ namespace Quark
 				case IReadOnlyList<T> irol:
 					var workingl = new List<T>(irol.Count);
 					for (var i = 0; i < irol.Count; i++)
-						workingl[i] = irol[i];
+						workingl.Add(irol[i]);
 
 					return workingl;
 				default:
 				{
-					var       workinge   = new List<T>();
-					using var enumerator = source.GetEnumerator();
-					while (enumerator.MoveNext())
-						workinge.Add(enumerator.Current);
+					var workinge = new List<T>();
+					foreach (var x1 in source) workinge.Add(x1);
 					return workinge;
 				}
 			}

@@ -382,5 +382,67 @@ namespace Quark.Tests
 			Assert.AreEqual(default,      Array.Empty<object>().SingleOrDefault());
 			Assert.AreEqual(5,            new[] { 5 }.SingleOrDefault());
 		});
+
+		[Test]
+		public void Skip()
+			=> Dataset.AssertDoesNotMutateList(list => AssertSeqEqual(list.Skip(5), Enumerable.Skip(list, 5)));
+
+		[Test]
+		public void SkipLast()
+			=> Dataset.AssertDoesNotMutateList(list => AssertSeqEqual(list.SkipLast(5), Enumerable.SkipLast(list, 5)));
+
+		[Test]
+		public void SkipWhile()
+			=> Dataset.AssertDoesNotMutateList(list => AssertSeqEqual(list.SkipWhile(n => n             > 0),
+																	  Enumerable.SkipWhile(list, n => n > 0)));
+		
+		[Test]
+		public void Take()
+			=> Dataset.AssertDoesNotMutateList(list => AssertSeqEqual(list.Take(5), Enumerable.Take(list, 5)));
+
+		[Test]
+		public void TakeLast()
+			=> Dataset.AssertDoesNotMutateList(list => AssertSeqEqual(list.TakeLast(5), Enumerable.TakeLast(list, 5)));
+
+		[Test]
+		public void TakeWhile()
+			=> Dataset.AssertDoesNotMutateList(list => AssertSeqEqual(list.TakeWhile(n => n             > 0),
+																	  Enumerable.TakeWhile(list, n => n > 0)));
+
+		[Test]
+		public void ToArray()
+			=> Dataset.AssertDoesNotMutateList(list => AssertSeqEqual(list.ToArray(), list));
+
+		[Test]
+		public void ToDictionary()
+			=> Dataset.AssertDoesNotMutateList(list => AssertSeqEqual(list.ToDictionary(n => n             * 3),
+																	  Enumerable.ToDictionary(list, n => n * 3)));
+
+		[Test]
+		public void ToHashSet()
+			=> Dataset.AssertDoesNotMutateList(list => AssertSeqEqual(list.ToHashSet(), Enumerable.ToHashSet(list)));
+		
+		[Test]
+		public void ToList()
+			=> Dataset.AssertDoesNotMutateList(list => AssertSeqEqual(list.ToList(), list));
+
+		[Test]
+		public void ToLookup() => Assert.Inconclusive();
+		
+		[Test]
+		public void Union() => Assert.Inconclusive();
+
+		[Test]
+		public void Where()
+			=> Dataset.AssertDoesNotMutateList(list => AssertSeqEqual(list.Where(n => n             % 3 == 0),
+																	  Enumerable.Where(list, n => n % 3 == 0)));
+
+		[Test]
+		public void Zip()
+			=> Dataset.AssertDoesNotMutateList(list1 => new Random().GenArr(list1.Count)
+																	.AssertDoesNotMutateList(list2
+																		 => AssertSeqEqual(list1.Zip(list2),
+																			 Enumerable
+																				.Zip(list1, list2))));
 	}
 }
