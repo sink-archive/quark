@@ -95,7 +95,7 @@ namespace Quark
 		/// <typeparam name="TIn">The type of elements in the source</typeparam>
 		/// <typeparam name="TOut">The required output type</typeparam>
 		/// <returns>A casted list</returns>
-		public static List<TOut> Cast<TIn, TOut>(this IList<TIn> source) => source.NonGeneric().Cast<TOut>();
+		public static TOut[] Cast<TIn, TOut>(this IList<TIn> source) => source.NonGeneric().Cast<TOut>();
 		
 		/// <summary>
 		/// Casts an untyped list of elements to TOut
@@ -103,11 +103,11 @@ namespace Quark
 		/// <param name="source">An untyped list of elements</param>
 		/// <typeparam name="T">The target type</typeparam>
 		/// <returns>A casted list</returns>
-		public static List<T> Cast<T>(this IList source)
+		public static T[] Cast<T>(this IList source)
 		{
-			var working = new List<T>();
+			var working = new T[source.Count];
 			for (var i = 0; i < source.Count; i++)
-				working.Add((T) source[i]);
+				working[i] = (T) source[i];
 
 			return working;
 		}
@@ -194,7 +194,7 @@ namespace Quark
 		/// <typeparam name="T">The type of the list elements</typeparam>
 		/// <returns>The list, or if emtpy, a list with the defaultValue</returns>
 		public static IList<T> DefaultIfEmpty<T>(this IList<T> source, T defaultValue)
-			=> source.Count == 0 ? new List<T> { defaultValue } : source;
+			=> source.Count == 0 ? new [] { defaultValue } : source;
 
 		/// <summary>
 		/// Removes duplicates from an enumerable and returns it as an array
