@@ -556,7 +556,7 @@ namespace Quark
 		/// <param name="source">The list to sort</param>
 		/// <typeparam name="T">The type of the list elements</typeparam>
 		/// <returns>The sorted list in an array</returns>
-		public static T[] OrderByDescending<T>(this IList<T> source) => source.OrderBy(a => a);
+		public static T[] OrderByDescending<T>(this IList<T> source) => source.OrderByDescending(a => a);
 		
 		/// <summary>
 		/// Performs a reverse quick sort on the list by key
