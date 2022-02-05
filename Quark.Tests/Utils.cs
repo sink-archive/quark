@@ -17,14 +17,15 @@ namespace Quark.Tests
 
 		public static void AssertSeqEqual<T1, T2>(IEnumerable<T1> first, IEnumerable<T2> second)
 		{
-			if (second is IEnumerable<T1> secondTyped)
-				Assert.IsTrue(SeqEqualRec(first, secondTyped));
-			else
+			if (second is not IEnumerable<T1> secondTyped)
 				Assert.Fail($"{nameof(second)} was type {typeof(T2).FullName} instead of {typeof(T1).FullName}");
+			else if (!SeqEqualRec(first, secondTyped))
+				Assert.Fail("Sequences were not recursively equal");
 		}
 
 		private static bool SeqEqualRec<T1, T2>(IEnumerable<T1> first, IEnumerable<T2> second)
 		{
+			// both must be of the same type
 			if (second is not IEnumerable<T1> secondT)
 				return false;
 				
@@ -33,16 +34,21 @@ namespace Quark.Tests
 			{
 				var (m1, m2) = (e1.MoveNext(), e2.MoveNext());
 
-				if (!(m1 && m2))
-					return (!m1 && !m2);
+				// if any list has finished
+				if (!m1 || !m2)
+					// both must be finished
+					return !m1 && !m2;
 				
 				var (n1, n2) = (e1.Current, e2.Current);
-				if (n1 is IEnumerable<T1> n1e && n2 is IEnumerable<T1> n2e)
-					if (!SeqEqualRec(n1e, n2e))
+				// if both are enumerables then recursively test
+				if (n1 is IEnumerable<T1> n1E && n2 is IEnumerable<T1> n2E)
+				{
+					if (!SeqEqualRec(n1E, n2E))
 						return false;
-				else
-					if (!Equals(n1, n2))
-						return false;
+				}
+				// else just test if they are equal
+				else if (!n1.Equals(n2) && !n2.Equals(n1))
+					return false;
 			}
 		}
 
