@@ -18,9 +18,32 @@ namespace Quark.Tests
 		public static void AssertSeqEqual<T1, T2>(IEnumerable<T1> first, IEnumerable<T2> second)
 		{
 			if (second is IEnumerable<T1> secondTyped)
-				Assert.IsTrue(first.SequenceEqual(secondTyped));
+				Assert.IsTrue(SeqEqualRec(first, secondTyped));
 			else
 				Assert.Fail($"{nameof(second)} was type {typeof(T2).FullName} instead of {typeof(T1).FullName}");
+		}
+
+		private static bool SeqEqualRec<T1, T2>(IEnumerable<T1> first, IEnumerable<T2> second)
+		{
+			if (second is not IEnumerable<T1> secondT)
+				return false;
+				
+			var (e1, e2) = (first.GetEnumerator(), secondT.GetEnumerator());
+			while (true)
+			{
+				var (m1, m2) = (e1.MoveNext(), e2.MoveNext());
+
+				if (!(m1 && m2))
+					return (!m1 && !m2);
+				
+				var (n1, n2) = (e1.Current, e2.Current);
+				if (n1 is IEnumerable<T1> n1e && n2 is IEnumerable<T1> n2e)
+					if (!SeqEqualRec(n1e, n2e))
+						return false;
+				else
+					if (!Equals(n1, n2))
+						return false;
+			}
 		}
 
 		public static T[] CopySequence<T>(this IEnumerable<T> sequence) => sequence.ToArray();
