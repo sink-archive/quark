@@ -1,3 +1,8 @@
+## IMPORTANT NOTE
+Quark has failed to match LINQ performance consistently, let alone exceed it (surprising considering enumerable overhead).
+
+I will be dropping the project for now, and releasing this code to the Public Domain (BSD-3 => Unlicense).
+
 # Quark
 
 Quark is a high performance drop-in replacement for the .NET LINQ library.
