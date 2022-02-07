@@ -1,0 +1,1401 @@
+### YamlMime:XRefMap
+sorted: true
+references:
+- uid: Quark
+  name: Quark
+  href: api/Quark.html
+  commentId: N:Quark
+  fullName: Quark
+  nameWithType: Quark
+- uid: Quark.Grouping`2
+  name: Grouping<TK, TE>
+  href: api/Quark.Grouping-2.html
+  commentId: T:Quark.Grouping`2
+  name.vb: Grouping(Of TK, TE)
+  fullName: Quark.Grouping<TK, TE>
+  fullName.vb: Quark.Grouping(Of TK, TE)
+  nameWithType: Grouping<TK, TE>
+  nameWithType.vb: Grouping(Of TK, TE)
+- uid: Quark.Grouping`2.#ctor(`0,`1[])
+  name: Grouping(TK, TE[])
+  href: api/Quark.Grouping-2.html#Quark_Grouping_2__ctor__0__1___
+  commentId: M:Quark.Grouping`2.#ctor(`0,`1[])
+  name.vb: Grouping(TK, TE())
+  fullName: Quark.Grouping<TK, TE>.Grouping(TK, TE[])
+  fullName.vb: Quark.Grouping(Of TK, TE).Grouping(TK, TE())
+  nameWithType: Grouping<TK, TE>.Grouping(TK, TE[])
+  nameWithType.vb: Grouping(Of TK, TE).Grouping(TK, TE())
+- uid: Quark.Grouping`2.#ctor(`0,IList{`1})
+  name: Grouping(TK, IList<TE>)
+  href: api/Quark.Grouping-2.html#Quark_Grouping_2__ctor__0_IList__1__
+  commentId: M:Quark.Grouping`2.#ctor(`0,IList{`1})
+  name.vb: Grouping(TK, IList(Of TE))
+  fullName: Quark.Grouping<TK, TE>.Grouping(TK, IList<TE>)
+  fullName.vb: Quark.Grouping(Of TK, TE).Grouping(TK, IList(Of TE))
+  nameWithType: Grouping<TK, TE>.Grouping(TK, IList<TE>)
+  nameWithType.vb: Grouping(Of TK, TE).Grouping(TK, IList(Of TE))
+- uid: Quark.Grouping`2.#ctor*
+  name: Grouping
+  href: api/Quark.Grouping-2.html#Quark_Grouping_2__ctor_
+  commentId: Overload:Quark.Grouping`2.#ctor
+  isSpec: "True"
+  fullName: Quark.Grouping<TK, TE>.Grouping
+  fullName.vb: Quark.Grouping(Of TK, TE).Grouping
+  nameWithType: Grouping<TK, TE>.Grouping
+  nameWithType.vb: Grouping(Of TK, TE).Grouping
+- uid: Quark.Grouping`2.GetEnumerator
+  name: GetEnumerator()
+  href: api/Quark.Grouping-2.html#Quark_Grouping_2_GetEnumerator
+  commentId: M:Quark.Grouping`2.GetEnumerator
+  fullName: Quark.Grouping<TK, TE>.GetEnumerator()
+  fullName.vb: Quark.Grouping(Of TK, TE).GetEnumerator()
+  nameWithType: Grouping<TK, TE>.GetEnumerator()
+  nameWithType.vb: Grouping(Of TK, TE).GetEnumerator()
+- uid: Quark.Grouping`2.GetEnumerator*
+  name: GetEnumerator
+  href: api/Quark.Grouping-2.html#Quark_Grouping_2_GetEnumerator_
+  commentId: Overload:Quark.Grouping`2.GetEnumerator
+  isSpec: "True"
+  fullName: Quark.Grouping<TK, TE>.GetEnumerator
+  fullName.vb: Quark.Grouping(Of TK, TE).GetEnumerator
+  nameWithType: Grouping<TK, TE>.GetEnumerator
+  nameWithType.vb: Grouping(Of TK, TE).GetEnumerator
+- uid: Quark.Grouping`2.Key
+  name: Key
+  href: api/Quark.Grouping-2.html#Quark_Grouping_2_Key
+  commentId: P:Quark.Grouping`2.Key
+  fullName: Quark.Grouping<TK, TE>.Key
+  fullName.vb: Quark.Grouping(Of TK, TE).Key
+  nameWithType: Grouping<TK, TE>.Key
+  nameWithType.vb: Grouping(Of TK, TE).Key
+- uid: Quark.Grouping`2.Key*
+  name: Key
+  href: api/Quark.Grouping-2.html#Quark_Grouping_2_Key_
+  commentId: Overload:Quark.Grouping`2.Key
+  isSpec: "True"
+  fullName: Quark.Grouping<TK, TE>.Key
+  fullName.vb: Quark.Grouping(Of TK, TE).Key
+  nameWithType: Grouping<TK, TE>.Key
+  nameWithType.vb: Grouping(Of TK, TE).Key
+- uid: Quark.Linq
+  name: Linq
+  href: api/Quark.Linq.html
+  commentId: T:Quark.Linq
+  fullName: Quark.Linq
+  nameWithType: Linq
+- uid: Quark.Linq.Aggregate*
+  name: Aggregate
+  href: api/Quark.Linq.html#Quark_Linq_Aggregate_
+  commentId: Overload:Quark.Linq.Aggregate
+  isSpec: "True"
+  fullName: Quark.Linq.Aggregate
+  nameWithType: Linq.Aggregate
+- uid: Quark.Linq.Aggregate``2(IList{``0},``1,Func{``1,``0,``1})
+  name: Aggregate<TIn, TOut>(IList<TIn>, TOut, Func<TOut, TIn, TOut>)
+  href: api/Quark.Linq.html#Quark_Linq_Aggregate__2_IList___0____1_Func___1___0___1__
+  commentId: M:Quark.Linq.Aggregate``2(IList{``0},``1,Func{``1,``0,``1})
+  name.vb: Aggregate(Of TIn, TOut)(IList(Of TIn), TOut, Func(Of TOut, TIn, TOut))
+  fullName: Quark.Linq.Aggregate<TIn, TOut>(IList<TIn>, TOut, Func<TOut, TIn, TOut>)
+  fullName.vb: Quark.Linq.Aggregate(Of TIn, TOut)(IList(Of TIn), TOut, Func(Of TOut, TIn, TOut))
+  nameWithType: Linq.Aggregate<TIn, TOut>(IList<TIn>, TOut, Func<TOut, TIn, TOut>)
+  nameWithType.vb: Linq.Aggregate(Of TIn, TOut)(IList(Of TIn), TOut, Func(Of TOut, TIn, TOut))
+- uid: Quark.Linq.All*
+  name: All
+  href: api/Quark.Linq.html#Quark_Linq_All_
+  commentId: Overload:Quark.Linq.All
+  isSpec: "True"
+  fullName: Quark.Linq.All
+  nameWithType: Linq.All
+- uid: Quark.Linq.All``1(IList{``0},Predicate{``0})
+  name: All<T>(IList<T>, Predicate<T>)
+  href: api/Quark.Linq.html#Quark_Linq_All__1_IList___0__Predicate___0__
+  commentId: M:Quark.Linq.All``1(IList{``0},Predicate{``0})
+  name.vb: All(Of T)(IList(Of T), Predicate(Of T))
+  fullName: Quark.Linq.All<T>(IList<T>, Predicate<T>)
+  fullName.vb: Quark.Linq.All(Of T)(IList(Of T), Predicate(Of T))
+  nameWithType: Linq.All<T>(IList<T>, Predicate<T>)
+  nameWithType.vb: Linq.All(Of T)(IList(Of T), Predicate(Of T))
+- uid: Quark.Linq.Any*
+  name: Any
+  href: api/Quark.Linq.html#Quark_Linq_Any_
+  commentId: Overload:Quark.Linq.Any
+  isSpec: "True"
+  fullName: Quark.Linq.Any
+  nameWithType: Linq.Any
+- uid: Quark.Linq.Any``1(IList{``0})
+  name: Any<T>(IList<T>)
+  href: api/Quark.Linq.html#Quark_Linq_Any__1_IList___0__
+  commentId: M:Quark.Linq.Any``1(IList{``0})
+  name.vb: Any(Of T)(IList(Of T))
+  fullName: Quark.Linq.Any<T>(IList<T>)
+  fullName.vb: Quark.Linq.Any(Of T)(IList(Of T))
+  nameWithType: Linq.Any<T>(IList<T>)
+  nameWithType.vb: Linq.Any(Of T)(IList(Of T))
+- uid: Quark.Linq.Any``1(IList{``0},Predicate{``0})
+  name: Any<T>(IList<T>, Predicate<T>)
+  href: api/Quark.Linq.html#Quark_Linq_Any__1_IList___0__Predicate___0__
+  commentId: M:Quark.Linq.Any``1(IList{``0},Predicate{``0})
+  name.vb: Any(Of T)(IList(Of T), Predicate(Of T))
+  fullName: Quark.Linq.Any<T>(IList<T>, Predicate<T>)
+  fullName.vb: Quark.Linq.Any(Of T)(IList(Of T), Predicate(Of T))
+  nameWithType: Linq.Any<T>(IList<T>, Predicate<T>)
+  nameWithType.vb: Linq.Any(Of T)(IList(Of T), Predicate(Of T))
+- uid: Quark.Linq.Append*
+  name: Append
+  href: api/Quark.Linq.html#Quark_Linq_Append_
+  commentId: Overload:Quark.Linq.Append
+  isSpec: "True"
+  fullName: Quark.Linq.Append
+  nameWithType: Linq.Append
+- uid: Quark.Linq.Append``1(IEnumerable{``0},``0)
+  name: Append<T>(IEnumerable<T>, T)
+  href: api/Quark.Linq.html#Quark_Linq_Append__1_IEnumerable___0____0_
+  commentId: M:Quark.Linq.Append``1(IEnumerable{``0},``0)
+  name.vb: Append(Of T)(IEnumerable(Of T), T)
+  fullName: Quark.Linq.Append<T>(IEnumerable<T>, T)
+  fullName.vb: Quark.Linq.Append(Of T)(IEnumerable(Of T), T)
+  nameWithType: Linq.Append<T>(IEnumerable<T>, T)
+  nameWithType.vb: Linq.Append(Of T)(IEnumerable(Of T), T)
+- uid: Quark.Linq.AsEnumerable*
+  name: AsEnumerable
+  href: api/Quark.Linq.html#Quark_Linq_AsEnumerable_
+  commentId: Overload:Quark.Linq.AsEnumerable
+  isSpec: "True"
+  fullName: Quark.Linq.AsEnumerable
+  nameWithType: Linq.AsEnumerable
+- uid: Quark.Linq.AsEnumerable``1(IEnumerable{``0})
+  name: AsEnumerable<T>(IEnumerable<T>)
+  href: api/Quark.Linq.html#Quark_Linq_AsEnumerable__1_IEnumerable___0__
+  commentId: M:Quark.Linq.AsEnumerable``1(IEnumerable{``0})
+  name.vb: AsEnumerable(Of T)(IEnumerable(Of T))
+  fullName: Quark.Linq.AsEnumerable<T>(IEnumerable<T>)
+  fullName.vb: Quark.Linq.AsEnumerable(Of T)(IEnumerable(Of T))
+  nameWithType: Linq.AsEnumerable<T>(IEnumerable<T>)
+  nameWithType.vb: Linq.AsEnumerable(Of T)(IEnumerable(Of T))
+- uid: Quark.Linq.AsList(IList)
+  name: AsList(IList)
+  href: api/Quark.Linq.html#Quark_Linq_AsList_IList_
+  commentId: M:Quark.Linq.AsList(IList)
+  fullName: Quark.Linq.AsList(IList)
+  nameWithType: Linq.AsList(IList)
+- uid: Quark.Linq.AsList*
+  name: AsList
+  href: api/Quark.Linq.html#Quark_Linq_AsList_
+  commentId: Overload:Quark.Linq.AsList
+  isSpec: "True"
+  fullName: Quark.Linq.AsList
+  nameWithType: Linq.AsList
+- uid: Quark.Linq.AsList``1(IList{``0})
+  name: AsList<T>(IList<T>)
+  href: api/Quark.Linq.html#Quark_Linq_AsList__1_IList___0__
+  commentId: M:Quark.Linq.AsList``1(IList{``0})
+  name.vb: AsList(Of T)(IList(Of T))
+  fullName: Quark.Linq.AsList<T>(IList<T>)
+  fullName.vb: Quark.Linq.AsList(Of T)(IList(Of T))
+  nameWithType: Linq.AsList<T>(IList<T>)
+  nameWithType.vb: Linq.AsList(Of T)(IList(Of T))
+- uid: Quark.Linq.Average(IList{System.Decimal})
+  name: Average(IList<Decimal>)
+  href: api/Quark.Linq.html#Quark_Linq_Average_IList_System_Decimal__
+  commentId: M:Quark.Linq.Average(IList{System.Decimal})
+  name.vb: Average(IList(Of Decimal))
+  fullName: Quark.Linq.Average(IList<System.Decimal>)
+  fullName.vb: Quark.Linq.Average(IList(Of System.Decimal))
+  nameWithType: Linq.Average(IList<Decimal>)
+  nameWithType.vb: Linq.Average(IList(Of Decimal))
+- uid: Quark.Linq.Average(IList{System.Double})
+  name: Average(IList<Double>)
+  href: api/Quark.Linq.html#Quark_Linq_Average_IList_System_Double__
+  commentId: M:Quark.Linq.Average(IList{System.Double})
+  name.vb: Average(IList(Of Double))
+  fullName: Quark.Linq.Average(IList<System.Double>)
+  fullName.vb: Quark.Linq.Average(IList(Of System.Double))
+  nameWithType: Linq.Average(IList<Double>)
+  nameWithType.vb: Linq.Average(IList(Of Double))
+- uid: Quark.Linq.Average(IList{System.Int32})
+  name: Average(IList<Int32>)
+  href: api/Quark.Linq.html#Quark_Linq_Average_IList_System_Int32__
+  commentId: M:Quark.Linq.Average(IList{System.Int32})
+  name.vb: Average(IList(Of Int32))
+  fullName: Quark.Linq.Average(IList<System.Int32>)
+  fullName.vb: Quark.Linq.Average(IList(Of System.Int32))
+  nameWithType: Linq.Average(IList<Int32>)
+  nameWithType.vb: Linq.Average(IList(Of Int32))
+- uid: Quark.Linq.Average(IList{System.Int64})
+  name: Average(IList<Int64>)
+  href: api/Quark.Linq.html#Quark_Linq_Average_IList_System_Int64__
+  commentId: M:Quark.Linq.Average(IList{System.Int64})
+  name.vb: Average(IList(Of Int64))
+  fullName: Quark.Linq.Average(IList<System.Int64>)
+  fullName.vb: Quark.Linq.Average(IList(Of System.Int64))
+  nameWithType: Linq.Average(IList<Int64>)
+  nameWithType.vb: Linq.Average(IList(Of Int64))
+- uid: Quark.Linq.Average(IList{System.Single})
+  name: Average(IList<Single>)
+  href: api/Quark.Linq.html#Quark_Linq_Average_IList_System_Single__
+  commentId: M:Quark.Linq.Average(IList{System.Single})
+  name.vb: Average(IList(Of Single))
+  fullName: Quark.Linq.Average(IList<System.Single>)
+  fullName.vb: Quark.Linq.Average(IList(Of System.Single))
+  nameWithType: Linq.Average(IList<Single>)
+  nameWithType.vb: Linq.Average(IList(Of Single))
+- uid: Quark.Linq.Average*
+  name: Average
+  href: api/Quark.Linq.html#Quark_Linq_Average_
+  commentId: Overload:Quark.Linq.Average
+  isSpec: "True"
+  fullName: Quark.Linq.Average
+  nameWithType: Linq.Average
+- uid: Quark.Linq.Cast*
+  name: Cast
+  href: api/Quark.Linq.html#Quark_Linq_Cast_
+  commentId: Overload:Quark.Linq.Cast
+  isSpec: "True"
+  fullName: Quark.Linq.Cast
+  nameWithType: Linq.Cast
+- uid: Quark.Linq.Cast``1(IList)
+  name: Cast<T>(IList)
+  href: api/Quark.Linq.html#Quark_Linq_Cast__1_IList_
+  commentId: M:Quark.Linq.Cast``1(IList)
+  name.vb: Cast(Of T)(IList)
+  fullName: Quark.Linq.Cast<T>(IList)
+  fullName.vb: Quark.Linq.Cast(Of T)(IList)
+  nameWithType: Linq.Cast<T>(IList)
+  nameWithType.vb: Linq.Cast(Of T)(IList)
+- uid: Quark.Linq.Cast``2(IList{``0})
+  name: Cast<TIn, TOut>(IList<TIn>)
+  href: api/Quark.Linq.html#Quark_Linq_Cast__2_IList___0__
+  commentId: M:Quark.Linq.Cast``2(IList{``0})
+  name.vb: Cast(Of TIn, TOut)(IList(Of TIn))
+  fullName: Quark.Linq.Cast<TIn, TOut>(IList<TIn>)
+  fullName.vb: Quark.Linq.Cast(Of TIn, TOut)(IList(Of TIn))
+  nameWithType: Linq.Cast<TIn, TOut>(IList<TIn>)
+  nameWithType.vb: Linq.Cast(Of TIn, TOut)(IList(Of TIn))
+- uid: Quark.Linq.Concat*
+  name: Concat
+  href: api/Quark.Linq.html#Quark_Linq_Concat_
+  commentId: Overload:Quark.Linq.Concat
+  isSpec: "True"
+  fullName: Quark.Linq.Concat
+  nameWithType: Linq.Concat
+- uid: Quark.Linq.Concat``1(IList{``0},IList{``0})
+  name: Concat<T>(IList<T>, IList<T>)
+  href: api/Quark.Linq.html#Quark_Linq_Concat__1_IList___0__IList___0__
+  commentId: M:Quark.Linq.Concat``1(IList{``0},IList{``0})
+  name.vb: Concat(Of T)(IList(Of T), IList(Of T))
+  fullName: Quark.Linq.Concat<T>(IList<T>, IList<T>)
+  fullName.vb: Quark.Linq.Concat(Of T)(IList(Of T), IList(Of T))
+  nameWithType: Linq.Concat<T>(IList<T>, IList<T>)
+  nameWithType.vb: Linq.Concat(Of T)(IList(Of T), IList(Of T))
+- uid: Quark.Linq.Contains*
+  name: Contains
+  href: api/Quark.Linq.html#Quark_Linq_Contains_
+  commentId: Overload:Quark.Linq.Contains
+  isSpec: "True"
+  fullName: Quark.Linq.Contains
+  nameWithType: Linq.Contains
+- uid: Quark.Linq.Contains``1(IList{``0},``0)
+  name: Contains<T>(IList<T>, T)
+  href: api/Quark.Linq.html#Quark_Linq_Contains__1_IList___0____0_
+  commentId: M:Quark.Linq.Contains``1(IList{``0},``0)
+  name.vb: Contains(Of T)(IList(Of T), T)
+  fullName: Quark.Linq.Contains<T>(IList<T>, T)
+  fullName.vb: Quark.Linq.Contains(Of T)(IList(Of T), T)
+  nameWithType: Linq.Contains<T>(IList<T>, T)
+  nameWithType.vb: Linq.Contains(Of T)(IList(Of T), T)
+- uid: Quark.Linq.Count*
+  name: Count
+  href: api/Quark.Linq.html#Quark_Linq_Count_
+  commentId: Overload:Quark.Linq.Count
+  isSpec: "True"
+  fullName: Quark.Linq.Count
+  nameWithType: Linq.Count
+- uid: Quark.Linq.Count``1(IList{``0})
+  name: Count<T>(IList<T>)
+  href: api/Quark.Linq.html#Quark_Linq_Count__1_IList___0__
+  commentId: M:Quark.Linq.Count``1(IList{``0})
+  name.vb: Count(Of T)(IList(Of T))
+  fullName: Quark.Linq.Count<T>(IList<T>)
+  fullName.vb: Quark.Linq.Count(Of T)(IList(Of T))
+  nameWithType: Linq.Count<T>(IList<T>)
+  nameWithType.vb: Linq.Count(Of T)(IList(Of T))
+- uid: Quark.Linq.Count``1(IList{``0},Predicate{``0})
+  name: Count<T>(IList<T>, Predicate<T>)
+  href: api/Quark.Linq.html#Quark_Linq_Count__1_IList___0__Predicate___0__
+  commentId: M:Quark.Linq.Count``1(IList{``0},Predicate{``0})
+  name.vb: Count(Of T)(IList(Of T), Predicate(Of T))
+  fullName: Quark.Linq.Count<T>(IList<T>, Predicate<T>)
+  fullName.vb: Quark.Linq.Count(Of T)(IList(Of T), Predicate(Of T))
+  nameWithType: Linq.Count<T>(IList<T>, Predicate<T>)
+  nameWithType.vb: Linq.Count(Of T)(IList(Of T), Predicate(Of T))
+- uid: Quark.Linq.DefaultIfEmpty*
+  name: DefaultIfEmpty
+  href: api/Quark.Linq.html#Quark_Linq_DefaultIfEmpty_
+  commentId: Overload:Quark.Linq.DefaultIfEmpty
+  isSpec: "True"
+  fullName: Quark.Linq.DefaultIfEmpty
+  nameWithType: Linq.DefaultIfEmpty
+- uid: Quark.Linq.DefaultIfEmpty``1(IList{``0})
+  name: DefaultIfEmpty<T>(IList<T>)
+  href: api/Quark.Linq.html#Quark_Linq_DefaultIfEmpty__1_IList___0__
+  commentId: M:Quark.Linq.DefaultIfEmpty``1(IList{``0})
+  name.vb: DefaultIfEmpty(Of T)(IList(Of T))
+  fullName: Quark.Linq.DefaultIfEmpty<T>(IList<T>)
+  fullName.vb: Quark.Linq.DefaultIfEmpty(Of T)(IList(Of T))
+  nameWithType: Linq.DefaultIfEmpty<T>(IList<T>)
+  nameWithType.vb: Linq.DefaultIfEmpty(Of T)(IList(Of T))
+- uid: Quark.Linq.DefaultIfEmpty``1(IList{``0},``0)
+  name: DefaultIfEmpty<T>(IList<T>, T)
+  href: api/Quark.Linq.html#Quark_Linq_DefaultIfEmpty__1_IList___0____0_
+  commentId: M:Quark.Linq.DefaultIfEmpty``1(IList{``0},``0)
+  name.vb: DefaultIfEmpty(Of T)(IList(Of T), T)
+  fullName: Quark.Linq.DefaultIfEmpty<T>(IList<T>, T)
+  fullName.vb: Quark.Linq.DefaultIfEmpty(Of T)(IList(Of T), T)
+  nameWithType: Linq.DefaultIfEmpty<T>(IList<T>, T)
+  nameWithType.vb: Linq.DefaultIfEmpty(Of T)(IList(Of T), T)
+- uid: Quark.Linq.Distinct*
+  name: Distinct
+  href: api/Quark.Linq.html#Quark_Linq_Distinct_
+  commentId: Overload:Quark.Linq.Distinct
+  isSpec: "True"
+  fullName: Quark.Linq.Distinct
+  nameWithType: Linq.Distinct
+- uid: Quark.Linq.Distinct``1(IEnumerable{``0})
+  name: Distinct<T>(IEnumerable<T>)
+  href: api/Quark.Linq.html#Quark_Linq_Distinct__1_IEnumerable___0__
+  commentId: M:Quark.Linq.Distinct``1(IEnumerable{``0})
+  name.vb: Distinct(Of T)(IEnumerable(Of T))
+  fullName: Quark.Linq.Distinct<T>(IEnumerable<T>)
+  fullName.vb: Quark.Linq.Distinct(Of T)(IEnumerable(Of T))
+  nameWithType: Linq.Distinct<T>(IEnumerable<T>)
+  nameWithType.vb: Linq.Distinct(Of T)(IEnumerable(Of T))
+- uid: Quark.Linq.ElementAt*
+  name: ElementAt
+  href: api/Quark.Linq.html#Quark_Linq_ElementAt_
+  commentId: Overload:Quark.Linq.ElementAt
+  isSpec: "True"
+  fullName: Quark.Linq.ElementAt
+  nameWithType: Linq.ElementAt
+- uid: Quark.Linq.ElementAt``1(IList{``0},System.Int32)
+  name: ElementAt<T>(IList<T>, Int32)
+  href: api/Quark.Linq.html#Quark_Linq_ElementAt__1_IList___0__System_Int32_
+  commentId: M:Quark.Linq.ElementAt``1(IList{``0},System.Int32)
+  name.vb: ElementAt(Of T)(IList(Of T), Int32)
+  fullName: Quark.Linq.ElementAt<T>(IList<T>, System.Int32)
+  fullName.vb: Quark.Linq.ElementAt(Of T)(IList(Of T), System.Int32)
+  nameWithType: Linq.ElementAt<T>(IList<T>, Int32)
+  nameWithType.vb: Linq.ElementAt(Of T)(IList(Of T), Int32)
+- uid: Quark.Linq.ElementAtOrDefault*
+  name: ElementAtOrDefault
+  href: api/Quark.Linq.html#Quark_Linq_ElementAtOrDefault_
+  commentId: Overload:Quark.Linq.ElementAtOrDefault
+  isSpec: "True"
+  fullName: Quark.Linq.ElementAtOrDefault
+  nameWithType: Linq.ElementAtOrDefault
+- uid: Quark.Linq.ElementAtOrDefault``1(IList{``0},System.Int32)
+  name: ElementAtOrDefault<T>(IList<T>, Int32)
+  href: api/Quark.Linq.html#Quark_Linq_ElementAtOrDefault__1_IList___0__System_Int32_
+  commentId: M:Quark.Linq.ElementAtOrDefault``1(IList{``0},System.Int32)
+  name.vb: ElementAtOrDefault(Of T)(IList(Of T), Int32)
+  fullName: Quark.Linq.ElementAtOrDefault<T>(IList<T>, System.Int32)
+  fullName.vb: Quark.Linq.ElementAtOrDefault(Of T)(IList(Of T), System.Int32)
+  nameWithType: Linq.ElementAtOrDefault<T>(IList<T>, Int32)
+  nameWithType.vb: Linq.ElementAtOrDefault(Of T)(IList(Of T), Int32)
+- uid: Quark.Linq.Except*
+  name: Except
+  href: api/Quark.Linq.html#Quark_Linq_Except_
+  commentId: Overload:Quark.Linq.Except
+  isSpec: "True"
+  fullName: Quark.Linq.Except
+  nameWithType: Linq.Except
+- uid: Quark.Linq.Except``1(IEnumerable{``0},IEnumerable{``0})
+  name: Except<T>(IEnumerable<T>, IEnumerable<T>)
+  href: api/Quark.Linq.html#Quark_Linq_Except__1_IEnumerable___0__IEnumerable___0__
+  commentId: M:Quark.Linq.Except``1(IEnumerable{``0},IEnumerable{``0})
+  name.vb: Except(Of T)(IEnumerable(Of T), IEnumerable(Of T))
+  fullName: Quark.Linq.Except<T>(IEnumerable<T>, IEnumerable<T>)
+  fullName.vb: Quark.Linq.Except(Of T)(IEnumerable(Of T), IEnumerable(Of T))
+  nameWithType: Linq.Except<T>(IEnumerable<T>, IEnumerable<T>)
+  nameWithType.vb: Linq.Except(Of T)(IEnumerable(Of T), IEnumerable(Of T))
+- uid: Quark.Linq.First*
+  name: First
+  href: api/Quark.Linq.html#Quark_Linq_First_
+  commentId: Overload:Quark.Linq.First
+  isSpec: "True"
+  fullName: Quark.Linq.First
+  nameWithType: Linq.First
+- uid: Quark.Linq.First``1(IList{``0})
+  name: First<T>(IList<T>)
+  href: api/Quark.Linq.html#Quark_Linq_First__1_IList___0__
+  commentId: M:Quark.Linq.First``1(IList{``0})
+  name.vb: First(Of T)(IList(Of T))
+  fullName: Quark.Linq.First<T>(IList<T>)
+  fullName.vb: Quark.Linq.First(Of T)(IList(Of T))
+  nameWithType: Linq.First<T>(IList<T>)
+  nameWithType.vb: Linq.First(Of T)(IList(Of T))
+- uid: Quark.Linq.First``1(IList{``0},Predicate{``0})
+  name: First<T>(IList<T>, Predicate<T>)
+  href: api/Quark.Linq.html#Quark_Linq_First__1_IList___0__Predicate___0__
+  commentId: M:Quark.Linq.First``1(IList{``0},Predicate{``0})
+  name.vb: First(Of T)(IList(Of T), Predicate(Of T))
+  fullName: Quark.Linq.First<T>(IList<T>, Predicate<T>)
+  fullName.vb: Quark.Linq.First(Of T)(IList(Of T), Predicate(Of T))
+  nameWithType: Linq.First<T>(IList<T>, Predicate<T>)
+  nameWithType.vb: Linq.First(Of T)(IList(Of T), Predicate(Of T))
+- uid: Quark.Linq.FirstOrDefault*
+  name: FirstOrDefault
+  href: api/Quark.Linq.html#Quark_Linq_FirstOrDefault_
+  commentId: Overload:Quark.Linq.FirstOrDefault
+  isSpec: "True"
+  fullName: Quark.Linq.FirstOrDefault
+  nameWithType: Linq.FirstOrDefault
+- uid: Quark.Linq.FirstOrDefault``1(IList{``0})
+  name: FirstOrDefault<T>(IList<T>)
+  href: api/Quark.Linq.html#Quark_Linq_FirstOrDefault__1_IList___0__
+  commentId: M:Quark.Linq.FirstOrDefault``1(IList{``0})
+  name.vb: FirstOrDefault(Of T)(IList(Of T))
+  fullName: Quark.Linq.FirstOrDefault<T>(IList<T>)
+  fullName.vb: Quark.Linq.FirstOrDefault(Of T)(IList(Of T))
+  nameWithType: Linq.FirstOrDefault<T>(IList<T>)
+  nameWithType.vb: Linq.FirstOrDefault(Of T)(IList(Of T))
+- uid: Quark.Linq.FirstOrDefault``1(IList{``0},Predicate{``0})
+  name: FirstOrDefault<T>(IList<T>, Predicate<T>)
+  href: api/Quark.Linq.html#Quark_Linq_FirstOrDefault__1_IList___0__Predicate___0__
+  commentId: M:Quark.Linq.FirstOrDefault``1(IList{``0},Predicate{``0})
+  name.vb: FirstOrDefault(Of T)(IList(Of T), Predicate(Of T))
+  fullName: Quark.Linq.FirstOrDefault<T>(IList<T>, Predicate<T>)
+  fullName.vb: Quark.Linq.FirstOrDefault(Of T)(IList(Of T), Predicate(Of T))
+  nameWithType: Linq.FirstOrDefault<T>(IList<T>, Predicate<T>)
+  nameWithType.vb: Linq.FirstOrDefault(Of T)(IList(Of T), Predicate(Of T))
+- uid: Quark.Linq.GroupBy*
+  name: GroupBy
+  href: api/Quark.Linq.html#Quark_Linq_GroupBy_
+  commentId: Overload:Quark.Linq.GroupBy
+  isSpec: "True"
+  fullName: Quark.Linq.GroupBy
+  nameWithType: Linq.GroupBy
+- uid: Quark.Linq.GroupBy``2(IList{``0},Func{``0,``1})
+  name: GroupBy<TIn, TKey>(IList<TIn>, Func<TIn, TKey>)
+  href: api/Quark.Linq.html#Quark_Linq_GroupBy__2_IList___0__Func___0___1__
+  commentId: M:Quark.Linq.GroupBy``2(IList{``0},Func{``0,``1})
+  name.vb: GroupBy(Of TIn, TKey)(IList(Of TIn), Func(Of TIn, TKey))
+  fullName: Quark.Linq.GroupBy<TIn, TKey>(IList<TIn>, Func<TIn, TKey>)
+  fullName.vb: Quark.Linq.GroupBy(Of TIn, TKey)(IList(Of TIn), Func(Of TIn, TKey))
+  nameWithType: Linq.GroupBy<TIn, TKey>(IList<TIn>, Func<TIn, TKey>)
+  nameWithType.vb: Linq.GroupBy(Of TIn, TKey)(IList(Of TIn), Func(Of TIn, TKey))
+- uid: Quark.Linq.GroupBy``3(IList{``0},Func{``0,``1},Func{``0,``2})
+  name: GroupBy<TIn, TKey, TElem>(IList<TIn>, Func<TIn, TKey>, Func<TIn, TElem>)
+  href: api/Quark.Linq.html#Quark_Linq_GroupBy__3_IList___0__Func___0___1__Func___0___2__
+  commentId: M:Quark.Linq.GroupBy``3(IList{``0},Func{``0,``1},Func{``0,``2})
+  name.vb: GroupBy(Of TIn, TKey, TElem)(IList(Of TIn), Func(Of TIn, TKey), Func(Of TIn, TElem))
+  fullName: Quark.Linq.GroupBy<TIn, TKey, TElem>(IList<TIn>, Func<TIn, TKey>, Func<TIn, TElem>)
+  fullName.vb: Quark.Linq.GroupBy(Of TIn, TKey, TElem)(IList(Of TIn), Func(Of TIn, TKey), Func(Of TIn, TElem))
+  nameWithType: Linq.GroupBy<TIn, TKey, TElem>(IList<TIn>, Func<TIn, TKey>, Func<TIn, TElem>)
+  nameWithType.vb: Linq.GroupBy(Of TIn, TKey, TElem)(IList(Of TIn), Func(Of TIn, TKey), Func(Of TIn, TElem))
+- uid: Quark.Linq.GroupBy``3(IList{``0},Func{``0,``1},Func{``1,List{``0},``2})
+  name: GroupBy<TIn, TKey, TRes>(IList<TIn>, Func<TIn, TKey>, Func<TKey, List<TIn>, TRes>)
+  href: api/Quark.Linq.html#Quark_Linq_GroupBy__3_IList___0__Func___0___1__Func___1_List___0____2__
+  commentId: M:Quark.Linq.GroupBy``3(IList{``0},Func{``0,``1},Func{``1,List{``0},``2})
+  name.vb: GroupBy(Of TIn, TKey, TRes)(IList(Of TIn), Func(Of TIn, TKey), Func(Of TKey, List(Of TIn), TRes))
+  fullName: Quark.Linq.GroupBy<TIn, TKey, TRes>(IList<TIn>, Func<TIn, TKey>, Func<TKey, List<TIn>, TRes>)
+  fullName.vb: Quark.Linq.GroupBy(Of TIn, TKey, TRes)(IList(Of TIn), Func(Of TIn, TKey), Func(Of TKey, List(Of TIn), TRes))
+  nameWithType: Linq.GroupBy<TIn, TKey, TRes>(IList<TIn>, Func<TIn, TKey>, Func<TKey, List<TIn>, TRes>)
+  nameWithType.vb: Linq.GroupBy(Of TIn, TKey, TRes)(IList(Of TIn), Func(Of TIn, TKey), Func(Of TKey, List(Of TIn), TRes))
+- uid: Quark.Linq.GroupBy``4(IList{``0},Func{``0,``1},Func{``0,``2},Func{``1,List{``2},``3})
+  name: GroupBy<TIn, TKey, TElem, TRes>(IList<TIn>, Func<TIn, TKey>, Func<TIn, TElem>, Func<TKey, List<TElem>, TRes>)
+  href: api/Quark.Linq.html#Quark_Linq_GroupBy__4_IList___0__Func___0___1__Func___0___2__Func___1_List___2____3__
+  commentId: M:Quark.Linq.GroupBy``4(IList{``0},Func{``0,``1},Func{``0,``2},Func{``1,List{``2},``3})
+  name.vb: GroupBy(Of TIn, TKey, TElem, TRes)(IList(Of TIn), Func(Of TIn, TKey), Func(Of TIn, TElem), Func(Of TKey, List(Of TElem), TRes))
+  fullName: Quark.Linq.GroupBy<TIn, TKey, TElem, TRes>(IList<TIn>, Func<TIn, TKey>, Func<TIn, TElem>, Func<TKey, List<TElem>, TRes>)
+  fullName.vb: Quark.Linq.GroupBy(Of TIn, TKey, TElem, TRes)(IList(Of TIn), Func(Of TIn, TKey), Func(Of TIn, TElem), Func(Of TKey, List(Of TElem), TRes))
+  nameWithType: Linq.GroupBy<TIn, TKey, TElem, TRes>(IList<TIn>, Func<TIn, TKey>, Func<TIn, TElem>, Func<TKey, List<TElem>, TRes>)
+  nameWithType.vb: Linq.GroupBy(Of TIn, TKey, TElem, TRes)(IList(Of TIn), Func(Of TIn, TKey), Func(Of TIn, TElem), Func(Of TKey, List(Of TElem), TRes))
+- uid: Quark.Linq.Intersect*
+  name: Intersect
+  href: api/Quark.Linq.html#Quark_Linq_Intersect_
+  commentId: Overload:Quark.Linq.Intersect
+  isSpec: "True"
+  fullName: Quark.Linq.Intersect
+  nameWithType: Linq.Intersect
+- uid: Quark.Linq.Intersect``1(IList{``0},IList{``0})
+  name: Intersect<T>(IList<T>, IList<T>)
+  href: api/Quark.Linq.html#Quark_Linq_Intersect__1_IList___0__IList___0__
+  commentId: M:Quark.Linq.Intersect``1(IList{``0},IList{``0})
+  name.vb: Intersect(Of T)(IList(Of T), IList(Of T))
+  fullName: Quark.Linq.Intersect<T>(IList<T>, IList<T>)
+  fullName.vb: Quark.Linq.Intersect(Of T)(IList(Of T), IList(Of T))
+  nameWithType: Linq.Intersect<T>(IList<T>, IList<T>)
+  nameWithType.vb: Linq.Intersect(Of T)(IList(Of T), IList(Of T))
+- uid: Quark.Linq.Join*
+  name: Join
+  href: api/Quark.Linq.html#Quark_Linq_Join_
+  commentId: Overload:Quark.Linq.Join
+  isSpec: "True"
+  fullName: Quark.Linq.Join
+  nameWithType: Linq.Join
+- uid: Quark.Linq.Join``4(IList{``0},IList{``1},Func{``0,``2},Func{``1,``2},Func{``0,``1,``3})
+  name: Join<T1, T2, TK, TR>(IList<T1>, IList<T2>, Func<T1, TK>, Func<T2, TK>, Func<T1, T2, TR>)
+  href: api/Quark.Linq.html#Quark_Linq_Join__4_IList___0__IList___1__Func___0___2__Func___1___2__Func___0___1___3__
+  commentId: M:Quark.Linq.Join``4(IList{``0},IList{``1},Func{``0,``2},Func{``1,``2},Func{``0,``1,``3})
+  name.vb: Join(Of T1, T2, TK, TR)(IList(Of T1), IList(Of T2), Func(Of T1, TK), Func(Of T2, TK), Func(Of T1, T2, TR))
+  fullName: Quark.Linq.Join<T1, T2, TK, TR>(IList<T1>, IList<T2>, Func<T1, TK>, Func<T2, TK>, Func<T1, T2, TR>)
+  fullName.vb: Quark.Linq.Join(Of T1, T2, TK, TR)(IList(Of T1), IList(Of T2), Func(Of T1, TK), Func(Of T2, TK), Func(Of T1, T2, TR))
+  nameWithType: Linq.Join<T1, T2, TK, TR>(IList<T1>, IList<T2>, Func<T1, TK>, Func<T2, TK>, Func<T1, T2, TR>)
+  nameWithType.vb: Linq.Join(Of T1, T2, TK, TR)(IList(Of T1), IList(Of T2), Func(Of T1, TK), Func(Of T2, TK), Func(Of T1, T2, TR))
+- uid: Quark.Linq.Last*
+  name: Last
+  href: api/Quark.Linq.html#Quark_Linq_Last_
+  commentId: Overload:Quark.Linq.Last
+  isSpec: "True"
+  fullName: Quark.Linq.Last
+  nameWithType: Linq.Last
+- uid: Quark.Linq.Last``1(IList{``0})
+  name: Last<T>(IList<T>)
+  href: api/Quark.Linq.html#Quark_Linq_Last__1_IList___0__
+  commentId: M:Quark.Linq.Last``1(IList{``0})
+  name.vb: Last(Of T)(IList(Of T))
+  fullName: Quark.Linq.Last<T>(IList<T>)
+  fullName.vb: Quark.Linq.Last(Of T)(IList(Of T))
+  nameWithType: Linq.Last<T>(IList<T>)
+  nameWithType.vb: Linq.Last(Of T)(IList(Of T))
+- uid: Quark.Linq.Last``1(IList{``0},Predicate{``0})
+  name: Last<T>(IList<T>, Predicate<T>)
+  href: api/Quark.Linq.html#Quark_Linq_Last__1_IList___0__Predicate___0__
+  commentId: M:Quark.Linq.Last``1(IList{``0},Predicate{``0})
+  name.vb: Last(Of T)(IList(Of T), Predicate(Of T))
+  fullName: Quark.Linq.Last<T>(IList<T>, Predicate<T>)
+  fullName.vb: Quark.Linq.Last(Of T)(IList(Of T), Predicate(Of T))
+  nameWithType: Linq.Last<T>(IList<T>, Predicate<T>)
+  nameWithType.vb: Linq.Last(Of T)(IList(Of T), Predicate(Of T))
+- uid: Quark.Linq.LastOrDefault*
+  name: LastOrDefault
+  href: api/Quark.Linq.html#Quark_Linq_LastOrDefault_
+  commentId: Overload:Quark.Linq.LastOrDefault
+  isSpec: "True"
+  fullName: Quark.Linq.LastOrDefault
+  nameWithType: Linq.LastOrDefault
+- uid: Quark.Linq.LastOrDefault``1(IList{``0})
+  name: LastOrDefault<T>(IList<T>)
+  href: api/Quark.Linq.html#Quark_Linq_LastOrDefault__1_IList___0__
+  commentId: M:Quark.Linq.LastOrDefault``1(IList{``0})
+  name.vb: LastOrDefault(Of T)(IList(Of T))
+  fullName: Quark.Linq.LastOrDefault<T>(IList<T>)
+  fullName.vb: Quark.Linq.LastOrDefault(Of T)(IList(Of T))
+  nameWithType: Linq.LastOrDefault<T>(IList<T>)
+  nameWithType.vb: Linq.LastOrDefault(Of T)(IList(Of T))
+- uid: Quark.Linq.LastOrDefault``1(IList{``0},Predicate{``0})
+  name: LastOrDefault<T>(IList<T>, Predicate<T>)
+  href: api/Quark.Linq.html#Quark_Linq_LastOrDefault__1_IList___0__Predicate___0__
+  commentId: M:Quark.Linq.LastOrDefault``1(IList{``0},Predicate{``0})
+  name.vb: LastOrDefault(Of T)(IList(Of T), Predicate(Of T))
+  fullName: Quark.Linq.LastOrDefault<T>(IList<T>, Predicate<T>)
+  fullName.vb: Quark.Linq.LastOrDefault(Of T)(IList(Of T), Predicate(Of T))
+  nameWithType: Linq.LastOrDefault<T>(IList<T>, Predicate<T>)
+  nameWithType.vb: Linq.LastOrDefault(Of T)(IList(Of T), Predicate(Of T))
+- uid: Quark.Linq.Max(IList{System.Decimal})
+  name: Max(IList<Decimal>)
+  href: api/Quark.Linq.html#Quark_Linq_Max_IList_System_Decimal__
+  commentId: M:Quark.Linq.Max(IList{System.Decimal})
+  name.vb: Max(IList(Of Decimal))
+  fullName: Quark.Linq.Max(IList<System.Decimal>)
+  fullName.vb: Quark.Linq.Max(IList(Of System.Decimal))
+  nameWithType: Linq.Max(IList<Decimal>)
+  nameWithType.vb: Linq.Max(IList(Of Decimal))
+- uid: Quark.Linq.Max(IList{System.Double})
+  name: Max(IList<Double>)
+  href: api/Quark.Linq.html#Quark_Linq_Max_IList_System_Double__
+  commentId: M:Quark.Linq.Max(IList{System.Double})
+  name.vb: Max(IList(Of Double))
+  fullName: Quark.Linq.Max(IList<System.Double>)
+  fullName.vb: Quark.Linq.Max(IList(Of System.Double))
+  nameWithType: Linq.Max(IList<Double>)
+  nameWithType.vb: Linq.Max(IList(Of Double))
+- uid: Quark.Linq.Max(IList{System.Int32})
+  name: Max(IList<Int32>)
+  href: api/Quark.Linq.html#Quark_Linq_Max_IList_System_Int32__
+  commentId: M:Quark.Linq.Max(IList{System.Int32})
+  name.vb: Max(IList(Of Int32))
+  fullName: Quark.Linq.Max(IList<System.Int32>)
+  fullName.vb: Quark.Linq.Max(IList(Of System.Int32))
+  nameWithType: Linq.Max(IList<Int32>)
+  nameWithType.vb: Linq.Max(IList(Of Int32))
+- uid: Quark.Linq.Max(IList{System.Int64})
+  name: Max(IList<Int64>)
+  href: api/Quark.Linq.html#Quark_Linq_Max_IList_System_Int64__
+  commentId: M:Quark.Linq.Max(IList{System.Int64})
+  name.vb: Max(IList(Of Int64))
+  fullName: Quark.Linq.Max(IList<System.Int64>)
+  fullName.vb: Quark.Linq.Max(IList(Of System.Int64))
+  nameWithType: Linq.Max(IList<Int64>)
+  nameWithType.vb: Linq.Max(IList(Of Int64))
+- uid: Quark.Linq.Max(IList{System.Single})
+  name: Max(IList<Single>)
+  href: api/Quark.Linq.html#Quark_Linq_Max_IList_System_Single__
+  commentId: M:Quark.Linq.Max(IList{System.Single})
+  name.vb: Max(IList(Of Single))
+  fullName: Quark.Linq.Max(IList<System.Single>)
+  fullName.vb: Quark.Linq.Max(IList(Of System.Single))
+  nameWithType: Linq.Max(IList<Single>)
+  nameWithType.vb: Linq.Max(IList(Of Single))
+- uid: Quark.Linq.Max*
+  name: Max
+  href: api/Quark.Linq.html#Quark_Linq_Max_
+  commentId: Overload:Quark.Linq.Max
+  isSpec: "True"
+  fullName: Quark.Linq.Max
+  nameWithType: Linq.Max
+- uid: Quark.Linq.Min(IList{System.Decimal})
+  name: Min(IList<Decimal>)
+  href: api/Quark.Linq.html#Quark_Linq_Min_IList_System_Decimal__
+  commentId: M:Quark.Linq.Min(IList{System.Decimal})
+  name.vb: Min(IList(Of Decimal))
+  fullName: Quark.Linq.Min(IList<System.Decimal>)
+  fullName.vb: Quark.Linq.Min(IList(Of System.Decimal))
+  nameWithType: Linq.Min(IList<Decimal>)
+  nameWithType.vb: Linq.Min(IList(Of Decimal))
+- uid: Quark.Linq.Min(IList{System.Double})
+  name: Min(IList<Double>)
+  href: api/Quark.Linq.html#Quark_Linq_Min_IList_System_Double__
+  commentId: M:Quark.Linq.Min(IList{System.Double})
+  name.vb: Min(IList(Of Double))
+  fullName: Quark.Linq.Min(IList<System.Double>)
+  fullName.vb: Quark.Linq.Min(IList(Of System.Double))
+  nameWithType: Linq.Min(IList<Double>)
+  nameWithType.vb: Linq.Min(IList(Of Double))
+- uid: Quark.Linq.Min(IList{System.Int32})
+  name: Min(IList<Int32>)
+  href: api/Quark.Linq.html#Quark_Linq_Min_IList_System_Int32__
+  commentId: M:Quark.Linq.Min(IList{System.Int32})
+  name.vb: Min(IList(Of Int32))
+  fullName: Quark.Linq.Min(IList<System.Int32>)
+  fullName.vb: Quark.Linq.Min(IList(Of System.Int32))
+  nameWithType: Linq.Min(IList<Int32>)
+  nameWithType.vb: Linq.Min(IList(Of Int32))
+- uid: Quark.Linq.Min(IList{System.Int64})
+  name: Min(IList<Int64>)
+  href: api/Quark.Linq.html#Quark_Linq_Min_IList_System_Int64__
+  commentId: M:Quark.Linq.Min(IList{System.Int64})
+  name.vb: Min(IList(Of Int64))
+  fullName: Quark.Linq.Min(IList<System.Int64>)
+  fullName.vb: Quark.Linq.Min(IList(Of System.Int64))
+  nameWithType: Linq.Min(IList<Int64>)
+  nameWithType.vb: Linq.Min(IList(Of Int64))
+- uid: Quark.Linq.Min(IList{System.Single})
+  name: Min(IList<Single>)
+  href: api/Quark.Linq.html#Quark_Linq_Min_IList_System_Single__
+  commentId: M:Quark.Linq.Min(IList{System.Single})
+  name.vb: Min(IList(Of Single))
+  fullName: Quark.Linq.Min(IList<System.Single>)
+  fullName.vb: Quark.Linq.Min(IList(Of System.Single))
+  nameWithType: Linq.Min(IList<Single>)
+  nameWithType.vb: Linq.Min(IList(Of Single))
+- uid: Quark.Linq.Min*
+  name: Min
+  href: api/Quark.Linq.html#Quark_Linq_Min_
+  commentId: Overload:Quark.Linq.Min
+  isSpec: "True"
+  fullName: Quark.Linq.Min
+  nameWithType: Linq.Min
+- uid: Quark.Linq.NonGeneric*
+  name: NonGeneric
+  href: api/Quark.Linq.html#Quark_Linq_NonGeneric_
+  commentId: Overload:Quark.Linq.NonGeneric
+  isSpec: "True"
+  fullName: Quark.Linq.NonGeneric
+  nameWithType: Linq.NonGeneric
+- uid: Quark.Linq.NonGeneric``1(IList{``0})
+  name: NonGeneric<T>(IList<T>)
+  href: api/Quark.Linq.html#Quark_Linq_NonGeneric__1_IList___0__
+  commentId: M:Quark.Linq.NonGeneric``1(IList{``0})
+  name.vb: NonGeneric(Of T)(IList(Of T))
+  fullName: Quark.Linq.NonGeneric<T>(IList<T>)
+  fullName.vb: Quark.Linq.NonGeneric(Of T)(IList(Of T))
+  nameWithType: Linq.NonGeneric<T>(IList<T>)
+  nameWithType.vb: Linq.NonGeneric(Of T)(IList(Of T))
+- uid: Quark.Linq.OfType*
+  name: OfType
+  href: api/Quark.Linq.html#Quark_Linq_OfType_
+  commentId: Overload:Quark.Linq.OfType
+  isSpec: "True"
+  fullName: Quark.Linq.OfType
+  nameWithType: Linq.OfType
+- uid: Quark.Linq.OfType``1(IList)
+  name: OfType<T>(IList)
+  href: api/Quark.Linq.html#Quark_Linq_OfType__1_IList_
+  commentId: M:Quark.Linq.OfType``1(IList)
+  name.vb: OfType(Of T)(IList)
+  fullName: Quark.Linq.OfType<T>(IList)
+  fullName.vb: Quark.Linq.OfType(Of T)(IList)
+  nameWithType: Linq.OfType<T>(IList)
+  nameWithType.vb: Linq.OfType(Of T)(IList)
+- uid: Quark.Linq.OrderBy*
+  name: OrderBy
+  href: api/Quark.Linq.html#Quark_Linq_OrderBy_
+  commentId: Overload:Quark.Linq.OrderBy
+  isSpec: "True"
+  fullName: Quark.Linq.OrderBy
+  nameWithType: Linq.OrderBy
+- uid: Quark.Linq.OrderBy``1(IList{``0})
+  name: OrderBy<T>(IList<T>)
+  href: api/Quark.Linq.html#Quark_Linq_OrderBy__1_IList___0__
+  commentId: M:Quark.Linq.OrderBy``1(IList{``0})
+  name.vb: OrderBy(Of T)(IList(Of T))
+  fullName: Quark.Linq.OrderBy<T>(IList<T>)
+  fullName.vb: Quark.Linq.OrderBy(Of T)(IList(Of T))
+  nameWithType: Linq.OrderBy<T>(IList<T>)
+  nameWithType.vb: Linq.OrderBy(Of T)(IList(Of T))
+- uid: Quark.Linq.OrderBy``2(IList{``0},Func{``0,``1})
+  name: OrderBy<TElem, TKey>(IList<TElem>, Func<TElem, TKey>)
+  href: api/Quark.Linq.html#Quark_Linq_OrderBy__2_IList___0__Func___0___1__
+  commentId: M:Quark.Linq.OrderBy``2(IList{``0},Func{``0,``1})
+  name.vb: OrderBy(Of TElem, TKey)(IList(Of TElem), Func(Of TElem, TKey))
+  fullName: Quark.Linq.OrderBy<TElem, TKey>(IList<TElem>, Func<TElem, TKey>)
+  fullName.vb: Quark.Linq.OrderBy(Of TElem, TKey)(IList(Of TElem), Func(Of TElem, TKey))
+  nameWithType: Linq.OrderBy<TElem, TKey>(IList<TElem>, Func<TElem, TKey>)
+  nameWithType.vb: Linq.OrderBy(Of TElem, TKey)(IList(Of TElem), Func(Of TElem, TKey))
+- uid: Quark.Linq.OrderBy``2(IList{``0},Func{``0,``1},IComparer{``1})
+  name: OrderBy<TElem, TKey>(IList<TElem>, Func<TElem, TKey>, IComparer<TKey>)
+  href: api/Quark.Linq.html#Quark_Linq_OrderBy__2_IList___0__Func___0___1__IComparer___1__
+  commentId: M:Quark.Linq.OrderBy``2(IList{``0},Func{``0,``1},IComparer{``1})
+  name.vb: OrderBy(Of TElem, TKey)(IList(Of TElem), Func(Of TElem, TKey), IComparer(Of TKey))
+  fullName: Quark.Linq.OrderBy<TElem, TKey>(IList<TElem>, Func<TElem, TKey>, IComparer<TKey>)
+  fullName.vb: Quark.Linq.OrderBy(Of TElem, TKey)(IList(Of TElem), Func(Of TElem, TKey), IComparer(Of TKey))
+  nameWithType: Linq.OrderBy<TElem, TKey>(IList<TElem>, Func<TElem, TKey>, IComparer<TKey>)
+  nameWithType.vb: Linq.OrderBy(Of TElem, TKey)(IList(Of TElem), Func(Of TElem, TKey), IComparer(Of TKey))
+- uid: Quark.Linq.OrderByDescending*
+  name: OrderByDescending
+  href: api/Quark.Linq.html#Quark_Linq_OrderByDescending_
+  commentId: Overload:Quark.Linq.OrderByDescending
+  isSpec: "True"
+  fullName: Quark.Linq.OrderByDescending
+  nameWithType: Linq.OrderByDescending
+- uid: Quark.Linq.OrderByDescending``1(IList{``0})
+  name: OrderByDescending<T>(IList<T>)
+  href: api/Quark.Linq.html#Quark_Linq_OrderByDescending__1_IList___0__
+  commentId: M:Quark.Linq.OrderByDescending``1(IList{``0})
+  name.vb: OrderByDescending(Of T)(IList(Of T))
+  fullName: Quark.Linq.OrderByDescending<T>(IList<T>)
+  fullName.vb: Quark.Linq.OrderByDescending(Of T)(IList(Of T))
+  nameWithType: Linq.OrderByDescending<T>(IList<T>)
+  nameWithType.vb: Linq.OrderByDescending(Of T)(IList(Of T))
+- uid: Quark.Linq.OrderByDescending``2(IList{``0},Func{``0,``1})
+  name: OrderByDescending<TElem, TKey>(IList<TElem>, Func<TElem, TKey>)
+  href: api/Quark.Linq.html#Quark_Linq_OrderByDescending__2_IList___0__Func___0___1__
+  commentId: M:Quark.Linq.OrderByDescending``2(IList{``0},Func{``0,``1})
+  name.vb: OrderByDescending(Of TElem, TKey)(IList(Of TElem), Func(Of TElem, TKey))
+  fullName: Quark.Linq.OrderByDescending<TElem, TKey>(IList<TElem>, Func<TElem, TKey>)
+  fullName.vb: Quark.Linq.OrderByDescending(Of TElem, TKey)(IList(Of TElem), Func(Of TElem, TKey))
+  nameWithType: Linq.OrderByDescending<TElem, TKey>(IList<TElem>, Func<TElem, TKey>)
+  nameWithType.vb: Linq.OrderByDescending(Of TElem, TKey)(IList(Of TElem), Func(Of TElem, TKey))
+- uid: Quark.Linq.OrderByDescending``2(IList{``0},Func{``0,``1},IComparer{``1})
+  name: OrderByDescending<TElem, TKey>(IList<TElem>, Func<TElem, TKey>, IComparer<TKey>)
+  href: api/Quark.Linq.html#Quark_Linq_OrderByDescending__2_IList___0__Func___0___1__IComparer___1__
+  commentId: M:Quark.Linq.OrderByDescending``2(IList{``0},Func{``0,``1},IComparer{``1})
+  name.vb: OrderByDescending(Of TElem, TKey)(IList(Of TElem), Func(Of TElem, TKey), IComparer(Of TKey))
+  fullName: Quark.Linq.OrderByDescending<TElem, TKey>(IList<TElem>, Func<TElem, TKey>, IComparer<TKey>)
+  fullName.vb: Quark.Linq.OrderByDescending(Of TElem, TKey)(IList(Of TElem), Func(Of TElem, TKey), IComparer(Of TKey))
+  nameWithType: Linq.OrderByDescending<TElem, TKey>(IList<TElem>, Func<TElem, TKey>, IComparer<TKey>)
+  nameWithType.vb: Linq.OrderByDescending(Of TElem, TKey)(IList(Of TElem), Func(Of TElem, TKey), IComparer(Of TKey))
+- uid: Quark.Linq.Prepend*
+  name: Prepend
+  href: api/Quark.Linq.html#Quark_Linq_Prepend_
+  commentId: Overload:Quark.Linq.Prepend
+  isSpec: "True"
+  fullName: Quark.Linq.Prepend
+  nameWithType: Linq.Prepend
+- uid: Quark.Linq.Prepend``1(IList{``0},``0)
+  name: Prepend<T>(IList<T>, T)
+  href: api/Quark.Linq.html#Quark_Linq_Prepend__1_IList___0____0_
+  commentId: M:Quark.Linq.Prepend``1(IList{``0},``0)
+  name.vb: Prepend(Of T)(IList(Of T), T)
+  fullName: Quark.Linq.Prepend<T>(IList<T>, T)
+  fullName.vb: Quark.Linq.Prepend(Of T)(IList(Of T), T)
+  nameWithType: Linq.Prepend<T>(IList<T>, T)
+  nameWithType.vb: Linq.Prepend(Of T)(IList(Of T), T)
+- uid: Quark.Linq.Range(System.Int32,System.Int32)
+  name: Range(Int32, Int32)
+  href: api/Quark.Linq.html#Quark_Linq_Range_System_Int32_System_Int32_
+  commentId: M:Quark.Linq.Range(System.Int32,System.Int32)
+  fullName: Quark.Linq.Range(System.Int32, System.Int32)
+  nameWithType: Linq.Range(Int32, Int32)
+- uid: Quark.Linq.Range*
+  name: Range
+  href: api/Quark.Linq.html#Quark_Linq_Range_
+  commentId: Overload:Quark.Linq.Range
+  isSpec: "True"
+  fullName: Quark.Linq.Range
+  nameWithType: Linq.Range
+- uid: Quark.Linq.Repeat*
+  name: Repeat
+  href: api/Quark.Linq.html#Quark_Linq_Repeat_
+  commentId: Overload:Quark.Linq.Repeat
+  isSpec: "True"
+  fullName: Quark.Linq.Repeat
+  nameWithType: Linq.Repeat
+- uid: Quark.Linq.Repeat``1(``0,System.Int32)
+  name: Repeat<T>(T, Int32)
+  href: api/Quark.Linq.html#Quark_Linq_Repeat__1___0_System_Int32_
+  commentId: M:Quark.Linq.Repeat``1(``0,System.Int32)
+  name.vb: Repeat(Of T)(T, Int32)
+  fullName: Quark.Linq.Repeat<T>(T, System.Int32)
+  fullName.vb: Quark.Linq.Repeat(Of T)(T, System.Int32)
+  nameWithType: Linq.Repeat<T>(T, Int32)
+  nameWithType.vb: Linq.Repeat(Of T)(T, Int32)
+- uid: Quark.Linq.Reverse*
+  name: Reverse
+  href: api/Quark.Linq.html#Quark_Linq_Reverse_
+  commentId: Overload:Quark.Linq.Reverse
+  isSpec: "True"
+  fullName: Quark.Linq.Reverse
+  nameWithType: Linq.Reverse
+- uid: Quark.Linq.Reverse``1(IList{``0})
+  name: Reverse<T>(IList<T>)
+  href: api/Quark.Linq.html#Quark_Linq_Reverse__1_IList___0__
+  commentId: M:Quark.Linq.Reverse``1(IList{``0})
+  name.vb: Reverse(Of T)(IList(Of T))
+  fullName: Quark.Linq.Reverse<T>(IList<T>)
+  fullName.vb: Quark.Linq.Reverse(Of T)(IList(Of T))
+  nameWithType: Linq.Reverse<T>(IList<T>)
+  nameWithType.vb: Linq.Reverse(Of T)(IList(Of T))
+- uid: Quark.Linq.Select*
+  name: Select
+  href: api/Quark.Linq.html#Quark_Linq_Select_
+  commentId: Overload:Quark.Linq.Select
+  isSpec: "True"
+  fullName: Quark.Linq.Select
+  nameWithType: Linq.Select
+- uid: Quark.Linq.Select``2(IList{``0},Func{``0,``1})
+  name: Select<TIn, TOut>(IList<TIn>, Func<TIn, TOut>)
+  href: api/Quark.Linq.html#Quark_Linq_Select__2_IList___0__Func___0___1__
+  commentId: M:Quark.Linq.Select``2(IList{``0},Func{``0,``1})
+  name.vb: Select(Of TIn, TOut)(IList(Of TIn), Func(Of TIn, TOut))
+  fullName: Quark.Linq.Select<TIn, TOut>(IList<TIn>, Func<TIn, TOut>)
+  fullName.vb: Quark.Linq.Select(Of TIn, TOut)(IList(Of TIn), Func(Of TIn, TOut))
+  nameWithType: Linq.Select<TIn, TOut>(IList<TIn>, Func<TIn, TOut>)
+  nameWithType.vb: Linq.Select(Of TIn, TOut)(IList(Of TIn), Func(Of TIn, TOut))
+- uid: Quark.Linq.Select``2(IList{``0},Func{``0,System.Int32,``1})
+  name: Select<TIn, TOut>(IList<TIn>, Func<TIn, Int32, TOut>)
+  href: api/Quark.Linq.html#Quark_Linq_Select__2_IList___0__Func___0_System_Int32___1__
+  commentId: M:Quark.Linq.Select``2(IList{``0},Func{``0,System.Int32,``1})
+  name.vb: Select(Of TIn, TOut)(IList(Of TIn), Func(Of TIn, Int32, TOut))
+  fullName: Quark.Linq.Select<TIn, TOut>(IList<TIn>, Func<TIn, System.Int32, TOut>)
+  fullName.vb: Quark.Linq.Select(Of TIn, TOut)(IList(Of TIn), Func(Of TIn, System.Int32, TOut))
+  nameWithType: Linq.Select<TIn, TOut>(IList<TIn>, Func<TIn, Int32, TOut>)
+  nameWithType.vb: Linq.Select(Of TIn, TOut)(IList(Of TIn), Func(Of TIn, Int32, TOut))
+- uid: Quark.Linq.SelectMany*
+  name: SelectMany
+  href: api/Quark.Linq.html#Quark_Linq_SelectMany_
+  commentId: Overload:Quark.Linq.SelectMany
+  isSpec: "True"
+  fullName: Quark.Linq.SelectMany
+  nameWithType: Linq.SelectMany
+- uid: Quark.Linq.SelectMany``1(IList{IList{``0}})
+  name: SelectMany<T>(IList<IList<T>>)
+  href: api/Quark.Linq.html#Quark_Linq_SelectMany__1_IList_IList___0___
+  commentId: M:Quark.Linq.SelectMany``1(IList{IList{``0}})
+  name.vb: SelectMany(Of T)(IList(Of IList(Of T)))
+  fullName: Quark.Linq.SelectMany<T>(IList<IList<T>>)
+  fullName.vb: Quark.Linq.SelectMany(Of T)(IList(Of IList(Of T)))
+  nameWithType: Linq.SelectMany<T>(IList<IList<T>>)
+  nameWithType.vb: Linq.SelectMany(Of T)(IList(Of IList(Of T)))
+- uid: Quark.Linq.SelectMany``2(IList{``0},Func{``0,IList{``1}})
+  name: SelectMany<TIn, TOut>(IList<TIn>, Func<TIn, IList<TOut>>)
+  href: api/Quark.Linq.html#Quark_Linq_SelectMany__2_IList___0__Func___0_IList___1___
+  commentId: M:Quark.Linq.SelectMany``2(IList{``0},Func{``0,IList{``1}})
+  name.vb: SelectMany(Of TIn, TOut)(IList(Of TIn), Func(Of TIn, IList(Of TOut)))
+  fullName: Quark.Linq.SelectMany<TIn, TOut>(IList<TIn>, Func<TIn, IList<TOut>>)
+  fullName.vb: Quark.Linq.SelectMany(Of TIn, TOut)(IList(Of TIn), Func(Of TIn, IList(Of TOut)))
+  nameWithType: Linq.SelectMany<TIn, TOut>(IList<TIn>, Func<TIn, IList<TOut>>)
+  nameWithType.vb: Linq.SelectMany(Of TIn, TOut)(IList(Of TIn), Func(Of TIn, IList(Of TOut)))
+- uid: Quark.Linq.SelectMany``2(IList{``0},Func{``0,System.Int32,IList{``1}})
+  name: SelectMany<TIn, TOut>(IList<TIn>, Func<TIn, Int32, IList<TOut>>)
+  href: api/Quark.Linq.html#Quark_Linq_SelectMany__2_IList___0__Func___0_System_Int32_IList___1___
+  commentId: M:Quark.Linq.SelectMany``2(IList{``0},Func{``0,System.Int32,IList{``1}})
+  name.vb: SelectMany(Of TIn, TOut)(IList(Of TIn), Func(Of TIn, Int32, IList(Of TOut)))
+  fullName: Quark.Linq.SelectMany<TIn, TOut>(IList<TIn>, Func<TIn, System.Int32, IList<TOut>>)
+  fullName.vb: Quark.Linq.SelectMany(Of TIn, TOut)(IList(Of TIn), Func(Of TIn, System.Int32, IList(Of TOut)))
+  nameWithType: Linq.SelectMany<TIn, TOut>(IList<TIn>, Func<TIn, Int32, IList<TOut>>)
+  nameWithType.vb: Linq.SelectMany(Of TIn, TOut)(IList(Of TIn), Func(Of TIn, Int32, IList(Of TOut)))
+- uid: Quark.Linq.SequenceEqual*
+  name: SequenceEqual
+  href: api/Quark.Linq.html#Quark_Linq_SequenceEqual_
+  commentId: Overload:Quark.Linq.SequenceEqual
+  isSpec: "True"
+  fullName: Quark.Linq.SequenceEqual
+  nameWithType: Linq.SequenceEqual
+- uid: Quark.Linq.SequenceEqual``2(IList{``0},IList{``1})
+  name: SequenceEqual<T1, T2>(IList<T1>, IList<T2>)
+  href: api/Quark.Linq.html#Quark_Linq_SequenceEqual__2_IList___0__IList___1__
+  commentId: M:Quark.Linq.SequenceEqual``2(IList{``0},IList{``1})
+  name.vb: SequenceEqual(Of T1, T2)(IList(Of T1), IList(Of T2))
+  fullName: Quark.Linq.SequenceEqual<T1, T2>(IList<T1>, IList<T2>)
+  fullName.vb: Quark.Linq.SequenceEqual(Of T1, T2)(IList(Of T1), IList(Of T2))
+  nameWithType: Linq.SequenceEqual<T1, T2>(IList<T1>, IList<T2>)
+  nameWithType.vb: Linq.SequenceEqual(Of T1, T2)(IList(Of T1), IList(Of T2))
+- uid: Quark.Linq.Single*
+  name: Single
+  href: api/Quark.Linq.html#Quark_Linq_Single_
+  commentId: Overload:Quark.Linq.Single
+  isSpec: "True"
+  fullName: Quark.Linq.Single
+  nameWithType: Linq.Single
+- uid: Quark.Linq.Single``1(IList{``0})
+  name: Single<T>(IList<T>)
+  href: api/Quark.Linq.html#Quark_Linq_Single__1_IList___0__
+  commentId: M:Quark.Linq.Single``1(IList{``0})
+  name.vb: Single(Of T)(IList(Of T))
+  fullName: Quark.Linq.Single<T>(IList<T>)
+  fullName.vb: Quark.Linq.Single(Of T)(IList(Of T))
+  nameWithType: Linq.Single<T>(IList<T>)
+  nameWithType.vb: Linq.Single(Of T)(IList(Of T))
+- uid: Quark.Linq.Single``1(IList{``0},Predicate{``0})
+  name: Single<T>(IList<T>, Predicate<T>)
+  href: api/Quark.Linq.html#Quark_Linq_Single__1_IList___0__Predicate___0__
+  commentId: M:Quark.Linq.Single``1(IList{``0},Predicate{``0})
+  name.vb: Single(Of T)(IList(Of T), Predicate(Of T))
+  fullName: Quark.Linq.Single<T>(IList<T>, Predicate<T>)
+  fullName.vb: Quark.Linq.Single(Of T)(IList(Of T), Predicate(Of T))
+  nameWithType: Linq.Single<T>(IList<T>, Predicate<T>)
+  nameWithType.vb: Linq.Single(Of T)(IList(Of T), Predicate(Of T))
+- uid: Quark.Linq.SingleOrDefault*
+  name: SingleOrDefault
+  href: api/Quark.Linq.html#Quark_Linq_SingleOrDefault_
+  commentId: Overload:Quark.Linq.SingleOrDefault
+  isSpec: "True"
+  fullName: Quark.Linq.SingleOrDefault
+  nameWithType: Linq.SingleOrDefault
+- uid: Quark.Linq.SingleOrDefault``1(IList{``0})
+  name: SingleOrDefault<T>(IList<T>)
+  href: api/Quark.Linq.html#Quark_Linq_SingleOrDefault__1_IList___0__
+  commentId: M:Quark.Linq.SingleOrDefault``1(IList{``0})
+  name.vb: SingleOrDefault(Of T)(IList(Of T))
+  fullName: Quark.Linq.SingleOrDefault<T>(IList<T>)
+  fullName.vb: Quark.Linq.SingleOrDefault(Of T)(IList(Of T))
+  nameWithType: Linq.SingleOrDefault<T>(IList<T>)
+  nameWithType.vb: Linq.SingleOrDefault(Of T)(IList(Of T))
+- uid: Quark.Linq.SingleOrDefault``1(IList{``0},Predicate{``0})
+  name: SingleOrDefault<T>(IList<T>, Predicate<T>)
+  href: api/Quark.Linq.html#Quark_Linq_SingleOrDefault__1_IList___0__Predicate___0__
+  commentId: M:Quark.Linq.SingleOrDefault``1(IList{``0},Predicate{``0})
+  name.vb: SingleOrDefault(Of T)(IList(Of T), Predicate(Of T))
+  fullName: Quark.Linq.SingleOrDefault<T>(IList<T>, Predicate<T>)
+  fullName.vb: Quark.Linq.SingleOrDefault(Of T)(IList(Of T), Predicate(Of T))
+  nameWithType: Linq.SingleOrDefault<T>(IList<T>, Predicate<T>)
+  nameWithType.vb: Linq.SingleOrDefault(Of T)(IList(Of T), Predicate(Of T))
+- uid: Quark.Linq.Skip*
+  name: Skip
+  href: api/Quark.Linq.html#Quark_Linq_Skip_
+  commentId: Overload:Quark.Linq.Skip
+  isSpec: "True"
+  fullName: Quark.Linq.Skip
+  nameWithType: Linq.Skip
+- uid: Quark.Linq.Skip``1(IList{``0},System.Int32)
+  name: Skip<T>(IList<T>, Int32)
+  href: api/Quark.Linq.html#Quark_Linq_Skip__1_IList___0__System_Int32_
+  commentId: M:Quark.Linq.Skip``1(IList{``0},System.Int32)
+  name.vb: Skip(Of T)(IList(Of T), Int32)
+  fullName: Quark.Linq.Skip<T>(IList<T>, System.Int32)
+  fullName.vb: Quark.Linq.Skip(Of T)(IList(Of T), System.Int32)
+  nameWithType: Linq.Skip<T>(IList<T>, Int32)
+  nameWithType.vb: Linq.Skip(Of T)(IList(Of T), Int32)
+- uid: Quark.Linq.SkipLast*
+  name: SkipLast
+  href: api/Quark.Linq.html#Quark_Linq_SkipLast_
+  commentId: Overload:Quark.Linq.SkipLast
+  isSpec: "True"
+  fullName: Quark.Linq.SkipLast
+  nameWithType: Linq.SkipLast
+- uid: Quark.Linq.SkipLast``1(IList{``0},System.Int32)
+  name: SkipLast<T>(IList<T>, Int32)
+  href: api/Quark.Linq.html#Quark_Linq_SkipLast__1_IList___0__System_Int32_
+  commentId: M:Quark.Linq.SkipLast``1(IList{``0},System.Int32)
+  name.vb: SkipLast(Of T)(IList(Of T), Int32)
+  fullName: Quark.Linq.SkipLast<T>(IList<T>, System.Int32)
+  fullName.vb: Quark.Linq.SkipLast(Of T)(IList(Of T), System.Int32)
+  nameWithType: Linq.SkipLast<T>(IList<T>, Int32)
+  nameWithType.vb: Linq.SkipLast(Of T)(IList(Of T), Int32)
+- uid: Quark.Linq.SkipWhile*
+  name: SkipWhile
+  href: api/Quark.Linq.html#Quark_Linq_SkipWhile_
+  commentId: Overload:Quark.Linq.SkipWhile
+  isSpec: "True"
+  fullName: Quark.Linq.SkipWhile
+  nameWithType: Linq.SkipWhile
+- uid: Quark.Linq.SkipWhile``1(IList{``0},Predicate{``0})
+  name: SkipWhile<T>(IList<T>, Predicate<T>)
+  href: api/Quark.Linq.html#Quark_Linq_SkipWhile__1_IList___0__Predicate___0__
+  commentId: M:Quark.Linq.SkipWhile``1(IList{``0},Predicate{``0})
+  name.vb: SkipWhile(Of T)(IList(Of T), Predicate(Of T))
+  fullName: Quark.Linq.SkipWhile<T>(IList<T>, Predicate<T>)
+  fullName.vb: Quark.Linq.SkipWhile(Of T)(IList(Of T), Predicate(Of T))
+  nameWithType: Linq.SkipWhile<T>(IList<T>, Predicate<T>)
+  nameWithType.vb: Linq.SkipWhile(Of T)(IList(Of T), Predicate(Of T))
+- uid: Quark.Linq.Sum(IList{System.Decimal})
+  name: Sum(IList<Decimal>)
+  href: api/Quark.Linq.html#Quark_Linq_Sum_IList_System_Decimal__
+  commentId: M:Quark.Linq.Sum(IList{System.Decimal})
+  name.vb: Sum(IList(Of Decimal))
+  fullName: Quark.Linq.Sum(IList<System.Decimal>)
+  fullName.vb: Quark.Linq.Sum(IList(Of System.Decimal))
+  nameWithType: Linq.Sum(IList<Decimal>)
+  nameWithType.vb: Linq.Sum(IList(Of Decimal))
+- uid: Quark.Linq.Sum(IList{System.Double})
+  name: Sum(IList<Double>)
+  href: api/Quark.Linq.html#Quark_Linq_Sum_IList_System_Double__
+  commentId: M:Quark.Linq.Sum(IList{System.Double})
+  name.vb: Sum(IList(Of Double))
+  fullName: Quark.Linq.Sum(IList<System.Double>)
+  fullName.vb: Quark.Linq.Sum(IList(Of System.Double))
+  nameWithType: Linq.Sum(IList<Double>)
+  nameWithType.vb: Linq.Sum(IList(Of Double))
+- uid: Quark.Linq.Sum(IList{System.Int32})
+  name: Sum(IList<Int32>)
+  href: api/Quark.Linq.html#Quark_Linq_Sum_IList_System_Int32__
+  commentId: M:Quark.Linq.Sum(IList{System.Int32})
+  name.vb: Sum(IList(Of Int32))
+  fullName: Quark.Linq.Sum(IList<System.Int32>)
+  fullName.vb: Quark.Linq.Sum(IList(Of System.Int32))
+  nameWithType: Linq.Sum(IList<Int32>)
+  nameWithType.vb: Linq.Sum(IList(Of Int32))
+- uid: Quark.Linq.Sum(IList{System.Int64})
+  name: Sum(IList<Int64>)
+  href: api/Quark.Linq.html#Quark_Linq_Sum_IList_System_Int64__
+  commentId: M:Quark.Linq.Sum(IList{System.Int64})
+  name.vb: Sum(IList(Of Int64))
+  fullName: Quark.Linq.Sum(IList<System.Int64>)
+  fullName.vb: Quark.Linq.Sum(IList(Of System.Int64))
+  nameWithType: Linq.Sum(IList<Int64>)
+  nameWithType.vb: Linq.Sum(IList(Of Int64))
+- uid: Quark.Linq.Sum(IList{System.Single})
+  name: Sum(IList<Single>)
+  href: api/Quark.Linq.html#Quark_Linq_Sum_IList_System_Single__
+  commentId: M:Quark.Linq.Sum(IList{System.Single})
+  name.vb: Sum(IList(Of Single))
+  fullName: Quark.Linq.Sum(IList<System.Single>)
+  fullName.vb: Quark.Linq.Sum(IList(Of System.Single))
+  nameWithType: Linq.Sum(IList<Single>)
+  nameWithType.vb: Linq.Sum(IList(Of Single))
+- uid: Quark.Linq.Sum*
+  name: Sum
+  href: api/Quark.Linq.html#Quark_Linq_Sum_
+  commentId: Overload:Quark.Linq.Sum
+  isSpec: "True"
+  fullName: Quark.Linq.Sum
+  nameWithType: Linq.Sum
+- uid: Quark.Linq.Take*
+  name: Take
+  href: api/Quark.Linq.html#Quark_Linq_Take_
+  commentId: Overload:Quark.Linq.Take
+  isSpec: "True"
+  fullName: Quark.Linq.Take
+  nameWithType: Linq.Take
+- uid: Quark.Linq.Take``1(IList{``0},System.Int32)
+  name: Take<T>(IList<T>, Int32)
+  href: api/Quark.Linq.html#Quark_Linq_Take__1_IList___0__System_Int32_
+  commentId: M:Quark.Linq.Take``1(IList{``0},System.Int32)
+  name.vb: Take(Of T)(IList(Of T), Int32)
+  fullName: Quark.Linq.Take<T>(IList<T>, System.Int32)
+  fullName.vb: Quark.Linq.Take(Of T)(IList(Of T), System.Int32)
+  nameWithType: Linq.Take<T>(IList<T>, Int32)
+  nameWithType.vb: Linq.Take(Of T)(IList(Of T), Int32)
+- uid: Quark.Linq.TakeLast*
+  name: TakeLast
+  href: api/Quark.Linq.html#Quark_Linq_TakeLast_
+  commentId: Overload:Quark.Linq.TakeLast
+  isSpec: "True"
+  fullName: Quark.Linq.TakeLast
+  nameWithType: Linq.TakeLast
+- uid: Quark.Linq.TakeLast``1(IList{``0},System.Int32)
+  name: TakeLast<T>(IList<T>, Int32)
+  href: api/Quark.Linq.html#Quark_Linq_TakeLast__1_IList___0__System_Int32_
+  commentId: M:Quark.Linq.TakeLast``1(IList{``0},System.Int32)
+  name.vb: TakeLast(Of T)(IList(Of T), Int32)
+  fullName: Quark.Linq.TakeLast<T>(IList<T>, System.Int32)
+  fullName.vb: Quark.Linq.TakeLast(Of T)(IList(Of T), System.Int32)
+  nameWithType: Linq.TakeLast<T>(IList<T>, Int32)
+  nameWithType.vb: Linq.TakeLast(Of T)(IList(Of T), Int32)
+- uid: Quark.Linq.TakeWhile*
+  name: TakeWhile
+  href: api/Quark.Linq.html#Quark_Linq_TakeWhile_
+  commentId: Overload:Quark.Linq.TakeWhile
+  isSpec: "True"
+  fullName: Quark.Linq.TakeWhile
+  nameWithType: Linq.TakeWhile
+- uid: Quark.Linq.TakeWhile``1(IList{``0},Predicate{``0})
+  name: TakeWhile<T>(IList<T>, Predicate<T>)
+  href: api/Quark.Linq.html#Quark_Linq_TakeWhile__1_IList___0__Predicate___0__
+  commentId: M:Quark.Linq.TakeWhile``1(IList{``0},Predicate{``0})
+  name.vb: TakeWhile(Of T)(IList(Of T), Predicate(Of T))
+  fullName: Quark.Linq.TakeWhile<T>(IList<T>, Predicate<T>)
+  fullName.vb: Quark.Linq.TakeWhile(Of T)(IList(Of T), Predicate(Of T))
+  nameWithType: Linq.TakeWhile<T>(IList<T>, Predicate<T>)
+  nameWithType.vb: Linq.TakeWhile(Of T)(IList(Of T), Predicate(Of T))
+- uid: Quark.Linq.ToArray*
+  name: ToArray
+  href: api/Quark.Linq.html#Quark_Linq_ToArray_
+  commentId: Overload:Quark.Linq.ToArray
+  isSpec: "True"
+  fullName: Quark.Linq.ToArray
+  nameWithType: Linq.ToArray
+- uid: Quark.Linq.ToArray``1(IList{``0})
+  name: ToArray<T>(IList<T>)
+  href: api/Quark.Linq.html#Quark_Linq_ToArray__1_IList___0__
+  commentId: M:Quark.Linq.ToArray``1(IList{``0})
+  name.vb: ToArray(Of T)(IList(Of T))
+  fullName: Quark.Linq.ToArray<T>(IList<T>)
+  fullName.vb: Quark.Linq.ToArray(Of T)(IList(Of T))
+  nameWithType: Linq.ToArray<T>(IList<T>)
+  nameWithType.vb: Linq.ToArray(Of T)(IList(Of T))
+- uid: Quark.Linq.ToDictionary*
+  name: ToDictionary
+  href: api/Quark.Linq.html#Quark_Linq_ToDictionary_
+  commentId: Overload:Quark.Linq.ToDictionary
+  isSpec: "True"
+  fullName: Quark.Linq.ToDictionary
+  nameWithType: Linq.ToDictionary
+- uid: Quark.Linq.ToDictionary``2(IList{``0},Func{``0,``1})
+  name: ToDictionary<TElem, TKey>(IList<TElem>, Func<TElem, TKey>)
+  href: api/Quark.Linq.html#Quark_Linq_ToDictionary__2_IList___0__Func___0___1__
+  commentId: M:Quark.Linq.ToDictionary``2(IList{``0},Func{``0,``1})
+  name.vb: ToDictionary(Of TElem, TKey)(IList(Of TElem), Func(Of TElem, TKey))
+  fullName: Quark.Linq.ToDictionary<TElem, TKey>(IList<TElem>, Func<TElem, TKey>)
+  fullName.vb: Quark.Linq.ToDictionary(Of TElem, TKey)(IList(Of TElem), Func(Of TElem, TKey))
+  nameWithType: Linq.ToDictionary<TElem, TKey>(IList<TElem>, Func<TElem, TKey>)
+  nameWithType.vb: Linq.ToDictionary(Of TElem, TKey)(IList(Of TElem), Func(Of TElem, TKey))
+- uid: Quark.Linq.ToDictionary``3(IList{``0},Func{``0,``1},Func{``0,``2})
+  name: ToDictionary<TIn, TKey, TElem>(IList<TIn>, Func<TIn, TKey>, Func<TIn, TElem>)
+  href: api/Quark.Linq.html#Quark_Linq_ToDictionary__3_IList___0__Func___0___1__Func___0___2__
+  commentId: M:Quark.Linq.ToDictionary``3(IList{``0},Func{``0,``1},Func{``0,``2})
+  name.vb: ToDictionary(Of TIn, TKey, TElem)(IList(Of TIn), Func(Of TIn, TKey), Func(Of TIn, TElem))
+  fullName: Quark.Linq.ToDictionary<TIn, TKey, TElem>(IList<TIn>, Func<TIn, TKey>, Func<TIn, TElem>)
+  fullName.vb: Quark.Linq.ToDictionary(Of TIn, TKey, TElem)(IList(Of TIn), Func(Of TIn, TKey), Func(Of TIn, TElem))
+  nameWithType: Linq.ToDictionary<TIn, TKey, TElem>(IList<TIn>, Func<TIn, TKey>, Func<TIn, TElem>)
+  nameWithType.vb: Linq.ToDictionary(Of TIn, TKey, TElem)(IList(Of TIn), Func(Of TIn, TKey), Func(Of TIn, TElem))
+- uid: Quark.Linq.ToHashSet*
+  name: ToHashSet
+  href: api/Quark.Linq.html#Quark_Linq_ToHashSet_
+  commentId: Overload:Quark.Linq.ToHashSet
+  isSpec: "True"
+  fullName: Quark.Linq.ToHashSet
+  nameWithType: Linq.ToHashSet
+- uid: Quark.Linq.ToHashSet``1(IEnumerable{``0})
+  name: ToHashSet<T>(IEnumerable<T>)
+  href: api/Quark.Linq.html#Quark_Linq_ToHashSet__1_IEnumerable___0__
+  commentId: M:Quark.Linq.ToHashSet``1(IEnumerable{``0})
+  name.vb: ToHashSet(Of T)(IEnumerable(Of T))
+  fullName: Quark.Linq.ToHashSet<T>(IEnumerable<T>)
+  fullName.vb: Quark.Linq.ToHashSet(Of T)(IEnumerable(Of T))
+  nameWithType: Linq.ToHashSet<T>(IEnumerable<T>)
+  nameWithType.vb: Linq.ToHashSet(Of T)(IEnumerable(Of T))
+- uid: Quark.Linq.ToList*
+  name: ToList
+  href: api/Quark.Linq.html#Quark_Linq_ToList_
+  commentId: Overload:Quark.Linq.ToList
+  isSpec: "True"
+  fullName: Quark.Linq.ToList
+  nameWithType: Linq.ToList
+- uid: Quark.Linq.ToList``1(IEnumerable{``0})
+  name: ToList<T>(IEnumerable<T>)
+  href: api/Quark.Linq.html#Quark_Linq_ToList__1_IEnumerable___0__
+  commentId: M:Quark.Linq.ToList``1(IEnumerable{``0})
+  name.vb: ToList(Of T)(IEnumerable(Of T))
+  fullName: Quark.Linq.ToList<T>(IEnumerable<T>)
+  fullName.vb: Quark.Linq.ToList(Of T)(IEnumerable(Of T))
+  nameWithType: Linq.ToList<T>(IEnumerable<T>)
+  nameWithType.vb: Linq.ToList(Of T)(IEnumerable(Of T))
+- uid: Quark.Linq.ToLookup*
+  name: ToLookup
+  href: api/Quark.Linq.html#Quark_Linq_ToLookup_
+  commentId: Overload:Quark.Linq.ToLookup
+  isSpec: "True"
+  fullName: Quark.Linq.ToLookup
+  nameWithType: Linq.ToLookup
+- uid: Quark.Linq.ToLookup``3(IList{``0},Func{``0,``1},Func{``0,``2})
+  name: ToLookup<TIn, TKey, TElem>(IList<TIn>, Func<TIn, TKey>, Func<TIn, TElem>)
+  href: api/Quark.Linq.html#Quark_Linq_ToLookup__3_IList___0__Func___0___1__Func___0___2__
+  commentId: M:Quark.Linq.ToLookup``3(IList{``0},Func{``0,``1},Func{``0,``2})
+  name.vb: ToLookup(Of TIn, TKey, TElem)(IList(Of TIn), Func(Of TIn, TKey), Func(Of TIn, TElem))
+  fullName: Quark.Linq.ToLookup<TIn, TKey, TElem>(IList<TIn>, Func<TIn, TKey>, Func<TIn, TElem>)
+  fullName.vb: Quark.Linq.ToLookup(Of TIn, TKey, TElem)(IList(Of TIn), Func(Of TIn, TKey), Func(Of TIn, TElem))
+  nameWithType: Linq.ToLookup<TIn, TKey, TElem>(IList<TIn>, Func<TIn, TKey>, Func<TIn, TElem>)
+  nameWithType.vb: Linq.ToLookup(Of TIn, TKey, TElem)(IList(Of TIn), Func(Of TIn, TKey), Func(Of TIn, TElem))
+- uid: Quark.Linq.Union*
+  name: Union
+  href: api/Quark.Linq.html#Quark_Linq_Union_
+  commentId: Overload:Quark.Linq.Union
+  isSpec: "True"
+  fullName: Quark.Linq.Union
+  nameWithType: Linq.Union
+- uid: Quark.Linq.Union``1(IList{``0},IList{``0})
+  name: Union<T>(IList<T>, IList<T>)
+  href: api/Quark.Linq.html#Quark_Linq_Union__1_IList___0__IList___0__
+  commentId: M:Quark.Linq.Union``1(IList{``0},IList{``0})
+  name.vb: Union(Of T)(IList(Of T), IList(Of T))
+  fullName: Quark.Linq.Union<T>(IList<T>, IList<T>)
+  fullName.vb: Quark.Linq.Union(Of T)(IList(Of T), IList(Of T))
+  nameWithType: Linq.Union<T>(IList<T>, IList<T>)
+  nameWithType.vb: Linq.Union(Of T)(IList(Of T), IList(Of T))
+- uid: Quark.Linq.Where*
+  name: Where
+  href: api/Quark.Linq.html#Quark_Linq_Where_
+  commentId: Overload:Quark.Linq.Where
+  isSpec: "True"
+  fullName: Quark.Linq.Where
+  nameWithType: Linq.Where
+- uid: Quark.Linq.Where``1(IList{``0},Func{``0,System.Int32,System.Boolean})
+  name: Where<T>(IList<T>, Func<T, Int32, Boolean>)
+  href: api/Quark.Linq.html#Quark_Linq_Where__1_IList___0__Func___0_System_Int32_System_Boolean__
+  commentId: M:Quark.Linq.Where``1(IList{``0},Func{``0,System.Int32,System.Boolean})
+  name.vb: Where(Of T)(IList(Of T), Func(Of T, Int32, Boolean))
+  fullName: Quark.Linq.Where<T>(IList<T>, Func<T, System.Int32, System.Boolean>)
+  fullName.vb: Quark.Linq.Where(Of T)(IList(Of T), Func(Of T, System.Int32, System.Boolean))
+  nameWithType: Linq.Where<T>(IList<T>, Func<T, Int32, Boolean>)
+  nameWithType.vb: Linq.Where(Of T)(IList(Of T), Func(Of T, Int32, Boolean))
+- uid: Quark.Linq.Where``1(IList{``0},Predicate{``0})
+  name: Where<T>(IList<T>, Predicate<T>)
+  href: api/Quark.Linq.html#Quark_Linq_Where__1_IList___0__Predicate___0__
+  commentId: M:Quark.Linq.Where``1(IList{``0},Predicate{``0})
+  name.vb: Where(Of T)(IList(Of T), Predicate(Of T))
+  fullName: Quark.Linq.Where<T>(IList<T>, Predicate<T>)
+  fullName.vb: Quark.Linq.Where(Of T)(IList(Of T), Predicate(Of T))
+  nameWithType: Linq.Where<T>(IList<T>, Predicate<T>)
+  nameWithType.vb: Linq.Where(Of T)(IList(Of T), Predicate(Of T))
+- uid: Quark.Linq.Zip*
+  name: Zip
+  href: api/Quark.Linq.html#Quark_Linq_Zip_
+  commentId: Overload:Quark.Linq.Zip
+  isSpec: "True"
+  fullName: Quark.Linq.Zip
+  nameWithType: Linq.Zip
+- uid: Quark.Linq.Zip``2(IList{``0},IList{``1})
+  name: Zip<T1, T2>(IList<T1>, IList<T2>)
+  href: api/Quark.Linq.html#Quark_Linq_Zip__2_IList___0__IList___1__
+  commentId: M:Quark.Linq.Zip``2(IList{``0},IList{``1})
+  name.vb: Zip(Of T1, T2)(IList(Of T1), IList(Of T2))
+  fullName: Quark.Linq.Zip<T1, T2>(IList<T1>, IList<T2>)
+  fullName.vb: Quark.Linq.Zip(Of T1, T2)(IList(Of T1), IList(Of T2))
+  nameWithType: Linq.Zip<T1, T2>(IList<T1>, IList<T2>)
+  nameWithType.vb: Linq.Zip(Of T1, T2)(IList(Of T1), IList(Of T2))
+- uid: Quark.Linq.Zip``3(IList{``0},IList{``1},Func{``0,``1,``2})
+  name: Zip<T1, T2, TRes>(IList<T1>, IList<T2>, Func<T1, T2, TRes>)
+  href: api/Quark.Linq.html#Quark_Linq_Zip__3_IList___0__IList___1__Func___0___1___2__
+  commentId: M:Quark.Linq.Zip``3(IList{``0},IList{``1},Func{``0,``1,``2})
+  name.vb: Zip(Of T1, T2, TRes)(IList(Of T1), IList(Of T2), Func(Of T1, T2, TRes))
+  fullName: Quark.Linq.Zip<T1, T2, TRes>(IList<T1>, IList<T2>, Func<T1, T2, TRes>)
+  fullName.vb: Quark.Linq.Zip(Of T1, T2, TRes)(IList(Of T1), IList(Of T2), Func(Of T1, T2, TRes))
+  nameWithType: Linq.Zip<T1, T2, TRes>(IList<T1>, IList<T2>, Func<T1, T2, TRes>)
+  nameWithType.vb: Linq.Zip(Of T1, T2, TRes)(IList(Of T1), IList(Of T2), Func(Of T1, T2, TRes))
+- uid: Quark.Lookup`2
+  name: Lookup<TK, TE>
+  href: api/Quark.Lookup-2.html
+  commentId: T:Quark.Lookup`2
+  name.vb: Lookup(Of TK, TE)
+  fullName: Quark.Lookup<TK, TE>
+  fullName.vb: Quark.Lookup(Of TK, TE)
+  nameWithType: Lookup<TK, TE>
+  nameWithType.vb: Lookup(Of TK, TE)
+- uid: Quark.Lookup`2.#ctor(IReadOnlyDictionary{`0,IList{`1}})
+  name: Lookup(IReadOnlyDictionary<TK, IList<TE>>)
+  href: api/Quark.Lookup-2.html#Quark_Lookup_2__ctor_IReadOnlyDictionary__0_IList__1___
+  commentId: M:Quark.Lookup`2.#ctor(IReadOnlyDictionary{`0,IList{`1}})
+  name.vb: Lookup(IReadOnlyDictionary(Of TK, IList(Of TE)))
+  fullName: Quark.Lookup<TK, TE>.Lookup(IReadOnlyDictionary<TK, IList<TE>>)
+  fullName.vb: Quark.Lookup(Of TK, TE).Lookup(IReadOnlyDictionary(Of TK, IList(Of TE)))
+  nameWithType: Lookup<TK, TE>.Lookup(IReadOnlyDictionary<TK, IList<TE>>)
+  nameWithType.vb: Lookup(Of TK, TE).Lookup(IReadOnlyDictionary(Of TK, IList(Of TE)))
+- uid: Quark.Lookup`2.#ctor*
+  name: Lookup
+  href: api/Quark.Lookup-2.html#Quark_Lookup_2__ctor_
+  commentId: Overload:Quark.Lookup`2.#ctor
+  isSpec: "True"
+  fullName: Quark.Lookup<TK, TE>.Lookup
+  fullName.vb: Quark.Lookup(Of TK, TE).Lookup
+  nameWithType: Lookup<TK, TE>.Lookup
+  nameWithType.vb: Lookup(Of TK, TE).Lookup
+- uid: Quark.Lookup`2.Contains(`0)
+  name: Contains(TK)
+  href: api/Quark.Lookup-2.html#Quark_Lookup_2_Contains__0_
+  commentId: M:Quark.Lookup`2.Contains(`0)
+  fullName: Quark.Lookup<TK, TE>.Contains(TK)
+  fullName.vb: Quark.Lookup(Of TK, TE).Contains(TK)
+  nameWithType: Lookup<TK, TE>.Contains(TK)
+  nameWithType.vb: Lookup(Of TK, TE).Contains(TK)
+- uid: Quark.Lookup`2.Contains*
+  name: Contains
+  href: api/Quark.Lookup-2.html#Quark_Lookup_2_Contains_
+  commentId: Overload:Quark.Lookup`2.Contains
+  isSpec: "True"
+  fullName: Quark.Lookup<TK, TE>.Contains
+  fullName.vb: Quark.Lookup(Of TK, TE).Contains
+  nameWithType: Lookup<TK, TE>.Contains
+  nameWithType.vb: Lookup(Of TK, TE).Contains
+- uid: Quark.Lookup`2.Count
+  name: Count
+  href: api/Quark.Lookup-2.html#Quark_Lookup_2_Count
+  commentId: P:Quark.Lookup`2.Count
+  fullName: Quark.Lookup<TK, TE>.Count
+  fullName.vb: Quark.Lookup(Of TK, TE).Count
+  nameWithType: Lookup<TK, TE>.Count
+  nameWithType.vb: Lookup(Of TK, TE).Count
+- uid: Quark.Lookup`2.Count*
+  name: Count
+  href: api/Quark.Lookup-2.html#Quark_Lookup_2_Count_
+  commentId: Overload:Quark.Lookup`2.Count
+  isSpec: "True"
+  fullName: Quark.Lookup<TK, TE>.Count
+  fullName.vb: Quark.Lookup(Of TK, TE).Count
+  nameWithType: Lookup<TK, TE>.Count
+  nameWithType.vb: Lookup(Of TK, TE).Count
+- uid: Quark.Lookup`2.Create*
+  name: Create
+  href: api/Quark.Lookup-2.html#Quark_Lookup_2_Create_
+  commentId: Overload:Quark.Lookup`2.Create
+  isSpec: "True"
+  fullName: Quark.Lookup<TK, TE>.Create
+  fullName.vb: Quark.Lookup(Of TK, TE).Create
+  nameWithType: Lookup<TK, TE>.Create
+  nameWithType.vb: Lookup(Of TK, TE).Create
+- uid: Quark.Lookup`2.Create``1(IList{``0},Func{``0,`0},Func{``0,`1})
+  name: Create<TIn>(IList<TIn>, Func<TIn, TK>, Func<TIn, TE>)
+  href: api/Quark.Lookup-2.html#Quark_Lookup_2_Create__1_IList___0__Func___0__0__Func___0__1__
+  commentId: M:Quark.Lookup`2.Create``1(IList{``0},Func{``0,`0},Func{``0,`1})
+  name.vb: Create(Of TIn)(IList(Of TIn), Func(Of TIn, TK), Func(Of TIn, TE))
+  fullName: Quark.Lookup<TK, TE>.Create<TIn>(IList<TIn>, Func<TIn, TK>, Func<TIn, TE>)
+  fullName.vb: Quark.Lookup(Of TK, TE).Create(Of TIn)(IList(Of TIn), Func(Of TIn, TK), Func(Of TIn, TE))
+  nameWithType: Lookup<TK, TE>.Create<TIn>(IList<TIn>, Func<TIn, TK>, Func<TIn, TE>)
+  nameWithType.vb: Lookup(Of TK, TE).Create(Of TIn)(IList(Of TIn), Func(Of TIn, TK), Func(Of TIn, TE))
+- uid: Quark.Lookup`2.GetEnumerator
+  name: GetEnumerator()
+  href: api/Quark.Lookup-2.html#Quark_Lookup_2_GetEnumerator
+  commentId: M:Quark.Lookup`2.GetEnumerator
+  fullName: Quark.Lookup<TK, TE>.GetEnumerator()
+  fullName.vb: Quark.Lookup(Of TK, TE).GetEnumerator()
+  nameWithType: Lookup<TK, TE>.GetEnumerator()
+  nameWithType.vb: Lookup(Of TK, TE).GetEnumerator()
+- uid: Quark.Lookup`2.GetEnumerator*
+  name: GetEnumerator
+  href: api/Quark.Lookup-2.html#Quark_Lookup_2_GetEnumerator_
+  commentId: Overload:Quark.Lookup`2.GetEnumerator
+  isSpec: "True"
+  fullName: Quark.Lookup<TK, TE>.GetEnumerator
+  fullName.vb: Quark.Lookup(Of TK, TE).GetEnumerator
+  nameWithType: Lookup<TK, TE>.GetEnumerator
+  nameWithType.vb: Lookup(Of TK, TE).GetEnumerator
+- uid: Quark.Lookup`2.Item(`0)
+  name: Item[TK]
+  href: api/Quark.Lookup-2.html#Quark_Lookup_2_Item__0_
+  commentId: P:Quark.Lookup`2.Item(`0)
+  name.vb: Item(TK)
+  fullName: Quark.Lookup<TK, TE>.Item[TK]
+  fullName.vb: Quark.Lookup(Of TK, TE).Item(TK)
+  nameWithType: Lookup<TK, TE>.Item[TK]
+  nameWithType.vb: Lookup(Of TK, TE).Item(TK)
+- uid: Quark.Lookup`2.Item*
+  name: Item
+  href: api/Quark.Lookup-2.html#Quark_Lookup_2_Item_
+  commentId: Overload:Quark.Lookup`2.Item
+  isSpec: "True"
+  fullName: Quark.Lookup<TK, TE>.Item
+  fullName.vb: Quark.Lookup(Of TK, TE).Item
+  nameWithType: Lookup<TK, TE>.Item
+  nameWithType.vb: Lookup(Of TK, TE).Item

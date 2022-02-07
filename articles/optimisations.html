@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Optimisations in Quark </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Optimisations in Quark ">
+    <meta name="generator" content="docfx 2.58.9.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="optimisations-in-quark">Optimisations in Quark</h1>
+
+<h2 id="enumerables-vs-collections">Enumerables vs Collections?</h2>
+<p>.NET's built-in LINQ provider, <code>System.Linq.Enumerable</code> is built around lazy-evaluated enumerables.
+The inputs are not required to provide the elements in a random access form,
+and there is no requirement for the length of the sequence.</p>
+<p>While this is convenient, it has huge performance, complexity and possibly logic drawbacks.
+For example, the overhead of querying is applied to every element each time,
+as evaluating one element leads to evaluating every step of the query all at once, but for only one element.
+This means we can't use optimised in-place algorithms, nor more efficient index access over enumeration.</p>
+<p>In addition, the lack of requirement to provide a length means you can pass in enumerators that return elements infinitely.
+Doing this will make looping over the linq results loop forever.
+Passing this enumerable into some query functions (such as <code>ToArray</code> or <code>Aggregate</code>) will cause the thread to freeze,
+eating CPU until the program runs out of RAM to store the query results,
+with the garbage collector likely working overtime to keep everything under relative control.</p>
+<p>Quark requires most query inputs to implement <code>IList&lt;T&gt;</code> (though there are some exceptions).
+This means that:</p>
+<ul>
+<li>we can use indexing, which is much faster than <code>IEnumerable.MoveNext()</code> + <code>IEnumerable.Current</code>.</li>
+<li>we can perform in-place operations requiring the length of the array, such as reversing a list by swapping pairs
+<ul>
+<li>thanks to the above, <em>we can use quick sort...</em></li>
+</ul>
+</li>
+</ul>
+<h2 id="for-vs-foreach"><code>for</code> vs <code>foreach</code>?</h2>
+<p>Quark <strong><em>never</em> uses foreach</strong>. Why? foreach uses enumerables.</p>
+<p>That's right, foreach is syntactic sugar for enumerating:</p>
+<pre><code class="lang-cs">// foreach syntax
+foreach (var item in collection)
+    doThing(item);
+
+// equivalent syntax - identical once compiled
+while (collection.MoveNext())
+{
+    var item = collection.Current;
+    doThing(item);
+}
+</code></pre>
+<p>In comparison, for loops use in-place mutability and indexing, and are therefore much faster.
+While we haven't benchmarked it, however one user on StackOverflow claimed they found a 2x speedup with for over foreach!</p>
+<h2 id="sorting-algorithms">Sorting algorithms</h2>
+<p>Sorting is where Quark tends to pick up the most performance marks over System.Linq.</p>
+<p>In <code>System.Linq.Enumerable.OrderBy</code>, a custom <code>OrderedEnumerable</code> is used to sort, which does actually use a quick sort, however its not ideal.
+Quark in-place sorts on an array, which is very fast, whereas
+<a href="https://github.com/dotnet/runtime/blob/57bfe474518ab5b7cfe6bf7424a79ce3af9d6657/src/libraries/System.Linq/src/System/Linq/OrderedEnumerable.cs#L348">OrderedEnumerable</a>
+does so much weirdness I couldn't actually figure out much of what theyre doing, but it appears to be sorting some sort of a map of indexes,
+then returning enumerable results using that.</p>
+<p>Whatever its doing, Quark's plain simple quick sort beats it. We currently use the Hoare partition scheme,
+and while recursion mitigation optimisations are not made as of writing this, it may be done in the future.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/yellowsink/quark/blob/master/docfx_project/articles/optimisations.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
